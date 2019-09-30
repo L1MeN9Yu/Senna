@@ -27,5 +27,5 @@ void senna_logger_enable_rotating_file(const char *name, const char *pattern, co
 }
 
 void senna_logger_enable_daily_file(const char *name, const char *pattern, const char *file_path, int hour, int minute) {
-    Singleton<SennaContext>::sharedInstance()->enableDailyLog(name, pattern, file_path, hour, minute);
+    Singleton<SennaContext>::sharedInstance()->enableDailyFileLog(name, pattern, file_path, hour, minute);
 }

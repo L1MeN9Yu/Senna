@@ -13,7 +13,7 @@
 void SennaContext::enableRotatingFileLog(const char *name, const char *pattern, const char *file_path, size_t max_size, size_t max_files) {
     auto logger = spdlog::get(name);
     if (!logger) {
-        printf("logger not exist !");
+        printf("logger not exist !\n");
         return;
     }
 

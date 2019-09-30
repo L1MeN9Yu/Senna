@@ -6,48 +6,30 @@
 import Foundation
 
 public func log(flag: LogFlag, message: CustomStringConvertible?, filename: String = #file, function: String = #function, line: Int = #line) {
-    switch flag {
-    case .trace:
-        logTrace(message: message, filename: filename, function: function, line: line)
-    case .debug:
-        logDebug(message: message, filename: filename, function: function, line: line)
-    case .info:
-        logInfo(message: message, filename: filename, function: function, line: line)
-    case .warning:
-        logWarning(message: message, filename: filename, function: function, line: line)
-    case .error:
-        logError(message: message, filename: filename, function: function, line: line)
-    case .critical:
-        logCritical(message: message, filename: filename, function: function, line: line)
-    }
+    let allMessage = AllMessage(message, filename, function, line).cString(using: .utf8)
+    senna_default_logger_log(flag.rawValue, allMessage)
 }
 
 public func logTrace(message: CustomStringConvertible?, filename: String = #file, function: String = #function, line: Int = #line) {
-    let allMessage = AllMessage(message, filename, function, line).cString(using: .utf8)
-    c_senna_log_trace(message: allMessage)
+    log(flag: .trace, message: message, filename: filename, function: function, line: line)
 }
 
 public func logDebug(message: CustomStringConvertible?, filename: String = #file, function: String = #function, line: Int = #line) {
-    let allMessage = AllMessage(message, filename, function, line).cString(using: .utf8)
-    c_senna_log_debug(message: allMessage)
+    log(flag: .debug, message: message, filename: filename, function: function, line: line)
 }
 
 public func logInfo(message: CustomStringConvertible?, filename: String = #file, function: String = #function, line: Int = #line) {
-    let allMessage = AllMessage(message, filename, function, line).cString(using: .utf8)
-    c_senna_log_info(message: allMessage)
+    log(flag: .info, message: message, filename: filename, function: function, line: line)
 }
 
 public func logWarning(message: CustomStringConvertible?, filename: String = #file, function: String = #function, line: Int = #line) {
-    let allMessage = AllMessage(message, filename, function, line).cString(using: .utf8)
-    c_senna_log_warning(message: allMessage)
+    log(flag: .warning, message: message, filename: filename, function: function, line: line)
 }
 
 public func logError(message: CustomStringConvertible?, filename: String = #file, function: String = #function, line: Int = #line) {
-    let allMessage = AllMessage(message, filename, function, line).cString(using: .utf8)
-    c_senna_log_error(message: allMessage)
+    log(flag: .error, message: message, filename: filename, function: function, line: line)
 }
 
 public func logCritical(message: CustomStringConvertible?, filename: String = #file, function: String = #function, line: Int = #line) {
-    let allMessage = AllMessage(message, filename, function, line).cString(using: .utf8)
-    c_senna_log_critical(message: allMessage)
+    log(flag: .critical, message: message, filename: filename, function: function, line: line)
 }

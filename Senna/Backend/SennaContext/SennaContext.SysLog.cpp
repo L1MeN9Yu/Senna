@@ -13,7 +13,7 @@
 void SennaContext::enableSysLog(const char *name, const char *pattern, const char *ident, int option, int facility, bool format) {
     auto logger = spdlog::get(name);
     if (!logger) {
-        printf("logger not exist !");
+        printf("logger not exist !\n");
         return;
     }
 

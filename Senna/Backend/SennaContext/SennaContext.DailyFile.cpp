@@ -10,10 +10,10 @@
 #include <spdlog/sinks/daily_file_sink.h>
 #include "SennaContext.h"
 
-void SennaContext::enableDailyLog(const char *name, const char *pattern, const char *file_path, int hour, int minute) {
+void SennaContext::enableDailyFileLog(const char *name, const char *pattern, const char *file_path, int hour, int minute) {
     auto logger = spdlog::get(name);
     if (!logger) {
-        printf("logger not exist !");
+        printf("logger not exist !\n");
         return;
     }
 

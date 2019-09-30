@@ -5,11 +5,12 @@
 
 import Foundation
 
-public enum LogFlag: UInt {
+public enum LogFlag: CUnsignedInt {
     case trace = 0
     case debug
     case info
     case warning
     case error
     case critical
+    case off
 }

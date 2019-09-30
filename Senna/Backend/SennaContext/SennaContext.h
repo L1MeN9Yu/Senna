@@ -61,7 +61,7 @@ public:
      * @param hour flush time hour
      * @param minute flush time minute
      */
-    void enableDailyLog(const char *name, const char *pattern, const char *file_path, int hour, int minute);
+    void enableDailyFileLog(const char *name, const char *pattern, const char *file_path, int hour, int minute);
 
 private:
     std::shared_ptr<spdlog::logger> p_default_logger;
