@@ -24,7 +24,7 @@ public:
      * @param name logger name
      * @param pattern logger pattern
      */
-    void createLogger(const char *name, const char *pattern);
+    void createLogger(const char *name, spdlog::level::level_enum level, const char *pattern);
 
     /**
      * 销毁一个 Logger
@@ -41,7 +41,7 @@ public:
      * @param facility facility
      * @param format format
      */
-    void enableSysLog(const char *name, const char *pattern, const char *ident, int option, int facility, bool format);
+    void enableSysLog(const char *name, spdlog::level::level_enum level, const char *pattern, const char *ident, int option, int facility, bool format);
 
     /**
      * Enable Logger's RotatingFileLog
@@ -51,7 +51,7 @@ public:
      * @param max_size max_size
      * @param max_files max_files
      */
-    void enableRotatingFileLog(const char *name, const char *pattern, const char *file_path, size_t max_size, size_t max_files);
+    void enableRotatingFileLog(const char *name, spdlog::level::level_enum level, const char *pattern, const char *file_path, size_t max_size, size_t max_files);
 
     /**
      * Enable Logger's DailyLog
@@ -61,7 +61,7 @@ public:
      * @param hour flush time hour
      * @param minute flush time minute
      */
-    void enableDailyFileLog(const char *name, const char *pattern, const char *file_path, int hour, int minute);
+    void enableDailyFileLog(const char *name, spdlog::level::level_enum level, const char *pattern, const char *file_path, int hour, int minute);
 
 private:
     std::shared_ptr<spdlog::logger> p_default_logger;

@@ -20,7 +20,8 @@ SennaContext::SennaContext() {
     p_default_logger = spdlog::stdout_color_mt(default_logger_name);
     p_default_logger->set_pattern("[%D %T] [%=10n] %^[process id : %P] [thread id : %t] [%8l] %v%$");
     p_default_logger->set_level(spdlog::level::trace);
-    p_default_logger->info("spdlog version {}.{}.{} !", SPDLOG_VER_MAJOR, SPDLOG_VER_MINOR, SPDLOG_VER_PATCH);
-    p_default_logger->info("fmt version {} !", FMT_VERSION);
+    p_default_logger->debug("Senna Start Succeed!");
+    p_default_logger->debug("spdlog version {}.{}.{} !", SPDLOG_VER_MAJOR, SPDLOG_VER_MINOR, SPDLOG_VER_PATCH);
+    p_default_logger->debug("fmt version {} !", FMT_VERSION);
     spdlog::set_default_logger(p_default_logger);
 }

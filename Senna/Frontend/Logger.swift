@@ -9,6 +9,7 @@ import Darwin.POSIX.syslog
 public protocol Logger {
     var name: String { get }
     var pattern: String { get }
+    var flag: LogFlag { get }
 }
 
 // MARK: - Life Cycle
@@ -24,42 +25,42 @@ extension Logger {
 
 // MARK: - Default Values
 extension Logger {
-    public var pattern: String {
-        DefaultPattern
-    }
+    public var pattern: String { DefaultPattern }
+
+    public var flag: LogFlag { .trace }
 }
 
 // MARK: - Features
 extension Logger {
 
     @discardableResult
-    public func enableSysLog(pattern: String = DefaultPattern, ident: String? = nil, option: Int32 = 0, facility: Int32 = LOG_USER, format: Bool = false) -> Self {
+    public func enableSysLog(flag: LogFlag = .trace, pattern: String = DefaultPattern, ident: String? = nil, option: Int32 = 0, facility: Int32 = LOG_USER, format: Bool = false) -> Self {
         let ident = ident ?? self.name
         let loggerName = self.name.cString(using: .utf8)
         let pattern = pattern.cString(using: .utf8)
 
-        senna_logger_enable_syslog(loggerName, pattern, ident, option, facility, format)
+        senna_logger_enable_syslog(loggerName, flag.rawValue, pattern, ident, option, facility, format)
 
         return self
     }
 
     @discardableResult
-    public func enableRotatingFileLog(pattern: String = DefaultPattern, filePath: String, maxSize: Int = 1024 * 1024, maxFiles: Int = 1000) -> Self {
+    public func enableRotatingFileLog(flag: LogFlag = .trace, pattern: String = DefaultPattern, filePath: String, maxSize: Int = 1024 * 1024, maxFiles: Int = 1000) -> Self {
         let loggerName = self.name.cString(using: .utf8)
         let filePath = filePath.cString(using: .utf8)
         let pattern = pattern.cString(using: .utf8)
 
-        senna_logger_enable_rotating_file(loggerName, pattern, filePath, maxSize, maxFiles)
+        senna_logger_enable_rotating_file(loggerName, flag.rawValue, pattern, filePath, maxSize, maxFiles)
         return self
     }
 
     @discardableResult
-    public func enableDailyFileLog(pattern: String = DefaultPattern, filePath: String, hour: Int = 00, minute: Int = 00) -> Self {
+    public func enableDailyFileLog(flag: LogFlag = .trace, pattern: String = DefaultPattern, filePath: String, hour: Int = 00, minute: Int = 00) -> Self {
         let loggerName = self.name.cString(using: .utf8)
         let filePath = filePath.cString(using: .utf8)
         let pattern = pattern.cString(using: .utf8)
 
-        senna_logger_enable_daily_file(loggerName, pattern, filePath, CInt(hour), CInt(minute))
+        senna_logger_enable_daily_file(loggerName, flag.rawValue, pattern, filePath, CInt(hour), CInt(minute))
         return self
     }
 }
