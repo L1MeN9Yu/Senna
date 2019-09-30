@@ -33,7 +33,13 @@ public func drop(logger: Logger) {
     senna_drop_logger(loggerName)
 }
 
-let AllMessage: (CustomStringConvertible?, String, String, Int) -> String = { message, filename, function, line in
+public typealias MessageConvert = (_ message: CustomStringConvertible?, _ filename: String, _ function: String, _ line: Int) -> String
+
+public func register(messageConvert: @escaping MessageConvert) {
+    __messageConvert = messageConvert
+}
+
+var __messageConvert: MessageConvert = { message, filename, function, line in
     let allMessage = "[\(URL(fileURLWithPath: filename).lastPathComponent):\(line)] \(function) - \(message?.description ?? "")"
     return allMessage
 }

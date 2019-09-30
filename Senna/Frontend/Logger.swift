@@ -68,7 +68,7 @@ extension Logger {
 // MARK: - Log
 extension Logger {
     public func log(flag: LogFlag, message: CustomStringConvertible?, filename: String = #file, function: String = #function, line: Int = #line) {
-        let allMessage = AllMessage(message, filename, function, line).cString(using: .utf8)
+        let allMessage = __messageConvert(message, filename, function, line).cString(using: .utf8)
         let loggerName = self.name.cString(using: .utf8)
         let flag = UInt32(flag.rawValue)
         senna_log_action(loggerName, flag, allMessage)
