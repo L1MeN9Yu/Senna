@@ -69,6 +69,11 @@ SPDLOG_INLINE bool logger::should_log(level::level_enum msg_level) const
     return msg_level >= level_.load(std::memory_order_relaxed);
 }
 
+SPDLOG_INLINE bool logger::should_backtrace() const
+{
+    return tracer_.enabled();
+}
+
 SPDLOG_INLINE void logger::set_level(level::level_enum log_level)
 {
     level_.store(log_level);
@@ -205,7 +210,7 @@ SPDLOG_INLINE void logger::dump_backtrace_()
     if (tracer_)
     {
         sink_it_(log_msg{name(), level::info, "****************** Backtrace Start ******************"});
-        tracer_.foreach_pop([this](const details::log_msg &msg) { this->sink_it_(msg); });
+        tracer_.foreach_pop([this](const log_msg &msg) { this->sink_it_(msg); });
         sink_it_(log_msg{name(), level::info, "****************** Backtrace End ********************"});
     }
 }
@@ -218,7 +223,6 @@ SPDLOG_INLINE bool logger::should_flush_(const details::log_msg &msg)
 
 SPDLOG_INLINE void logger::err_handler_(const std::string &msg)
 {
-
     if (custom_err_handler_)
     {
         custom_err_handler_(msg);
