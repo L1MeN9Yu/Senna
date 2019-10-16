@@ -7,8 +7,8 @@
 //
 
 #include <spdlog/spdlog.h>
-#include <spdlog/sinks/rotating_file_sink.h>
 #include "SennaContext.h"
+#include <spdlog/sinks/rotating_file_sink.h>
 
 void SennaContext::enableRotatingFileLog(const char *name, spdlog::level::level_enum level, const char *pattern, const char *file_path, size_t max_size, size_t max_files) {
     auto logger = spdlog::get(name);

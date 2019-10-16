@@ -7,8 +7,8 @@
 //
 
 #include <spdlog/spdlog.h>
-#include <spdlog/sinks/syslog_sink.h>
 #include "SennaContext.h"
+#include <spdlog/sinks/syslog_sink.h>
 
 void SennaContext::enableSysLog(const char *name, spdlog::level::level_enum level, const char *pattern, const char *ident, int option, int facility, bool format) {
     auto logger = spdlog::get(name);

@@ -6,9 +6,9 @@
 //  Copyright © 2019 Mengyu Li. All rights reserved.
 //
 
-#include <spdlog/sinks/ansicolor_sink.h>
 #include <spdlog/spdlog.h>
 #include "SennaContext.h"
+#include <spdlog/sinks/ansicolor_sink.h>
 
 void SennaContext::createLogger(const char *name, spdlog::level::level_enum level, const char *pattern) {
     auto stdout_sink = std::make_shared<spdlog::sinks::ansicolor_stdout_sink_mt>();

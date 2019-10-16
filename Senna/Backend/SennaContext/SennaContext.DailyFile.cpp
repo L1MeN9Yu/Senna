@@ -7,8 +7,8 @@
 //
 
 #include <spdlog/spdlog.h>
-#include <spdlog/sinks/daily_file_sink.h>
 #include "SennaContext.h"
+#include <spdlog/sinks/daily_file_sink.h>
 
 void SennaContext::enableDailyFileLog(const char *name, spdlog::level::level_enum level, const char *pattern, const char *file_path, int hour, int minute) {
     auto logger = spdlog::get(name);

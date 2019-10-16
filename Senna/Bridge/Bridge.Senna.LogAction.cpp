@@ -3,7 +3,7 @@
 // Copyright (c) 2019 Mengyu Li. All rights reserved.
 //
 
-#include "LogAction.h"
+#include "Bridge.Senna.LogAction.h"
 #include <spdlog/spdlog.h>
 
 void senna_log_action(const char *logger_name, unsigned int flag, const char *message) {

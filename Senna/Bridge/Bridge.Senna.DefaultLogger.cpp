@@ -3,7 +3,7 @@
 // Copyright (c) 2019 Mengyu Li. All rights reserved.
 //
 
-#include "DefaultLogger.h"
+#include "Bridge.Senna.DefaultLogger.h"
 #include "SennaContext.h"
 
 void senna_default_logger_log(unsigned int flag, const char *message) {

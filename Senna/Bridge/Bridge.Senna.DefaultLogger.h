@@ -12,6 +12,7 @@ extern "C" {
 
 extern const char *const default_logger_name;
 
+__attribute__((nonnull (2)))
 extern void senna_default_logger_log(unsigned int flag, const char *message);
 
 #ifdef __cplusplus

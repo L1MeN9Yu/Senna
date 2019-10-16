@@ -14,12 +14,18 @@ class DemoListViewController: UIHostingController<ContentView> {
     override init(rootView: ContentView) {
         super.init(rootView: rootView)
 
+        logger.info(message: NSTemporaryDirectory())
+        let filePath = NSTemporaryDirectory() + "\(UUID().uuidString)"
+        logger.enableFileLog(filePath: filePath)
+
         logger.trace(message: "trace")
         logger.debug(message: "debug")
         logger.info(message: "info")
         logger.warning(message: "warning")
         logger.error(message: "error")
         logger.critical(message: "critical")
+
+        logger.flush()
     }
 
     @objc required dynamic init?(coder aDecoder: NSCoder) {

@@ -6,17 +6,31 @@
 //  Copyright © 2018年 Mengyu Li. All rights reserved.
 //
 
-#include "SennaCore.h"
-#include "Singleton.h"
+#include "Bridge.Senna.Core.h"
+#include "Senna.Singleton.h"
 #include "SennaContext.h"
 
 void senna_add_logger(const char *name, unsigned int flag, const char *pattern) {
-    spdlog::level::level_enum level = spdlog::level::level_enum(flag); 
+    spdlog::level::level_enum level = spdlog::level::level_enum(flag);
     Singleton<SennaContext>::sharedInstance()->createLogger(name, level, pattern);
 }
 
 void senna_drop_logger(const char *name) {
     Singleton<SennaContext>::sharedInstance()->dropLogger(name);
+}
+
+void senna_logger_flush(const char *name) {
+    Singleton<SennaContext>::sharedInstance()->flush(name);
+}
+
+void senna_logger_set_flush_on(const char *name, unsigned int flag) {
+    spdlog::level::level_enum level = spdlog::level::level_enum(flag);
+    Singleton<SennaContext>::sharedInstance()->set_flush_on(name, level);
+}
+
+void senna_logger_enable_file(const char *name, unsigned int flag, const char *pattern, const char *file_path) {
+    spdlog::level::level_enum level = spdlog::level::level_enum(flag);
+    Singleton<SennaContext>::sharedInstance()->enableFileLog(name, level, pattern, file_path);
 }
 
 void senna_logger_enable_syslog(const char *name, unsigned int flag, const char *pattern, const char *ident, int option, int facility, bool format) {

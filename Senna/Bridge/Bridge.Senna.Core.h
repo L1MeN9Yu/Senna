@@ -16,14 +16,28 @@
 extern "C" {
 #endif
 
+__attribute__((nonnull (1, 3)))
 extern void senna_add_logger(const char *name, unsigned int flag, const char *pattern);
 
+__attribute__((nonnull (1)))
 extern void senna_drop_logger(const char *name);
 
+__attribute__((nonnull (1)))
+extern void senna_logger_flush(const char *name);
+
+__attribute__((nonnull (1)))
+extern void senna_logger_set_flush_on(const char *name, unsigned int flag);
+
+__attribute__((nonnull (1, 3, 4)))
+extern void senna_logger_enable_file(const char *name, unsigned int flag, const char *pattern, const char *file_path);
+
+__attribute__((nonnull (1, 3, 4)))
 extern void senna_logger_enable_syslog(const char *name, unsigned int flag, const char *pattern, const char *ident, int option, int facility, bool format);
 
+__attribute__((nonnull (1, 3, 4)))
 extern void senna_logger_enable_rotating_file(const char *name, unsigned int flag, const char *pattern, const char *file_path, size_t max_size, size_t max_files);
 
+__attribute__((nonnull (1, 3, 4)))
 extern void senna_logger_enable_daily_file(const char *name, unsigned int flag, const char *pattern, const char *file_path, int hour, int minute);
 
 #ifdef __cplusplus

@@ -6,4 +6,4 @@
 import Foundation
 
 @_silgen_name("senna_default_logger_log")
-func senna_default_logger_log(_ flag: UInt32, _ message: UnsafePointer<Int8>?)
+func senna_default_logger_log(_ flag: UInt32, _ message: UnsafePointer<Int8>)

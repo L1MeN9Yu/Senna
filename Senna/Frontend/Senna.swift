@@ -23,14 +23,16 @@ public func drop(loggers: [Logger]) {
 }
 
 public func register(logger: Logger) {
-    let loggerName = logger.name.cString(using: .utf8)
-    let pattern = logger.pattern.cString(using: .utf8)
-    senna_add_logger(loggerName, logger.flag.rawValue, pattern)
+    if let loggerName = logger.name.cString(using: .utf8),
+       let pattern = logger.pattern.cString(using: .utf8) {
+        senna_add_logger(loggerName, logger.flag.rawValue, pattern)
+    }
 }
 
 public func drop(logger: Logger) {
-    let loggerName = logger.name.cString(using: .utf8)
-    senna_drop_logger(loggerName)
+    if let loggerName = logger.name.cString(using: .utf8) {
+        senna_drop_logger(loggerName)
+    }
 }
 
 public typealias MessageConvert = (_ message: CustomStringConvertible?, _ filename: String, _ function: String, _ line: Int) -> String

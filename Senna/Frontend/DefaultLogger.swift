@@ -6,8 +6,9 @@
 import Foundation
 
 public func log(flag: LogFlag, message: CustomStringConvertible?, filename: String = #file, function: String = #function, line: Int = #line) {
-    let allMessage = __messageConvert(message, filename, function, line).cString(using: .utf8)
-    senna_default_logger_log(flag.rawValue, allMessage)
+    if let allMessage = __messageConvert(message, filename, function, line).cString(using: .utf8) {
+        senna_default_logger_log(flag.rawValue, allMessage)
+    }
 }
 
 public func logTrace(message: CustomStringConvertible?, filename: String = #file, function: String = #function, line: Int = #line) {

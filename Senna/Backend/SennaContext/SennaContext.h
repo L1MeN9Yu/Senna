@@ -7,7 +7,7 @@
 #define SENNA_CONTEXT_H
 
 #include <spdlog/logger.h>
-#include "Singleton.h"
+#include "Senna.Singleton.h"
 
 class SennaContext {
     friend class Singleton<SennaContext>;
@@ -27,14 +27,37 @@ public:
     void createLogger(const char *name, spdlog::level::level_enum level, const char *pattern);
 
     /**
-     * 销毁一个 Logger
+     * Drop the Logger
      * @param name logger name
      */
     void dropLogger(const char *name);
 
     /**
+     * Logger manual flush
+     * @param name logger name
+     */
+    void flush(const char *name);
+
+    /**
+     * Set Logger auto flush level
+     * @param name logger name
+     * @param level flush level
+     */
+    void set_flush_on(const char *name, spdlog::level::level_enum level);
+
+    /**
+     * Enable Logger's fileLog
+     * @param name logger name
+     * @param level logger level
+     * @param pattern logger pattern
+     * @param file_path file_path
+     */
+    void enableFileLog(const char *name, spdlog::level::level_enum level, const char *pattern, const char *file_path);
+
+    /**
      * Enable Logger's syslog
      * @param name logger name
+     * @param level logger level
      * @param pattern logger pattern
      * @param ident ident
      * @param option option

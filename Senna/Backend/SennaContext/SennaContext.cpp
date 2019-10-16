@@ -4,10 +4,10 @@
 //
 
 #include "SennaContext.h"
-#include "SennaCore.h"
+#include "Bridge.Senna.Core.h"
 #include <spdlog/spdlog.h>
-#include <spdlog/sinks/stdout_color_sinks.h>
 #include <iostream>
+#include <spdlog/sinks/stdout_color_sinks.h>
 
 const char *const default_logger_name = "Senna";
 
