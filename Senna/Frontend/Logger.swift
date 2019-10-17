@@ -31,6 +31,7 @@ extension Logger {
         }
     }
 
+    @discardableResult
     public func setFlush(on flag: LogFlag) -> Self {
         if let name = self.name.cString(using: .utf8) {
             senna_logger_set_flush_on(name, flag.rawValue)
