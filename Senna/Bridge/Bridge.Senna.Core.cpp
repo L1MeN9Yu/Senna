@@ -38,6 +38,11 @@ void senna_logger_enable_syslog(const char *name, unsigned int flag, const char 
     Singleton<SennaContext>::sharedInstance()->enableSysLog(name, level, pattern, ident, option, facility, format);
 }
 
+void senna_logger_enable_oslog(const char *name, unsigned int flag, const char *pattern, const char *sub_system, const char *category) {
+    spdlog::level::level_enum level = spdlog::level::level_enum(flag);
+    Singleton<SennaContext>::sharedInstance()->enableOSLog(name, level, pattern, sub_system, category);
+}
+
 void senna_logger_enable_rotating_file(const char *name, unsigned int flag, const char *pattern, const char *file_path, size_t max_size, size_t max_files) {
     spdlog::level::level_enum level = spdlog::level::level_enum(flag);
     Singleton<SennaContext>::sharedInstance()->enableRotatingFileLog(name, level, pattern, file_path, max_size, max_files);

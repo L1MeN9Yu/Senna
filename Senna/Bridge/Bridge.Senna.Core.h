@@ -36,6 +36,9 @@ extern void senna_logger_enable_file(const char *name, unsigned int flag, const 
 __attribute__((nonnull (1, 3, 4)))
 extern void senna_logger_enable_syslog(const char *name, unsigned int flag, const char *pattern, const char *ident, int option, int facility, bool format);
 
+__attribute__((nonnull (1, 3)))
+extern void senna_logger_enable_oslog(const char *name, unsigned int flag, const char *pattern, const char *sub_system, const char *category);
+
 __attribute__((nonnull (1, 3, 4)))
 extern void senna_logger_enable_rotating_file(const char *name, unsigned int flag, const char *pattern, const char *file_path, size_t max_size, size_t max_files);
 

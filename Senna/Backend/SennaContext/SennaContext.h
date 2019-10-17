@@ -13,8 +13,6 @@ class SennaContext {
     friend class Singleton<SennaContext>;
 
 public:
-    SennaContext();
-
     std::shared_ptr<spdlog::logger> logger() const {
         return this->p_default_logger;
     }
@@ -66,6 +64,8 @@ public:
      */
     void enableSysLog(const char *name, spdlog::level::level_enum level, const char *pattern, const char *ident, int option, int facility, bool format);
 
+    void enableOSLog(const char *name, spdlog::level::level_enum level, const char *pattern, const char *sub_system, const char *category);
+
     /**
      * Enable Logger's RotatingFileLog
      * @param name logger name
@@ -90,6 +90,8 @@ public:
 
 private:
     std::shared_ptr<spdlog::logger> p_default_logger;
+
+    SennaContext();
 
     virtual ~SennaContext() {
     }

@@ -9,7 +9,7 @@ import Senna
 class DemoLogger: Logger {
     let name: String = "SennaDemo"
 
-    init() { self.register() }
+    init() { self.register().enableSysLog().enableOSLog(subSystem: "sub system", category: "category") }
 
     deinit { self.drop() }
 }
