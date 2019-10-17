@@ -47,3 +47,7 @@ var __messageConvert: MessageConvert = { message, filename, function, line in
 }
 
 public let DefaultPattern = "[%D %T] [%=10n] %^[process id : %P] [thread id : %t] [%8l] %v%$"
+
+public func shutDown() {
+    senna_shutdown()
+}

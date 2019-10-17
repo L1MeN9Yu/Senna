@@ -47,3 +47,7 @@ void senna_logger_enable_daily_file(const char *name, unsigned int flag, const c
     spdlog::level::level_enum level = spdlog::level::level_enum(flag);
     Singleton<SennaContext>::sharedInstance()->enableDailyFileLog(name, level, pattern, file_path, hour, minute);
 }
+
+void senna_shutdown(void) {
+    Singleton<SennaContext>::sharedInstance()->shutDown();
+}

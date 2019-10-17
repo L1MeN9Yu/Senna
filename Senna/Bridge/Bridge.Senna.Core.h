@@ -22,6 +22,8 @@ extern void senna_add_logger(const char *name, unsigned int flag, const char *pa
 __attribute__((nonnull (1)))
 extern void senna_drop_logger(const char *name);
 
+extern void senna_shutdown(void);
+
 __attribute__((nonnull (1)))
 extern void senna_logger_flush(const char *name);
 

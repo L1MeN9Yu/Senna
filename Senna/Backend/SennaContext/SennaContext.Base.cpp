@@ -26,3 +26,7 @@ void SennaContext::createLogger(const char *name, spdlog::level::level_enum leve
 void SennaContext::dropLogger(const char *name) {
     spdlog::drop(name);
 }
+
+void SennaContext::shutDown(void) {
+    spdlog::shutdown();
+}

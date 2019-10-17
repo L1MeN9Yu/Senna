@@ -5,6 +5,7 @@
 
 import Foundation
 import SwiftUI
+import Senna
 
 class DemoListViewController: UIHostingController<ContentView> {
     private lazy var logger = {
@@ -25,7 +26,7 @@ class DemoListViewController: UIHostingController<ContentView> {
         logger.error(message: "error")
         logger.critical(message: "critical")
 
-        logger.flush()
+        Senna.shutDown()
     }
 
     @objc required dynamic init?(coder aDecoder: NSCoder) {

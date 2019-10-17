@@ -86,6 +86,8 @@ public:
      */
     void enableDailyFileLog(const char *name, spdlog::level::level_enum level, const char *pattern, const char *file_path, int hour, int minute);
 
+    void shutDown(void);
+
 private:
     std::shared_ptr<spdlog::logger> p_default_logger;
 

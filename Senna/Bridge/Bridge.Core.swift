@@ -11,6 +11,9 @@ func senna_add_logger(_ name: UnsafePointer<Int8>, _ flag: UInt32, _ pattern: Un
 @_silgen_name("senna_drop_logger")
 func senna_drop_logger(_ name: UnsafePointer<Int8>)
 
+@_silgen_name("senna_shutdown")
+func senna_shutdown()
+
 @_silgen_name("senna_logger_flush")
 func senna_logger_flush(_ name: UnsafePointer<Int8>)
 
