@@ -60,11 +60,20 @@ public:
      * @param ident ident
      * @param option option
      * @param facility facility
-     * @param format format
+     * @param format is format
      */
     void enableSysLog(const char *name, spdlog::level::level_enum level, const char *pattern, const char *ident, int option, int facility, bool format);
 
-    void enableOSLog(const char *name, spdlog::level::level_enum level, const char *pattern, const char *sub_system, const char *category);
+    /**
+     * Enable Logger's OSLog
+     * @param name logger name
+     * @param level logger level
+     * @param pattern logger pattern
+     * @param sub_system os log sub system
+     * @param category os log category
+     * @param format is format
+     */
+    void enableOSLog(const char *name, spdlog::level::level_enum level, const char *pattern, const char *sub_system, const char *category, bool format);
 
     /**
      * Enable Logger's RotatingFileLog
