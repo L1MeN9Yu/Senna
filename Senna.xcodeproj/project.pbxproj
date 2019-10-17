@@ -25,7 +25,6 @@
 		10A1BF6C2341B35700F07538 /* Senna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 100267A32340B877004DC9B3 /* Senna.framework */; };
 		10A1BF6D2341B35700F07538 /* Senna.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 100267A32340B877004DC9B3 /* Senna.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		423B4E4C2356ACDB000ED595 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 100267AF2340B88B004DC9B3 /* libc++.tbd */; };
-		4287AFB9235859ED005D4B17 /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4287AFB8235859E6005D4B17 /* libc++.1.tbd */; };
 		453042BD85AC67ACF14B03AD /* Bridge.Senna.Core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4530465FAAE27E1DA575FA9C /* Bridge.Senna.Core.cpp */; };
 		453042BE97562AB510F52211 /* Bridge.Senna.DefaultLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45304DD8E63B31605A99A85D /* Bridge.Senna.DefaultLogger.cpp */; };
 		4530470B1DC7D08CD5F14922 /* Bridge.Senna.LogAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 45304333932192E420DE40E4 /* Bridge.Senna.LogAction.h */; };
@@ -121,7 +120,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				423B4E4C2356ACDB000ED595 /* libc++.tbd in Frameworks */,
-				4287AFB9235859ED005D4B17 /* libc++.1.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -600,7 +598,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = top.limengyu.Senna;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -627,7 +625,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.1;
+				MARKETING_VERSION = 1.2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = top.limengyu.Senna;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
