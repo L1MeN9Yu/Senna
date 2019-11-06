@@ -25,7 +25,7 @@ public func drop(loggers: [Logger]) {
 public func register(logger: Logger) {
     if let loggerName = logger.name.cString(using: .utf8),
        let pattern = logger.pattern.cString(using: .utf8) {
-        senna_add_logger(loggerName, logger.flag.rawValue, pattern)
+        senna_add_logger(loggerName, logger.flag.unsignedIntValue, pattern)
     }
 }
 
