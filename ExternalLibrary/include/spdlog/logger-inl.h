@@ -64,16 +64,6 @@ SPDLOG_INLINE void swap(logger &a, logger &b)
     a.swap(b);
 }
 
-SPDLOG_INLINE bool logger::should_log(level::level_enum msg_level) const
-{
-    return msg_level >= level_.load(std::memory_order_relaxed);
-}
-
-SPDLOG_INLINE bool logger::should_backtrace() const
-{
-    return tracer_.enabled();
-}
-
 SPDLOG_INLINE void logger::set_level(level::level_enum log_level)
 {
     level_.store(log_level);
@@ -90,7 +80,7 @@ SPDLOG_INLINE const std::string &logger::name() const
 }
 
 // set formatting for the sinks in this logger.
-// each sink will get a seperate instance of the formatter object.
+// each sink will get a separate instance of the formatter object.
 SPDLOG_INLINE void logger::set_formatter(std::unique_ptr<formatter> f)
 {
     for (auto it = sinks_.begin(); it != sinks_.end(); ++it)
@@ -172,6 +162,18 @@ SPDLOG_INLINE std::shared_ptr<logger> logger::clone(std::string logger_name)
 }
 
 // protected methods
+SPDLOG_INLINE void logger::log_it_(const spdlog::details::log_msg &log_msg, bool log_enabled, bool traceback_enabled)
+{
+    if (log_enabled)
+    {
+        sink_it_(log_msg);
+    }
+    if (traceback_enabled)
+    {
+        tracer_.push_back(log_msg);
+    }
+}
+
 SPDLOG_INLINE void logger::sink_it_(const details::log_msg &msg)
 {
     for (auto &sink : sinks_)
@@ -207,7 +209,7 @@ SPDLOG_INLINE void logger::flush_()
 SPDLOG_INLINE void logger::dump_backtrace_()
 {
     using details::log_msg;
-    if (tracer_)
+    if (tracer_.enabled())
     {
         sink_it_(log_msg{name(), level::info, "****************** Backtrace Start ******************"});
         tracer_.foreach_pop([this](const log_msg &msg) { this->sink_it_(msg); });
