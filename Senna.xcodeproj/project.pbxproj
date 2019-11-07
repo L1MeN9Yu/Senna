@@ -11,7 +11,6 @@
 		10A1BF612341AFF800F07538 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10A1BF602341AFF800F07538 /* Assets.xcassets */; };
 		10A1BF642341AFF800F07538 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 10A1BF632341AFF800F07538 /* Preview Assets.xcassets */; };
 		10A1BF672341AFF800F07538 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10A1BF652341AFF800F07538 /* LaunchScreen.storyboard */; };
-		42FB103F235ED0C60039F223 /* Senna_macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FB103D235ED0C60039F223 /* Senna_macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		42FB1044235ED1370039F223 /* Bridge.Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100267C72340B91B004DC9B3 /* Bridge.Core.swift */; };
 		42FB1045235ED1370039F223 /* Bridge.LogAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100267C82340B91B004DC9B3 /* Bridge.LogAction.swift */; };
 		42FB1046235ED1370039F223 /* Bridge.DefaultLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100267C92340B91B004DC9B3 /* Bridge.DefaultLogger.swift */; };
@@ -36,7 +35,6 @@
 		42FB1059235ED1730039F223 /* Bridge.Senna.Core.h in Headers */ = {isa = PBXBuildFile; fileRef = 45304C7F31223962E6FF0752 /* Bridge.Senna.Core.h */; };
 		42FB105A235ED1730039F223 /* Bridge.Senna.LogAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 45304333932192E420DE40E4 /* Bridge.Senna.LogAction.h */; };
 		42FB105B235ED1730039F223 /* Bridge.Senna.DefaultLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 45304C05C3ACE06A0F0164BD /* Bridge.Senna.DefaultLogger.h */; };
-		42FB1065235ED2A60039F223 /* Senna_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = 42FB1063235ED2A60039F223 /* Senna_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		42FB1068235ED2A60039F223 /* Senna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42FB1061235ED2A60039F223 /* Senna.framework */; };
 		42FB1069235ED2A60039F223 /* Senna.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 42FB1061235ED2A60039F223 /* Senna.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		42FB106D235ED2DC0039F223 /* Senna.Singleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 100267B72340B91B004DC9B3 /* Senna.Singleton.h */; };
@@ -115,10 +113,8 @@
 		10A1BF682341AFF800F07538 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4287AFB8235859E6005D4B17 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.1.tbd"; sourceTree = DEVELOPER_DIR; };
 		42FB103B235ED0C60039F223 /* Senna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Senna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		42FB103D235ED0C60039F223 /* Senna_macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Senna_macOS.h; sourceTree = "<group>"; };
 		42FB103E235ED0C60039F223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42FB1061235ED2A60039F223 /* Senna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Senna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		42FB1063235ED2A60039F223 /* Senna_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Senna_iOS.h; sourceTree = "<group>"; };
 		42FB1064235ED2A60039F223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4530407AFA83990F2C193FA8 /* SennaContext.FileLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SennaContext.FileLog.cpp; sourceTree = "<group>"; };
 		4530424B84CE18BA92508A7F /* os_log_sink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_log_sink.h; sourceTree = "<group>"; };
@@ -287,7 +283,6 @@
 		42FB103C235ED0C60039F223 /* Senna.macOS */ = {
 			isa = PBXGroup;
 			children = (
-				42FB103D235ED0C60039F223 /* Senna_macOS.h */,
 				42FB103E235ED0C60039F223 /* Info.plist */,
 			);
 			path = Senna.macOS;
@@ -306,7 +301,6 @@
 		42FB1062235ED2A60039F223 /* Senna.iOS */ = {
 			isa = PBXGroup;
 			children = (
-				42FB1063235ED2A60039F223 /* Senna_iOS.h */,
 				42FB1064235ED2A60039F223 /* Info.plist */,
 			);
 			path = Senna.iOS;
@@ -349,7 +343,6 @@
 				42FB105A235ED1730039F223 /* Bridge.Senna.LogAction.h in Headers */,
 				42FB1056235ED15F0039F223 /* SennaContext.h in Headers */,
 				42FB105B235ED1730039F223 /* Bridge.Senna.DefaultLogger.h in Headers */,
-				42FB103F235ED0C60039F223 /* Senna_macOS.h in Headers */,
 				42FB1058235ED16B0039F223 /* Senna.Singleton.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,7 +355,6 @@
 				42FB107B235ED2F00039F223 /* Bridge.Senna.Core.h in Headers */,
 				42FB106E235ED2DF0039F223 /* SennaContext.h in Headers */,
 				42FB107E235ED2F00039F223 /* Bridge.Senna.LogAction.h in Headers */,
-				42FB1065235ED2A60039F223 /* Senna_iOS.h in Headers */,
 				42FB1077235ED2E80039F223 /* os_log_sink.h in Headers */,
 				42FB106D235ED2DC0039F223 /* Senna.Singleton.h in Headers */,
 			);
@@ -748,7 +740,6 @@
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = HMEN575QY4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -762,11 +753,12 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "top.limengyu.Senna-macOS";
 				PRODUCT_NAME = Senna;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -777,7 +769,6 @@
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = HMEN575QY4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -791,11 +782,12 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "top.limengyu.Senna-macOS";
 				PRODUCT_NAME = Senna;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -805,7 +797,6 @@
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = HMEN575QY4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -819,10 +810,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "top.limengyu.Senna-iOS";
 				PRODUCT_NAME = Senna;
 				SKIP_INSTALL = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -833,7 +825,6 @@
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = HMEN575QY4;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -847,10 +838,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.3;
+				MARKETING_VERSION = 1.2.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "top.limengyu.Senna-iOS";
 				PRODUCT_NAME = Senna;
 				SKIP_INSTALL = YES;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
