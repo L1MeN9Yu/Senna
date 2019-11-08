@@ -19,6 +19,10 @@ github "L1MeN9Yu/Senna"
 
 See Demo
 
+## OSLog in Console.app
+
+As a dynamic library dependency,add 'Senna' as the library name in the filter.
+
 ## Log Format
 
 ### Backend format
