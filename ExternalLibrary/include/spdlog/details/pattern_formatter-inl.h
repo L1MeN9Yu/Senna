@@ -39,47 +39,48 @@ public:
         : padinfo_(padinfo)
         , dest_(dest)
     {
-
-        if (padinfo_.width_ <= wrapped_size)
+        remaining_pad_ = static_cast<long>(padinfo.width_) - static_cast<long>(wrapped_size);
+        if (remaining_pad_ <= 0)
         {
-            total_pad_ = 0;
             return;
         }
 
-        total_pad_ = padinfo.width_ - wrapped_size;
         if (padinfo_.side_ == padding_info::left)
         {
-            pad_it(total_pad_);
-            total_pad_ = 0;
+            pad_it(remaining_pad_);
+            remaining_pad_ = 0;
         }
         else if (padinfo_.side_ == padding_info::center)
         {
-            auto half_pad = total_pad_ / 2;
-            auto reminder = total_pad_ & 1;
+            auto half_pad = remaining_pad_ / 2;
+            auto reminder = remaining_pad_ & 1;
             pad_it(half_pad);
-            total_pad_ = half_pad + reminder; // for the right side
+            remaining_pad_ = half_pad + reminder; // for the right side
         }
     }
 
     ~scoped_padder()
     {
-        if (total_pad_)
+        if (remaining_pad_ >= 0)
         {
-            pad_it(total_pad_);
+            pad_it(remaining_pad_);
+        }
+        else if (padinfo_.truncate_)
+        {
+            long new_size = static_cast<long>(dest_.size()) + remaining_pad_;
+            dest_.resize(static_cast<size_t>(new_size));
         }
     }
 
 private:
-    void pad_it(size_t count)
+    void pad_it(long count)
     {
-        // count = std::min(count, spaces_.size());
-        assert(count <= spaces_.size());
-        fmt_helper::append_string_view(string_view_t(spaces_.data(), count), dest_);
+        fmt_helper::append_string_view(string_view_t(spaces_.data(), static_cast<size_t>(count)), dest_);
     }
 
     const padding_info &padinfo_;
     memory_buf_t &dest_;
-    size_t total_pad_;
+    long remaining_pad_;
     string_view_t spaces_{"                                                                ", 64};
 };
 
@@ -593,14 +594,7 @@ public:
         const size_t field_size = 6;
         ScopedPadder p(field_size, padinfo_, dest);
 
-#ifdef _WIN32
-        int total_minutes = get_cached_offset(msg, tm_time);
-#else
-        // No need to cache under gcc,
-        // it is very fast (already stored in tm.tm_gmtoff)
-        (void)(msg);
-        int total_minutes = os::utc_minutes_offset(tm_time);
-#endif
+        auto total_minutes = get_cached_offset(msg, tm_time);
         bool is_negative = total_minutes < 0;
         if (is_negative)
         {
@@ -619,7 +613,6 @@ public:
 
 private:
     log_clock::time_point last_update_{std::chrono::seconds(0)};
-#ifdef _WIN32
     int offset_minutes_{0};
 
     int get_cached_offset(const log_msg &msg, const std::tm &tm_time)
@@ -632,7 +625,6 @@ private:
         }
         return offset_minutes_;
     }
-#endif
 };
 
 // Thread id
@@ -881,11 +873,13 @@ public:
         auto delta = (std::max)(msg.time - last_message_time_, log_clock::duration::zero());
         auto delta_units = std::chrono::duration_cast<DurationUnits>(delta);
         last_message_time_ = msg.time;
-        ScopedPadder p(6, padinfo_, dest);
-        fmt_helper::pad6(static_cast<size_t>(delta_units.count()), dest);
+        auto delta_count = static_cast<size_t>(delta_units.count());
+        auto n_digits = static_cast<size_t>(fmt_helper::count_digits(delta_count));
+        ScopedPadder p(n_digits, padinfo_, dest);
+        fmt_helper::append_int(delta_count, dest);
     }
 
-protected:
+private:
     log_clock::time_point last_message_time_;
 };
 
@@ -1218,7 +1212,7 @@ SPDLOG_INLINE void pattern_formatter::handle_flag_(char flag, details::padding_i
     }
 }
 
-// Extract given pad spec (e.g. %8X)
+// Extract given pad spec (e.g. %8X, %=8X, %-8!X, %8!X, %=8!X, %-8!X, %+8!X)
 // Advance the given it pass the end of the padding spec found (if any)
 // Return padding.
 SPDLOG_INLINE details::padding_info pattern_formatter::handle_padspec_(std::string::const_iterator &it, std::string::const_iterator end)
@@ -1249,7 +1243,7 @@ SPDLOG_INLINE details::padding_info pattern_formatter::handle_padspec_(std::stri
 
     if (it == end || !std::isdigit(static_cast<unsigned char>(*it)))
     {
-        return padding_info{0, side};
+        return padding_info{}; // no padding if no digit found here
     }
 
     auto width = static_cast<size_t>(*it) - '0';
@@ -1258,7 +1252,20 @@ SPDLOG_INLINE details::padding_info pattern_formatter::handle_padspec_(std::stri
         auto digit = static_cast<size_t>(*it) - '0';
         width = width * 10 + digit;
     }
-    return details::padding_info{std::min<size_t>(width, max_width), side};
+
+    // search for the optional truncate marker '!'
+    bool truncate;
+    if (it != end && *it == '!')
+    {
+        truncate = true;
+        ++it;
+    }
+    else
+    {
+        truncate = false;
+    }
+
+    return details::padding_info{std::min<size_t>(width, max_width), side, truncate};
 }
 
 SPDLOG_INLINE void pattern_formatter::compile_pattern_(const std::string &pattern)

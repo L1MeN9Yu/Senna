@@ -230,7 +230,12 @@ SPDLOG_INLINE size_t filesize(FILE *f)
 #endif
 
 #else // unix
+// OpenBSD doesn't compile with :: before the fileno(..)
+#if defined(__OpenBSD__)
+    int fd = fileno(f);
+#else
     int fd = ::fileno(f);
+#endif
 // 64 bits(but not in osx or cygwin, where fstat64 is deprecated)
 #if (defined(__linux__) || defined(__sun) || defined(_AIX)) && (defined(__LP64__) || defined(_LP64))
     struct stat64 st;
@@ -238,9 +243,8 @@ SPDLOG_INLINE size_t filesize(FILE *f)
     {
         return static_cast<size_t>(st.st_size);
     }
-#else // unix 32 bits or cygwin
+#else // other unix or linux 32 bits or cygwin
     struct stat st;
-
     if (::fstat(fd, &st) == 0)
     {
         return static_cast<size_t>(st.st_size);
@@ -277,7 +281,7 @@ SPDLOG_INLINE int utc_minutes_offset(const std::tm &tm)
     return offset;
 #else
 
-#if defined(sun) || defined(__sun) || defined(_AIX)
+#if defined(sun) || defined(__sun) || defined(_AIX) || (!defined(_BSD_SOURCE) && !defined(_GNU_SOURCE))
     // 'tm_gmtoff' field is BSD extension and it's missing on SunOS/Solaris
     struct helper
     {
@@ -428,7 +432,7 @@ SPDLOG_INLINE bool in_terminal(FILE *file) SPDLOG_NOEXCEPT
 #if (defined(SPDLOG_WCHAR_TO_UTF8_SUPPORT) || defined(SPDLOG_WCHAR_FILENAMES)) && defined(_WIN32)
 SPDLOG_INLINE void wstr_to_utf8buf(wstring_view_t wstr, memory_buf_t &target)
 {
-    if (wstr.size() > static_cast<size_t>(std::numeric_limits<int>::max()))
+    if (wstr.size() > static_cast<size_t>((std::numeric_limits<int>::max)()))
     {
         SPDLOG_THROW(spdlog::spdlog_ex("UTF-16 string is too big to be converted to UTF-8"));
     }
@@ -463,7 +467,7 @@ SPDLOG_INLINE void wstr_to_utf8buf(wstring_view_t wstr, memory_buf_t &target)
 #endif // (defined(SPDLOG_WCHAR_TO_UTF8_SUPPORT) || defined(SPDLOG_WCHAR_FILENAMES)) && defined(_WIN32)
 
 // return true on success
-SPDLOG_INLINE bool mkdir_(const filename_t &path)
+static SPDLOG_INLINE bool mkdir_(const filename_t &path)
 {
 #ifdef _WIN32
 #ifdef SPDLOG_WCHAR_FILENAMES

@@ -8,6 +8,7 @@
 #endif
 
 #include <spdlog/common.h>
+#include <cassert>
 
 namespace spdlog {
 namespace details {
@@ -81,7 +82,7 @@ void SPDLOG_INLINE thread_pool::post_async_msg_(async_msg &&new_msg, async_overf
 
 void SPDLOG_INLINE thread_pool::worker_loop_()
 {
-    while (process_next_msg_()) {};
+    while (process_next_msg_()) {}
 }
 
 // process next message in the queue
