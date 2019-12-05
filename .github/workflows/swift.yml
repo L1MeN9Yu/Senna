@@ -3,15 +3,13 @@ name: Swift
 on: [push]
 
 jobs:
-  build:
-
+  archive:
     runs-on: macOS-latest
-
     steps:
-    - uses: actions/checkout@v1
-    - name: Build iOS
-      run: xcodebuild archive -target Senna.iOS 
-    - name: Build macOS
-      run: xcodebuild archive -target Senna.macOS
-    - name: Run tests
-      run: echo Run tests not implemented
+      - uses: actions/checkout@v1
+      - name: Build iOS
+        run: xcodebuild archive -target Senna.iOS
+      - name: Build macOS
+        run: xcodebuild archive -target Senna.macOS
+      - name: Run tests
+        run: echo Run tests not implemented
