@@ -29,7 +29,7 @@ As a dynamic library dependency,add 'Senna' as the library name in the filter.
 
 See spdlog wiki : [Custom formatting](https://github.com/gabime/spdlog/wiki/3.-Custom-formatting)
 
-The default pattern is : `[%D %T] [%=10n] %^[pid : %P] [tid : %t] [%8l] %v%$`
+The default pattern is : `[%D %T] [%=10n] %^[pid : %P] [tid : %t] [%5l] %v%$`
 
 ### Frontend format
 
