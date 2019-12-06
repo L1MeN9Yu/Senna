@@ -9,9 +9,9 @@ public enum LogFlag {
     case trace
     case debug
     case info
-    case warning
+    case warn
     case error
-    case critical
+    case crit
     case off
 
     public init?(unsignedIntValue: CUnsignedInt) {
@@ -23,11 +23,11 @@ public enum LogFlag {
         case 2:
             self = .info
         case 3:
-            self = .warning
+            self = .warn
         case 4:
             self = .error
         case 5:
-            self = .critical
+            self = .crit
         case 6:
             self = .off
         default:
@@ -45,11 +45,11 @@ public extension LogFlag {
             return 1
         case .info:
             return 2
-        case .warning:
+        case .warn:
             return 3
         case .error:
             return 4
-        case .critical:
+        case .crit:
             return 5
         case .off:
             return 6

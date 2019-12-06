@@ -106,34 +106,34 @@ extension Logger {
 
 // MARK: - Log
 extension Logger {
-    public func log(flag: LogFlag, message: CustomStringConvertible?, filename: String = #file, function: String = #function, line: Int = #line) {
+    public func log(flag: LogFlag, message: CustomStringConvertible?, filename: StaticString = #file, function: StaticString = #function, line: Int = #line) {
         if let allMessage = __messageConvert(message, filename, function, line).cString(using: .utf8),
            let loggerName = self.name.cString(using: .utf8) {
             senna_log_action(loggerName, flag.unsignedIntValue, allMessage)
         }
     }
 
-    public func trace(message: CustomStringConvertible?, filename: String = #file, function: String = #function, line: Int = #line) {
+    public func trace(message: CustomStringConvertible?, filename: StaticString = #file, function: StaticString = #function, line: Int = #line) {
         self.log(flag: .trace, message: message, filename: filename, function: function, line: line)
     }
 
-    public func debug(message: CustomStringConvertible?, filename: String = #file, function: String = #function, line: Int = #line) {
+    public func debug(message: CustomStringConvertible?, filename: StaticString = #file, function: StaticString = #function, line: Int = #line) {
         self.log(flag: .debug, message: message, filename: filename, function: function, line: line)
     }
 
-    public func info(message: CustomStringConvertible?, filename: String = #file, function: String = #function, line: Int = #line) {
+    public func info(message: CustomStringConvertible?, filename: StaticString = #file, function: StaticString = #function, line: Int = #line) {
         self.log(flag: .info, message: message, filename: filename, function: function, line: line)
     }
 
-    public func warning(message: CustomStringConvertible?, filename: String = #file, function: String = #function, line: Int = #line) {
-        self.log(flag: .warning, message: message, filename: filename, function: function, line: line)
+    public func warning(message: CustomStringConvertible?, filename: StaticString = #file, function: StaticString = #function, line: Int = #line) {
+        self.log(flag: .warn, message: message, filename: filename, function: function, line: line)
     }
 
-    public func error(message: CustomStringConvertible?, filename: String = #file, function: String = #function, line: Int = #line) {
+    public func error(message: CustomStringConvertible?, filename: StaticString = #file, function: StaticString = #function, line: Int = #line) {
         self.log(flag: .error, message: message, filename: filename, function: function, line: line)
     }
 
-    public func critical(message: CustomStringConvertible?, filename: String = #file, function: String = #function, line: Int = #line) {
-        self.log(flag: .critical, message: message, filename: filename, function: function, line: line)
+    public func critical(message: CustomStringConvertible?, filename: StaticString = #file, function: StaticString = #function, line: Int = #line) {
+        self.log(flag: .crit, message: message, filename: filename, function: function, line: line)
     }
 }

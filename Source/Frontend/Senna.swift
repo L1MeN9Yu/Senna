@@ -35,14 +35,14 @@ public func drop(logger: Logger) {
     }
 }
 
-public typealias MessageConvert = (_ message: CustomStringConvertible?, _ filename: String, _ function: String, _ line: Int) -> String
+public typealias MessageConvert = (_ message: CustomStringConvertible?, _ filename: StaticString, _ function: StaticString, _ line: Int) -> String
 
 public func register(messageConvert: @escaping MessageConvert) {
     __messageConvert = messageConvert
 }
 
 var __messageConvert: MessageConvert = { message, filename, function, line in
-    let allMessage = "[\(URL(fileURLWithPath: filename).lastPathComponent):\(line)] \(function) - \(message?.description ?? "")"
+    let allMessage = "[\(URL(fileURLWithPath: "\(filename)").lastPathComponent):\(line)] \(function) - \(message?.description ?? "")"
     return allMessage
 }
 
