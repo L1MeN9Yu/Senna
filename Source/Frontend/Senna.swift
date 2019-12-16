@@ -6,8 +6,6 @@
 //  Copyright © 2019 Mengyu Li. All rights reserved.
 //
 
-import Foundation
-
 public func register(loggers: [Logger]) {
     assert(!loggers.isEmpty)
     loggers.forEach { logger in
@@ -42,11 +40,12 @@ public func register(messageConvert: @escaping MessageConvert) {
 }
 
 var __messageConvert: MessageConvert = { message, filename, function, line in
-    let allMessage = "[\(URL(fileURLWithPath: "\(filename)").lastPathComponent):\(line)] \(function) - \(message?.description ?? "")"
+    let fileName = filename.components(separatedBy: "/").last ?? ""
+    let allMessage = "[\(fileName):\(line)] \(function) - \(message?.description ?? "")"
     return allMessage
 }
 
-public let DefaultPattern = "[%D %T] [%=10n] %^[pid : %P] [tid : %t] [%5l] %v%$"
+public let DefaultPattern = "[%D %T] [%=10n] %^[pid : %P] [tid : %t] [%1L] %v%$"
 
 public func shutDown() {
     senna_shutdown()

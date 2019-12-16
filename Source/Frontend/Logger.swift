@@ -26,16 +26,12 @@ extension Logger {
 // MARK: - Flush
 extension Logger {
     public func flush() {
-        if let name = self.name.cString(using: .utf8) {
-            senna_logger_flush(name)
-        }
+        senna_logger_flush(name)
     }
 
     @discardableResult
     public func setFlush(on flag: LogFlag) -> Self {
-        if let name = self.name.cString(using: .utf8) {
-            senna_logger_set_flush_on(name, flag.unsignedIntValue)
-        }
+        senna_logger_set_flush_on(name, flag.unsignedIntValue)
         return self
     }
 }
@@ -52,54 +48,32 @@ extension Logger {
 
     @discardableResult
     public func enableFileLog(flag: LogFlag = .trace, pattern: String = DefaultPattern, filePath: String) -> Self {
-        if let loggerName = self.name.cString(using: .utf8),
-           let filePath = filePath.cString(using: .utf8),
-           let pattern = pattern.cString(using: .utf8) {
-            senna_logger_enable_file(loggerName, flag.unsignedIntValue, pattern, filePath)
-        }
+        senna_logger_enable_file(name, flag.unsignedIntValue, pattern, filePath)
         return self
     }
 
     @discardableResult
     public func enableSysLog(flag: LogFlag = .trace, pattern: String = DefaultPattern, ident: String? = nil, option: Int32 = 0, facility: Int32 = LOG_USER, format: Bool = true) -> Self {
         let ident = ident ?? self.name
-        if let loggerName = self.name.cString(using: .utf8),
-           let pattern = pattern.cString(using: .utf8) {
-            senna_logger_enable_syslog(loggerName, flag.unsignedIntValue, pattern, ident, option, facility, format)
-        }
-
+        senna_logger_enable_syslog(name, flag.unsignedIntValue, pattern, ident, option, facility, format)
         return self
     }
 
     @discardableResult
     public func enableOSLog(flag: LogFlag = .trace, pattern: String = DefaultPattern, subSystem: String? = nil, category: String? = nil, format: Bool = true) -> Self {
-        if let loggerName = self.name.cString(using: .utf8),
-           let pattern = pattern.cString(using: .utf8) {
-            senna_logger_enable_oslog(loggerName, flag.unsignedIntValue, pattern, subSystem?.cString(using: .utf8), category?.cString(using: .utf8), format)
-        }
-
+        senna_logger_enable_oslog(name, flag.unsignedIntValue, pattern, subSystem?.cString(using: .utf8), category?.cString(using: .utf8), format)
         return self
     }
 
     @discardableResult
     public func enableRotatingFileLog(flag: LogFlag = .trace, pattern: String = DefaultPattern, filePath: String, maxSize: Int = 1024 * 1024, maxFiles: Int = 1000) -> Self {
-        if let loggerName = self.name.cString(using: .utf8),
-           let filePath = filePath.cString(using: .utf8),
-           let pattern = pattern.cString(using: .utf8) {
-            senna_logger_enable_rotating_file(loggerName, flag.unsignedIntValue, pattern, filePath, maxSize, maxFiles)
-        }
-
+        senna_logger_enable_rotating_file(name, flag.unsignedIntValue, pattern, filePath, maxSize, maxFiles)
         return self
     }
 
     @discardableResult
     public func enableDailyFileLog(flag: LogFlag = .trace, pattern: String = DefaultPattern, filePath: String, hour: Int = 00, minute: Int = 00) -> Self {
-        if let loggerName = self.name.cString(using: .utf8),
-           let filePath = filePath.cString(using: .utf8),
-           let pattern = pattern.cString(using: .utf8) {
-            senna_logger_enable_daily_file(loggerName, flag.unsignedIntValue, pattern, filePath, CInt(hour), CInt(minute))
-        }
-
+        senna_logger_enable_daily_file(name, flag.unsignedIntValue, pattern, filePath, CInt(hour), CInt(minute))
         return self
     }
 }
@@ -107,10 +81,7 @@ extension Logger {
 // MARK: - Log
 extension Logger {
     public func log(flag: LogFlag, message: CustomStringConvertible?, filename: String = #file, function: String = #function, line: Int = #line) {
-        if let allMessage = __messageConvert(message, filename, function, line).cString(using: .utf8),
-           let loggerName = self.name.cString(using: .utf8) {
-            senna_log_action(loggerName, flag.unsignedIntValue, allMessage)
-        }
+        senna_log_action(self.name, flag.unsignedIntValue, __messageConvert(message, filename, function, line))
     }
 
     public func trace(message: CustomStringConvertible?, filename: String = #file, function: String = #function, line: Int = #line) {

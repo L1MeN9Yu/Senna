@@ -1,14 +1,14 @@
 //
 //  SceneDelegate.swift
-//  SennaDemo-iOS
+//  Senna.Demo.iOS
 //
-//  Created by Mengyu Li on 2019/9/30.
+//  Created by Mengyu Li on 2019/12/13.
 //  Copyright © 2019 Mengyu Li. All rights reserved.
 //
 
 import UIKit
-import SwiftUI
 
+@available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -18,17 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-
-        // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView()
-
-        // Use a UIHostingController as window root view controller.
-        if let windowScene = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = DemoListViewController(rootView: contentView)
-            self.window = window
-            window.makeKeyAndVisible()
-        }
+        guard let _ = (scene as? UIWindowScene) else { return }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
