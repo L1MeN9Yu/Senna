@@ -112,7 +112,7 @@
 		425292FA23A37D4200262E27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		425292FC23A37D4200262E27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4287AFB8235859E6005D4B17 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.1.tbd"; sourceTree = DEVELOPER_DIR; };
-		428B108C2398A09600ED9293 /* swift.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swift.yml; sourceTree = "<group>"; };
+		428B108C2398A09600ED9293 /* CI.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = CI.yml; sourceTree = "<group>"; };
 		42FB103B235ED0C60039F223 /* Senna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Senna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42FB103E235ED0C60039F223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42FB1061235ED2A60039F223 /* Senna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Senna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -281,7 +281,7 @@
 		428B108B2398A09600ED9293 /* workflows */ = {
 			isa = PBXGroup;
 			children = (
-				428B108C2398A09600ED9293 /* swift.yml */,
+				428B108C2398A09600ED9293 /* CI.yml */,
 			);
 			path = workflows;
 			sourceTree = "<group>";
@@ -743,7 +743,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.2.8;
+				MARKETING_VERSION = 1.2.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "top.limengyu.Senna-macOS";
 				PRODUCT_NAME = Senna;
 				SDKROOT = macosx;
@@ -772,7 +772,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.2.8;
+				MARKETING_VERSION = 1.2.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "top.limengyu.Senna-macOS";
 				PRODUCT_NAME = Senna;
 				SDKROOT = macosx;
@@ -800,7 +800,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.8;
+				MARKETING_VERSION = 1.2.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "top.limengyu.Senna-iOS";
 				PRODUCT_NAME = Senna;
 				SKIP_INSTALL = YES;
@@ -828,7 +828,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.8;
+				MARKETING_VERSION = 1.2.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "top.limengyu.Senna-iOS";
 				PRODUCT_NAME = Senna;
 				SKIP_INSTALL = YES;
