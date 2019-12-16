@@ -29,7 +29,7 @@ As a dynamic library dependency,add 'Senna' as the library name in the filter.
 
 See spdlog wiki : [Custom formatting](https://github.com/gabime/spdlog/wiki/3.-Custom-formatting)
 
-The default pattern is : `[%D %T] [%=10n] %^[pid : %P] [tid : %t] [%5l] %v%$`
+The default pattern is : `[%D %T] [%=10n] %^[pid : %P] [tid : %t] [%L] %v%$`
 
 ### Frontend format
 
@@ -45,7 +45,8 @@ public func register(messageConvert: @escaping MessageConvert) {
 }
 
 var __messageConvert: MessageConvert = { message, filename, function, line in
-    let allMessage = "[\(URL(fileURLWithPath: filename).lastPathComponent):\(line)] \(function) - \(message?.description ?? "")"
+    let fileName = filename.components(separatedBy: "/").last ?? ""
+    let allMessage = "[\(fileName):\(line)] \(function) - \(message?.description ?? "")"
     return allMessage
 }
 ```
