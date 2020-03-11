@@ -6,6 +6,7 @@
 
 .idea
 Senna.framework.zip
+Senna.xcframework
 .DS_Store
 
 ## Build generated
