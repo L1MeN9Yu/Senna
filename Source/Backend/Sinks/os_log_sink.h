@@ -48,6 +48,7 @@ namespace senna {
                         os_log_type = OS_LOG_TYPE_FAULT;
                         break;
                     case spdlog::level::off:
+                    case spdlog::level::n_levels:
                         return;
                 }
 

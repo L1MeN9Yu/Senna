@@ -113,7 +113,6 @@
 		425292FC23A37D4200262E27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4287AFB8235859E6005D4B17 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.1.tbd"; sourceTree = DEVELOPER_DIR; };
 		428B108C2398A09600ED9293 /* CI.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = CI.yml; sourceTree = "<group>"; };
-		42E38A2324188A080037C260 /* ios_mac.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ios_mac.sh; sourceTree = "<group>"; };
 		42FB103B235ED0C60039F223 /* Senna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Senna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42FB103E235ED0C60039F223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42FB1061235ED2A60039F223 /* Senna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Senna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,7 +163,6 @@
 		100267992340B877004DC9B3 = {
 			isa = PBXGroup;
 			children = (
-				42E38A2324188A080037C260 /* ios_mac.sh */,
 				100267B02340B8BD004DC9B3 /* README.md */,
 				100267B12340B8BD004DC9B3 /* .gitignore */,
 				B2D2A586445D53FDADD82458 /* .gitattributes */,
