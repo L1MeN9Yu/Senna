@@ -5,8 +5,9 @@
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
 .idea
-Senna.framework.zip
-Senna.xcframework
+*.framework.zip
+*.xcframework
+*.xcframework.zip
 .DS_Store
 
 ## Build generated
