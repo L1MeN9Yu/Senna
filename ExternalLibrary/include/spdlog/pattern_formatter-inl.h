@@ -59,6 +59,12 @@ public:
         }
     }
 
+    template<typename T>
+    static unsigned int count_digits(T n)
+    {
+        return fmt_helper::count_digits(n);
+    }
+
     ~scoped_padder()
     {
         if (remaining_pad_ >= 0)
@@ -87,6 +93,9 @@ private:
 struct null_scoped_padder
 {
     null_scoped_padder(size_t /*wrapped_size*/, const padding_info & /*padinfo*/, memory_buf_t & /*dest*/) {}
+
+    template<typename T>
+    static unsigned int count_digits(T /* number */) { return 0;}
 };
 
 template<typename ScopedPadder>
@@ -638,11 +647,12 @@ public:
 
     void format(const details::log_msg &msg, const std::tm &, memory_buf_t &dest) override
     {
-        const auto field_size = fmt_helper::count_digits(msg.thread_id);
+        const auto field_size = ScopedPadder::count_digits(msg.thread_id);
         ScopedPadder p(field_size, padinfo_, dest);
         fmt_helper::append_int(msg.thread_id, dest);
     }
 };
+
 
 // Current pid
 template<typename ScopedPadder>
@@ -656,7 +666,7 @@ public:
     void format(const details::log_msg &, const std::tm &, memory_buf_t &dest) override
     {
         const auto pid = static_cast<uint32_t>(details::os::pid());
-        auto field_size = fmt_helper::count_digits(pid);
+        auto field_size = ScopedPadder::count_digits(pid);
         ScopedPadder p(field_size, padinfo_, dest);
         fmt_helper::append_int(pid, dest);
     }
@@ -755,8 +765,16 @@ public:
             return;
         }
 
-        size_t text_size =
-            padinfo_.enabled() ? std::char_traits<char>::length(msg.source.filename) + fmt_helper::count_digits(msg.source.line) + 1 : 0;
+        size_t text_size;
+        if(padinfo_.enabled())
+        {
+            // calc text size for padding based on "filename:line"
+            text_size = std::char_traits<char>::length(msg.source.filename) + ScopedPadder::count_digits(msg.source.line) + 1;
+        }
+        else
+        {
+            text_size = 0;
+        }
 
         ScopedPadder p(text_size, padinfo_, dest);
         fmt_helper::append_string_view(msg.source.filename, dest);
@@ -828,7 +846,7 @@ public:
             return;
         }
 
-        auto field_size = fmt_helper::count_digits(msg.source.line);
+        auto field_size = ScopedPadder::count_digits(msg.source.line);
         ScopedPadder p(field_size, padinfo_, dest);
         fmt_helper::append_int(msg.source.line, dest);
     }
@@ -857,7 +875,6 @@ public:
 
 // print elapsed time since last message
 template<typename ScopedPadder, typename Units>
-
 class elapsed_formatter final : public flag_formatter
 {
 public:
@@ -874,7 +891,7 @@ public:
         auto delta_units = std::chrono::duration_cast<DurationUnits>(delta);
         last_message_time_ = msg.time;
         auto delta_count = static_cast<size_t>(delta_units.count());
-        auto n_digits = static_cast<size_t>(fmt_helper::count_digits(delta_count));
+        auto n_digits = static_cast<size_t>(ScopedPadder::count_digits(delta_count));
         ScopedPadder p(n_digits, padinfo_, dest);
         fmt_helper::append_int(delta_count, dest);
     }
@@ -882,6 +899,7 @@ public:
 private:
     log_clock::time_point last_message_time_;
 };
+
 
 // Full info formatter
 // pattern: [%Y-%m-%d %H:%M:%S.%e] [%n] [%l] %v
