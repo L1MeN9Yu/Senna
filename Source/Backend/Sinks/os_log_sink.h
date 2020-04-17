@@ -19,8 +19,8 @@ namespace senna {
         public:
             os_log_sink(std::string sub_system, std::string category, bool format = false) {
                 p_os_logger = ::os_log_create(
-                        sub_system.empty() ? nullptr : sub_system.c_str(),
-                        category.empty() ? nullptr : category.c_str()
+                        sub_system.empty() ? "" : sub_system.c_str(),
+                        category.empty() ? "" : category.c_str()
                 );
                 enable_format = format;
             }

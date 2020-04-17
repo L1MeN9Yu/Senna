@@ -12,7 +12,7 @@
 
 void SennaContext::createLogger(const char *name, spdlog::level::level_enum level, const char *pattern) {
     auto stdout_sink = std::make_shared<spdlog::sinks::ansicolor_stdout_sink_mt>();
-    stdout_sink->set_pattern(pattern);
+    stdout_sink->set_pattern((const std::string &) pattern);
     stdout_sink->set_level(level);
 
     std::vector<spdlog::sink_ptr> sinks;
@@ -24,7 +24,7 @@ void SennaContext::createLogger(const char *name, spdlog::level::level_enum leve
 }
 
 void SennaContext::dropLogger(const char *name) {
-    spdlog::drop(name);
+    spdlog::drop((const std::string &) name);
 }
 
 void SennaContext::shutDown(void) {

@@ -7,8 +7,8 @@
 #include <spdlog/spdlog.h>
 
 void senna_log_action(const char *logger_name, unsigned int flag, const char *message) {
-    auto logger = spdlog::get(logger_name);
-    if (!logger){
+    auto logger = spdlog::get((const std::string &) logger_name);
+    if (!logger) {
         printf("logger not exist !! \n");
         return;
     }

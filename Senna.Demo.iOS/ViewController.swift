@@ -12,26 +12,27 @@ import Senna
 class ViewController: UIViewController {
 
     let logger = Logger()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        logger.trace(message: "trace")
-        logger.debug(message: "trace")
-        logger.info(message: "trace")
-        logger.warning(message: "trace")
-        logger.error(message: "trace")
-        logger.critical(message: "trace")
+
+        logger.trace("trace")
+        logger.debug("debug")
+        logger.info("info")
+        logger.warn("warn")
+        logger.error("error")
+        logger.crit("crit")
     }
 }
 
 class Logger: Senna.Logger {
     let name: String = "Demo"
-        
+
     init() {
-        register()
+        register().enableOSLog(subSystem: "", category: "")
     }
-    
+
     deinit {
         drop()
     }

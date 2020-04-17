@@ -10,7 +10,7 @@
 #include "SennaContext.h"
 
 void SennaContext::flush(const char *name) {
-    auto logger = spdlog::get(name);
+    auto logger = spdlog::get((const std::string &)name);
     if (!logger) {
         printf("logger not exist !\n");
         return;
@@ -20,7 +20,7 @@ void SennaContext::flush(const char *name) {
 }
 
 void SennaContext::set_flush_on(const char *name, spdlog::level::level_enum level) {
-    auto logger = spdlog::get(name);
+    auto logger = spdlog::get((const std::string &) name);
     if (!logger) {
         printf("logger not exist !\n");
         return;
