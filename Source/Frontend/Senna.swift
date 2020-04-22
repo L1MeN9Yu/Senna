@@ -47,6 +47,8 @@ var __messageConvert: MessageConvert = { message, filename, function, line in
 
 public let DefaultPattern = "[%D %T] [%=10n] %^[pid : %P] [tid : %t] [%1L] %v%$"
 
+public let DefaultOSLogPattern = "[%=10n] %^%v%$"
+
 public func shutDown() {
     senna_shutdown()
 }

@@ -95,6 +95,9 @@ public:
      */
     void enableDailyFileLog(const char *name, spdlog::level::level_enum level, const char *pattern, const char *file_path, int hour, int minute);
 
+    /**
+     * shutdown and flush
+     */
     void shutDown(void);
 
 private:
