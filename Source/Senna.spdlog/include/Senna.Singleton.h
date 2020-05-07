@@ -1,0 +1,1 @@
+../Template/Senna.Singleton.h
