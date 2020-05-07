@@ -14,9 +14,7 @@ let package = Package(
             // Targets are the basic building blocks of a package. A target can define a module or a test suite.
             // Targets can depend on other targets in this package, and on products in packages which this package depends on.
             .target(
-                    name: "Senna.spdlog",
-                    cSettings: [CSetting.headerSearchPath("ExternalLibrary/include"), CSetting.unsafeFlags(["-IExternalLibrary/include"])],
-                    cxxSettings: [CXXSetting.headerSearchPath("ExternalLibrary/include"), CXXSetting.unsafeFlags(["-IExternalLibrary/include"])]
+                    name: "Senna.spdlog"
             ),
             .target(name: "Senna", dependencies: ["Senna.spdlog"]),
             .testTarget(name: "SennaTests", dependencies: ["Senna"]),
