@@ -195,16 +195,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		100267B22340B91B004DC9B3 /* Backend */ = {
-			isa = PBXGroup;
-			children = (
-				100267B62340B91B004DC9B3 /* Template */,
-				100267BB2340B91B004DC9B3 /* SennaContext */,
-				45304AF740C0B41CCD778BB2 /* Sinks */,
-			);
-			path = Backend;
-			sourceTree = "<group>";
-		};
 		100267B62340B91B004DC9B3 /* Template */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,10 +237,7 @@
 				100267C82340B91B004DC9B3 /* Bridge.LogAction.swift */,
 				100267C92340B91B004DC9B3 /* Bridge.DefaultLogger.swift */,
 				45304C7F31223962E6FF0752 /* Bridge.Senna.Core.h */,
-				4530465FAAE27E1DA575FA9C /* Bridge.Senna.Core.cpp */,
-				45304F4C3EE200299A6C95DF /* Bridge.Senna.LogAction.cpp */,
 				45304333932192E420DE40E4 /* Bridge.Senna.LogAction.h */,
-				45304DD8E63B31605A99A85D /* Bridge.Senna.DefaultLogger.cpp */,
 				45304C05C3ACE06A0F0164BD /* Bridge.Senna.DefaultLogger.h */,
 			);
 			path = Bridge;
@@ -268,6 +255,28 @@
 				425292FC23A37D4200262E27 /* Info.plist */,
 			);
 			path = Senna.Demo.iOS;
+			sourceTree = "<group>";
+		};
+		427A550E2463B67C006C5837 /* CSenna */ = {
+			isa = PBXGroup;
+			children = (
+				4530465FAAE27E1DA575FA9C /* Bridge.Senna.Core.cpp */,
+				45304F4C3EE200299A6C95DF /* Bridge.Senna.LogAction.cpp */,
+				45304DD8E63B31605A99A85D /* Bridge.Senna.DefaultLogger.cpp */,
+				100267B62340B91B004DC9B3 /* Template */,
+				100267BB2340B91B004DC9B3 /* SennaContext */,
+				45304AF740C0B41CCD778BB2 /* Sinks */,
+			);
+			path = CSenna;
+			sourceTree = "<group>";
+		};
+		427A550F2463B686006C5837 /* Senna */ = {
+			isa = PBXGroup;
+			children = (
+				100267C62340B91B004DC9B3 /* Bridge */,
+				100267C12340B91B004DC9B3 /* Frontend */,
+			);
+			path = Senna;
 			sourceTree = "<group>";
 		};
 		428B108A2398A09600ED9293 /* .github */ = {
@@ -297,9 +306,8 @@
 		42FB1043235ED0E60039F223 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				100267B22340B91B004DC9B3 /* Backend */,
-				100267C62340B91B004DC9B3 /* Bridge */,
-				100267C12340B91B004DC9B3 /* Frontend */,
+				427A550E2463B67C006C5837 /* CSenna */,
+				427A550F2463B686006C5837 /* Senna */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -744,7 +752,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 1.2.22;
-				PRODUCT_BUNDLE_IDENTIFIER = "top.limengyu.Senna-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = top.limengyu.Senna;
 				PRODUCT_NAME = Senna;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -773,7 +781,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 1.2.22;
-				PRODUCT_BUNDLE_IDENTIFIER = "top.limengyu.Senna-macOS";
+				PRODUCT_BUNDLE_IDENTIFIER = top.limengyu.Senna;
 				PRODUCT_NAME = Senna;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
@@ -801,7 +809,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2.22;
-				PRODUCT_BUNDLE_IDENTIFIER = "top.limengyu.Senna-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = top.limengyu.Senna;
 				PRODUCT_NAME = Senna;
 				SKIP_INSTALL = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
@@ -829,7 +837,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2.22;
-				PRODUCT_BUNDLE_IDENTIFIER = "top.limengyu.Senna-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = top.limengyu.Senna;
 				PRODUCT_NAME = Senna;
 				SKIP_INSTALL = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
