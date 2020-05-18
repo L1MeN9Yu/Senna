@@ -7,12 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		424ED19E2463C86E0080439B /* Bridge.Senna.DefaultLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 424ED19B2463C86D0080439B /* Bridge.Senna.DefaultLogger.h */; };
-		424ED19F2463C86E0080439B /* Bridge.Senna.DefaultLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 424ED19B2463C86D0080439B /* Bridge.Senna.DefaultLogger.h */; };
-		424ED1A02463C86E0080439B /* Bridge.Senna.Core.h in Headers */ = {isa = PBXBuildFile; fileRef = 424ED19C2463C86D0080439B /* Bridge.Senna.Core.h */; };
-		424ED1A12463C86E0080439B /* Bridge.Senna.Core.h in Headers */ = {isa = PBXBuildFile; fileRef = 424ED19C2463C86D0080439B /* Bridge.Senna.Core.h */; };
-		424ED1A22463C86E0080439B /* Bridge.Senna.LogAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 424ED19D2463C86D0080439B /* Bridge.Senna.LogAction.h */; };
-		424ED1A32463C86E0080439B /* Bridge.Senna.LogAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 424ED19D2463C86D0080439B /* Bridge.Senna.LogAction.h */; };
 		425292EF23A37D3D00262E27 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425292EE23A37D3D00262E27 /* AppDelegate.swift */; };
 		425292F123A37D3D00262E27 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425292F023A37D3D00262E27 /* SceneDelegate.swift */; };
 		425292F323A37D3D00262E27 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 425292F223A37D3D00262E27 /* ViewController.swift */; };
@@ -21,48 +15,62 @@
 		425292FB23A37D4200262E27 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 425292F923A37D4200262E27 /* LaunchScreen.storyboard */; };
 		4252930023A37E1800262E27 /* Senna.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42FB1061235ED2A60039F223 /* Senna.framework */; };
 		4252930123A37E1800262E27 /* Senna.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 42FB1061235ED2A60039F223 /* Senna.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		42FB1044235ED1370039F223 /* Bridge.Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100267C72340B91B004DC9B3 /* Bridge.Core.swift */; };
-		42FB1045235ED1370039F223 /* Bridge.LogAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100267C82340B91B004DC9B3 /* Bridge.LogAction.swift */; };
-		42FB1046235ED1370039F223 /* Bridge.DefaultLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100267C92340B91B004DC9B3 /* Bridge.DefaultLogger.swift */; };
-		42FB1047235ED1370039F223 /* Senna.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100267C22340B91B004DC9B3 /* Senna.swift */; };
-		42FB1048235ED1370039F223 /* DefaultLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100267C32340B91B004DC9B3 /* DefaultLogger.swift */; };
-		42FB1049235ED1370039F223 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100267C42340B91B004DC9B3 /* Logger.swift */; };
-		42FB104A235ED1370039F223 /* LogFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100267C52340B91B004DC9B3 /* LogFlag.swift */; };
-		42FB104B235ED1440039F223 /* SennaContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 100267BC2340B91B004DC9B3 /* SennaContext.cpp */; };
-		42FB104C235ED1440039F223 /* SennaContext.Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2D2ABD7D1F9725905E68EAA /* SennaContext.Base.cpp */; };
-		42FB104D235ED1440039F223 /* SennaContext.SysLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2D2AC4ABBB3AF21314D9ED7 /* SennaContext.SysLog.cpp */; };
-		42FB104E235ED1440039F223 /* SennaContext.RotatingFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2D2AB4A25ECB22B3989A12D /* SennaContext.RotatingFile.cpp */; };
-		42FB104F235ED1440039F223 /* SennaContext.DailyFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2D2A3FCA9C627ED112A7CB6 /* SennaContext.DailyFile.cpp */; };
-		42FB1050235ED1440039F223 /* SennaContext.FileLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4530407AFA83990F2C193FA8 /* SennaContext.FileLog.cpp */; };
-		42FB1051235ED1440039F223 /* SennaContext.Flush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45304D36B74BC1B00DAB4C2B /* SennaContext.Flush.cpp */; };
-		42FB1052235ED1440039F223 /* SennaContext.OSLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45304B46393C6E2762AF5DFD /* SennaContext.OSLog.cpp */; };
-		42FB1053235ED1440039F223 /* Bridge.Senna.Core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4530465FAAE27E1DA575FA9C /* Bridge.Senna.Core.cpp */; };
-		42FB1054235ED1440039F223 /* Bridge.Senna.LogAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45304F4C3EE200299A6C95DF /* Bridge.Senna.LogAction.cpp */; };
-		42FB1055235ED1440039F223 /* Bridge.Senna.DefaultLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45304DD8E63B31605A99A85D /* Bridge.Senna.DefaultLogger.cpp */; };
-		42FB1056235ED15F0039F223 /* SennaContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 100267BD2340B91B004DC9B3 /* SennaContext.h */; };
-		42FB1057235ED1660039F223 /* os_log_sink.h in Sources */ = {isa = PBXBuildFile; fileRef = 4530424B84CE18BA92508A7F /* os_log_sink.h */; };
-		42FB1058235ED16B0039F223 /* Senna.Singleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 100267B72340B91B004DC9B3 /* Senna.Singleton.h */; };
-		42FB106D235ED2DC0039F223 /* Senna.Singleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 100267B72340B91B004DC9B3 /* Senna.Singleton.h */; };
-		42FB106E235ED2DF0039F223 /* SennaContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 100267BD2340B91B004DC9B3 /* SennaContext.h */; };
-		42FB106F235ED2E30039F223 /* SennaContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 100267BC2340B91B004DC9B3 /* SennaContext.cpp */; };
-		42FB1070235ED2E30039F223 /* SennaContext.Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2D2ABD7D1F9725905E68EAA /* SennaContext.Base.cpp */; };
-		42FB1071235ED2E30039F223 /* SennaContext.SysLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2D2AC4ABBB3AF21314D9ED7 /* SennaContext.SysLog.cpp */; };
-		42FB1072235ED2E30039F223 /* SennaContext.RotatingFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2D2AB4A25ECB22B3989A12D /* SennaContext.RotatingFile.cpp */; };
-		42FB1073235ED2E30039F223 /* SennaContext.DailyFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B2D2A3FCA9C627ED112A7CB6 /* SennaContext.DailyFile.cpp */; };
-		42FB1074235ED2E30039F223 /* SennaContext.FileLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4530407AFA83990F2C193FA8 /* SennaContext.FileLog.cpp */; };
-		42FB1075235ED2E30039F223 /* SennaContext.Flush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45304D36B74BC1B00DAB4C2B /* SennaContext.Flush.cpp */; };
-		42FB1076235ED2E30039F223 /* SennaContext.OSLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45304B46393C6E2762AF5DFD /* SennaContext.OSLog.cpp */; };
-		42FB1077235ED2E80039F223 /* os_log_sink.h in Headers */ = {isa = PBXBuildFile; fileRef = 4530424B84CE18BA92508A7F /* os_log_sink.h */; };
-		42FB1078235ED2F00039F223 /* Bridge.Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100267C72340B91B004DC9B3 /* Bridge.Core.swift */; };
-		42FB1079235ED2F00039F223 /* Bridge.LogAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100267C82340B91B004DC9B3 /* Bridge.LogAction.swift */; };
-		42FB107A235ED2F00039F223 /* Bridge.DefaultLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100267C92340B91B004DC9B3 /* Bridge.DefaultLogger.swift */; };
-		42FB107C235ED2F00039F223 /* Bridge.Senna.Core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4530465FAAE27E1DA575FA9C /* Bridge.Senna.Core.cpp */; };
-		42FB107D235ED2F00039F223 /* Bridge.Senna.LogAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45304F4C3EE200299A6C95DF /* Bridge.Senna.LogAction.cpp */; };
-		42FB107F235ED2F00039F223 /* Bridge.Senna.DefaultLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 45304DD8E63B31605A99A85D /* Bridge.Senna.DefaultLogger.cpp */; };
-		42FB1081235ED2F50039F223 /* Senna.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100267C22340B91B004DC9B3 /* Senna.swift */; };
-		42FB1082235ED2F50039F223 /* DefaultLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100267C32340B91B004DC9B3 /* DefaultLogger.swift */; };
-		42FB1083235ED2F50039F223 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100267C42340B91B004DC9B3 /* Logger.swift */; };
-		42FB1084235ED2F50039F223 /* LogFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 100267C52340B91B004DC9B3 /* LogFlag.swift */; };
+		427E56712472326E00F67280 /* Senna.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E55F12472326E00F67280 /* Senna.swift */; };
+		427E56722472326E00F67280 /* Senna.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E55F12472326E00F67280 /* Senna.swift */; };
+		427E56732472326E00F67280 /* DefaultLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E55F22472326E00F67280 /* DefaultLogger.swift */; };
+		427E56742472326E00F67280 /* DefaultLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E55F22472326E00F67280 /* DefaultLogger.swift */; };
+		427E56752472326E00F67280 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E55F32472326E00F67280 /* Logger.swift */; };
+		427E56762472326E00F67280 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E55F32472326E00F67280 /* Logger.swift */; };
+		427E56772472326E00F67280 /* LogFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E55F42472326E00F67280 /* LogFlag.swift */; };
+		427E56782472326E00F67280 /* LogFlag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E55F42472326E00F67280 /* LogFlag.swift */; };
+		427E56792472326E00F67280 /* Bridge.Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E55F62472326E00F67280 /* Bridge.Core.swift */; };
+		427E567A2472326E00F67280 /* Bridge.Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E55F62472326E00F67280 /* Bridge.Core.swift */; };
+		427E567B2472326E00F67280 /* Bridge.LogAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E55F72472326E00F67280 /* Bridge.LogAction.swift */; };
+		427E567C2472326E00F67280 /* Bridge.LogAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E55F72472326E00F67280 /* Bridge.LogAction.swift */; };
+		427E567D2472326E00F67280 /* Bridge.DefaultLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E55F82472326E00F67280 /* Bridge.DefaultLogger.swift */; };
+		427E567E2472326E00F67280 /* Bridge.DefaultLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427E55F82472326E00F67280 /* Bridge.DefaultLogger.swift */; };
+		427E567F2472326E00F67280 /* Bridge.Senna.Core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E55FA2472326E00F67280 /* Bridge.Senna.Core.cpp */; };
+		427E56802472326E00F67280 /* Bridge.Senna.Core.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E55FA2472326E00F67280 /* Bridge.Senna.Core.cpp */; };
+		427E56812472326E00F67280 /* os_log_sink.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E55FC2472326E00F67280 /* os_log_sink.h */; };
+		427E56822472326E00F67280 /* os_log_sink.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E55FC2472326E00F67280 /* os_log_sink.h */; };
+		427E56832472326E00F67280 /* os_log_sink.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E55FE2472326E00F67280 /* os_log_sink.h */; };
+		427E56842472326E00F67280 /* os_log_sink.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E55FE2472326E00F67280 /* os_log_sink.h */; };
+		427E57352472326E00F67280 /* Senna.Singleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E565D2472326E00F67280 /* Senna.Singleton.h */; };
+		427E57362472326E00F67280 /* Senna.Singleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E565D2472326E00F67280 /* Senna.Singleton.h */; };
+		427E57372472326E00F67280 /* SennaContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E565E2472326E00F67280 /* SennaContext.h */; };
+		427E57382472326E00F67280 /* SennaContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E565E2472326E00F67280 /* SennaContext.h */; };
+		427E57392472326E00F67280 /* Bridge.Senna.Core.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E565F2472326E00F67280 /* Bridge.Senna.Core.h */; };
+		427E573A2472326E00F67280 /* Bridge.Senna.Core.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E565F2472326E00F67280 /* Bridge.Senna.Core.h */; };
+		427E573B2472326E00F67280 /* Senna.Singleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E56612472326E00F67280 /* Senna.Singleton.h */; };
+		427E573C2472326E00F67280 /* Senna.Singleton.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E56612472326E00F67280 /* Senna.Singleton.h */; };
+		427E573D2472326E00F67280 /* SennaContext.OSLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E56632472326E00F67280 /* SennaContext.OSLog.cpp */; };
+		427E573E2472326E00F67280 /* SennaContext.OSLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E56632472326E00F67280 /* SennaContext.OSLog.cpp */; };
+		427E573F2472326E00F67280 /* SennaContext.FileLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E56642472326E00F67280 /* SennaContext.FileLog.cpp */; };
+		427E57402472326E00F67280 /* SennaContext.FileLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E56642472326E00F67280 /* SennaContext.FileLog.cpp */; };
+		427E57412472326E00F67280 /* SennaContext.DailyFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E56652472326E00F67280 /* SennaContext.DailyFile.cpp */; };
+		427E57422472326E00F67280 /* SennaContext.DailyFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E56652472326E00F67280 /* SennaContext.DailyFile.cpp */; };
+		427E57432472326E00F67280 /* SennaContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E56662472326E00F67280 /* SennaContext.cpp */; };
+		427E57442472326E00F67280 /* SennaContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E56662472326E00F67280 /* SennaContext.cpp */; };
+		427E57452472326E00F67280 /* SennaContext.RotatingFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E56672472326E00F67280 /* SennaContext.RotatingFile.cpp */; };
+		427E57462472326E00F67280 /* SennaContext.RotatingFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E56672472326E00F67280 /* SennaContext.RotatingFile.cpp */; };
+		427E57472472326E00F67280 /* SennaContext.Flush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E56682472326E00F67280 /* SennaContext.Flush.cpp */; };
+		427E57482472326E00F67280 /* SennaContext.Flush.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E56682472326E00F67280 /* SennaContext.Flush.cpp */; };
+		427E57492472326E00F67280 /* SennaContext.Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E56692472326E00F67280 /* SennaContext.Base.cpp */; };
+		427E574A2472326E00F67280 /* SennaContext.Base.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E56692472326E00F67280 /* SennaContext.Base.cpp */; };
+		427E574B2472326E00F67280 /* SennaContext.SysLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E566A2472326E00F67280 /* SennaContext.SysLog.cpp */; };
+		427E574C2472326E00F67280 /* SennaContext.SysLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E566A2472326E00F67280 /* SennaContext.SysLog.cpp */; };
+		427E574D2472326E00F67280 /* SennaContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E566B2472326E00F67280 /* SennaContext.h */; };
+		427E574E2472326E00F67280 /* SennaContext.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E566B2472326E00F67280 /* SennaContext.h */; };
+		427E574F2472326E00F67280 /* Bridge.Senna.DefaultLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E566C2472326E00F67280 /* Bridge.Senna.DefaultLogger.h */; };
+		427E57502472326E00F67280 /* Bridge.Senna.DefaultLogger.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E566C2472326E00F67280 /* Bridge.Senna.DefaultLogger.h */; };
+		427E57512472326E00F67280 /* Bridge.Senna.LogAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E566D2472326E00F67280 /* Bridge.Senna.LogAction.h */; };
+		427E57522472326E00F67280 /* Bridge.Senna.LogAction.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E566D2472326E00F67280 /* Bridge.Senna.LogAction.h */; };
+		427E57532472326E00F67280 /* Bridge.Senna.DefaultLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E566E2472326E00F67280 /* Bridge.Senna.DefaultLogger.cpp */; };
+		427E57542472326E00F67280 /* Bridge.Senna.DefaultLogger.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E566E2472326E00F67280 /* Bridge.Senna.DefaultLogger.cpp */; };
+		427E57552472326E00F67280 /* Bridge.Senna.LogAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E566F2472326E00F67280 /* Bridge.Senna.LogAction.cpp */; };
+		427E57562472326E00F67280 /* Bridge.Senna.LogAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E566F2472326E00F67280 /* Bridge.Senna.LogAction.cpp */; };
+		427E57572472326E00F67280 /* Bridge.Senna.Core.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E56702472326E00F67280 /* Bridge.Senna.Core.h */; };
+		427E57582472326E00F67280 /* Bridge.Senna.Core.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E56702472326E00F67280 /* Bridge.Senna.Core.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,19 +101,6 @@
 		100267AF2340B88B004DC9B3 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.tbd"; sourceTree = DEVELOPER_DIR; };
 		100267B02340B8BD004DC9B3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		100267B12340B8BD004DC9B3 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
-		100267B72340B91B004DC9B3 /* Senna.Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Senna.Singleton.h; sourceTree = "<group>"; };
-		100267BC2340B91B004DC9B3 /* SennaContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SennaContext.cpp; sourceTree = "<group>"; };
-		100267BD2340B91B004DC9B3 /* SennaContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SennaContext.h; sourceTree = "<group>"; };
-		100267C22340B91B004DC9B3 /* Senna.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Senna.swift; sourceTree = "<group>"; };
-		100267C32340B91B004DC9B3 /* DefaultLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultLogger.swift; sourceTree = "<group>"; };
-		100267C42340B91B004DC9B3 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		100267C52340B91B004DC9B3 /* LogFlag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFlag.swift; sourceTree = "<group>"; };
-		100267C72340B91B004DC9B3 /* Bridge.Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bridge.Core.swift; sourceTree = "<group>"; };
-		100267C82340B91B004DC9B3 /* Bridge.LogAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bridge.LogAction.swift; sourceTree = "<group>"; };
-		100267C92340B91B004DC9B3 /* Bridge.DefaultLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bridge.DefaultLogger.swift; sourceTree = "<group>"; };
-		424ED19B2463C86D0080439B /* Bridge.Senna.DefaultLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridge.Senna.DefaultLogger.h; sourceTree = "<group>"; };
-		424ED19C2463C86D0080439B /* Bridge.Senna.Core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridge.Senna.Core.h; sourceTree = "<group>"; };
-		424ED19D2463C86D0080439B /* Bridge.Senna.LogAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridge.Senna.LogAction.h; sourceTree = "<group>"; };
 		425292EC23A37D3D00262E27 /* Senna.Demo.iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Senna.Demo.iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		425292EE23A37D3D00262E27 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		425292F023A37D3D00262E27 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,24 +109,41 @@
 		425292F723A37D4200262E27 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		425292FA23A37D4200262E27 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		425292FC23A37D4200262E27 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		427E55F12472326E00F67280 /* Senna.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Senna.swift; sourceTree = "<group>"; };
+		427E55F22472326E00F67280 /* DefaultLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultLogger.swift; sourceTree = "<group>"; };
+		427E55F32472326E00F67280 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		427E55F42472326E00F67280 /* LogFlag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogFlag.swift; sourceTree = "<group>"; };
+		427E55F62472326E00F67280 /* Bridge.Core.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bridge.Core.swift; sourceTree = "<group>"; };
+		427E55F72472326E00F67280 /* Bridge.LogAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bridge.LogAction.swift; sourceTree = "<group>"; };
+		427E55F82472326E00F67280 /* Bridge.DefaultLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bridge.DefaultLogger.swift; sourceTree = "<group>"; };
+		427E55FA2472326E00F67280 /* Bridge.Senna.Core.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bridge.Senna.Core.cpp; sourceTree = "<group>"; };
+		427E55FC2472326E00F67280 /* os_log_sink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_log_sink.h; sourceTree = "<group>"; };
+		427E55FE2472326E00F67280 /* os_log_sink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_log_sink.h; sourceTree = "<group>"; };
+		427E565D2472326E00F67280 /* Senna.Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Senna.Singleton.h; sourceTree = "<group>"; };
+		427E565E2472326E00F67280 /* SennaContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SennaContext.h; sourceTree = "<group>"; };
+		427E565F2472326E00F67280 /* Bridge.Senna.Core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridge.Senna.Core.h; sourceTree = "<group>"; };
+		427E56612472326E00F67280 /* Senna.Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Senna.Singleton.h; sourceTree = "<group>"; };
+		427E56632472326E00F67280 /* SennaContext.OSLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SennaContext.OSLog.cpp; sourceTree = "<group>"; };
+		427E56642472326E00F67280 /* SennaContext.FileLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SennaContext.FileLog.cpp; sourceTree = "<group>"; };
+		427E56652472326E00F67280 /* SennaContext.DailyFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SennaContext.DailyFile.cpp; sourceTree = "<group>"; };
+		427E56662472326E00F67280 /* SennaContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SennaContext.cpp; sourceTree = "<group>"; };
+		427E56672472326E00F67280 /* SennaContext.RotatingFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SennaContext.RotatingFile.cpp; sourceTree = "<group>"; };
+		427E56682472326E00F67280 /* SennaContext.Flush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SennaContext.Flush.cpp; sourceTree = "<group>"; };
+		427E56692472326E00F67280 /* SennaContext.Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SennaContext.Base.cpp; sourceTree = "<group>"; };
+		427E566A2472326E00F67280 /* SennaContext.SysLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SennaContext.SysLog.cpp; sourceTree = "<group>"; };
+		427E566B2472326E00F67280 /* SennaContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SennaContext.h; sourceTree = "<group>"; };
+		427E566C2472326E00F67280 /* Bridge.Senna.DefaultLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridge.Senna.DefaultLogger.h; sourceTree = "<group>"; };
+		427E566D2472326E00F67280 /* Bridge.Senna.LogAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridge.Senna.LogAction.h; sourceTree = "<group>"; };
+		427E566E2472326E00F67280 /* Bridge.Senna.DefaultLogger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bridge.Senna.DefaultLogger.cpp; sourceTree = "<group>"; };
+		427E566F2472326E00F67280 /* Bridge.Senna.LogAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bridge.Senna.LogAction.cpp; sourceTree = "<group>"; };
+		427E56702472326E00F67280 /* Bridge.Senna.Core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridge.Senna.Core.h; sourceTree = "<group>"; };
 		4287AFB8235859E6005D4B17 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.1.tbd"; sourceTree = DEVELOPER_DIR; };
 		428B108C2398A09600ED9293 /* CI.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = CI.yml; sourceTree = "<group>"; };
 		42FB103B235ED0C60039F223 /* Senna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Senna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42FB103E235ED0C60039F223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42FB1061235ED2A60039F223 /* Senna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Senna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42FB1064235ED2A60039F223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		4530407AFA83990F2C193FA8 /* SennaContext.FileLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SennaContext.FileLog.cpp; sourceTree = "<group>"; };
-		4530424B84CE18BA92508A7F /* os_log_sink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = os_log_sink.h; sourceTree = "<group>"; };
-		4530465FAAE27E1DA575FA9C /* Bridge.Senna.Core.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bridge.Senna.Core.cpp; sourceTree = "<group>"; };
-		45304B46393C6E2762AF5DFD /* SennaContext.OSLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SennaContext.OSLog.cpp; sourceTree = "<group>"; };
-		45304D36B74BC1B00DAB4C2B /* SennaContext.Flush.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SennaContext.Flush.cpp; sourceTree = "<group>"; };
-		45304DD8E63B31605A99A85D /* Bridge.Senna.DefaultLogger.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bridge.Senna.DefaultLogger.cpp; sourceTree = "<group>"; };
-		45304F4C3EE200299A6C95DF /* Bridge.Senna.LogAction.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bridge.Senna.LogAction.cpp; sourceTree = "<group>"; };
-		B2D2A3FCA9C627ED112A7CB6 /* SennaContext.DailyFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SennaContext.DailyFile.cpp; sourceTree = "<group>"; };
 		B2D2A586445D53FDADD82458 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = file.gitattributes; path = .gitattributes; sourceTree = "<group>"; };
-		B2D2AB4A25ECB22B3989A12D /* SennaContext.RotatingFile.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SennaContext.RotatingFile.cpp; sourceTree = "<group>"; };
-		B2D2ABD7D1F9725905E68EAA /* SennaContext.Base.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SennaContext.Base.cpp; sourceTree = "<group>"; };
-		B2D2AC4ABBB3AF21314D9ED7 /* SennaContext.SysLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SennaContext.SysLog.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,7 +179,7 @@
 				100267B12340B8BD004DC9B3 /* .gitignore */,
 				B2D2A586445D53FDADD82458 /* .gitattributes */,
 				428B108A2398A09600ED9293 /* .github */,
-				42FB1043235ED0E60039F223 /* Source */,
+				427E55EE2472326E00F67280 /* Sources */,
 				42FB1062235ED2A60039F223 /* Senna.iOS */,
 				42FB103C235ED0C60039F223 /* Senna.macOS */,
 				425292ED23A37D3D00262E27 /* Senna.Demo.iOS */,
@@ -195,51 +207,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		100267B62340B91B004DC9B3 /* Template */ = {
-			isa = PBXGroup;
-			children = (
-				100267B72340B91B004DC9B3 /* Senna.Singleton.h */,
-			);
-			path = Template;
-			sourceTree = "<group>";
-		};
-		100267BB2340B91B004DC9B3 /* SennaContext */ = {
-			isa = PBXGroup;
-			children = (
-				100267BD2340B91B004DC9B3 /* SennaContext.h */,
-				100267BC2340B91B004DC9B3 /* SennaContext.cpp */,
-				B2D2ABD7D1F9725905E68EAA /* SennaContext.Base.cpp */,
-				B2D2AC4ABBB3AF21314D9ED7 /* SennaContext.SysLog.cpp */,
-				B2D2AB4A25ECB22B3989A12D /* SennaContext.RotatingFile.cpp */,
-				B2D2A3FCA9C627ED112A7CB6 /* SennaContext.DailyFile.cpp */,
-				4530407AFA83990F2C193FA8 /* SennaContext.FileLog.cpp */,
-				45304D36B74BC1B00DAB4C2B /* SennaContext.Flush.cpp */,
-				45304B46393C6E2762AF5DFD /* SennaContext.OSLog.cpp */,
-			);
-			path = SennaContext;
-			sourceTree = "<group>";
-		};
-		100267C12340B91B004DC9B3 /* Frontend */ = {
-			isa = PBXGroup;
-			children = (
-				100267C22340B91B004DC9B3 /* Senna.swift */,
-				100267C32340B91B004DC9B3 /* DefaultLogger.swift */,
-				100267C42340B91B004DC9B3 /* Logger.swift */,
-				100267C52340B91B004DC9B3 /* LogFlag.swift */,
-			);
-			path = Frontend;
-			sourceTree = "<group>";
-		};
-		100267C62340B91B004DC9B3 /* Bridge */ = {
-			isa = PBXGroup;
-			children = (
-				100267C72340B91B004DC9B3 /* Bridge.Core.swift */,
-				100267C82340B91B004DC9B3 /* Bridge.LogAction.swift */,
-				100267C92340B91B004DC9B3 /* Bridge.DefaultLogger.swift */,
-			);
-			path = Bridge;
-			sourceTree = "<group>";
-		};
 		425292ED23A37D3D00262E27 /* Senna.Demo.iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,29 +221,103 @@
 			path = Senna.Demo.iOS;
 			sourceTree = "<group>";
 		};
-		427A550E2463B67C006C5837 /* Senna.spdlog */ = {
+		427E55EE2472326E00F67280 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				424ED19C2463C86D0080439B /* Bridge.Senna.Core.h */,
-				424ED19B2463C86D0080439B /* Bridge.Senna.DefaultLogger.h */,
-				424ED19D2463C86D0080439B /* Bridge.Senna.LogAction.h */,
-				4530465FAAE27E1DA575FA9C /* Bridge.Senna.Core.cpp */,
-				45304F4C3EE200299A6C95DF /* Bridge.Senna.LogAction.cpp */,
-				45304DD8E63B31605A99A85D /* Bridge.Senna.DefaultLogger.cpp */,
-				100267B62340B91B004DC9B3 /* Template */,
-				100267BB2340B91B004DC9B3 /* SennaContext */,
-				45304AF740C0B41CCD778BB2 /* Sinks */,
+				427E55EF2472326E00F67280 /* Senna */,
+				427E55F92472326E00F67280 /* Senna.spdlog */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		427E55EF2472326E00F67280 /* Senna */ = {
+			isa = PBXGroup;
+			children = (
+				427E55F02472326E00F67280 /* Frontend */,
+				427E55F52472326E00F67280 /* Bridge */,
+			);
+			path = Senna;
+			sourceTree = "<group>";
+		};
+		427E55F02472326E00F67280 /* Frontend */ = {
+			isa = PBXGroup;
+			children = (
+				427E55F12472326E00F67280 /* Senna.swift */,
+				427E55F22472326E00F67280 /* DefaultLogger.swift */,
+				427E55F32472326E00F67280 /* Logger.swift */,
+				427E55F42472326E00F67280 /* LogFlag.swift */,
+			);
+			path = Frontend;
+			sourceTree = "<group>";
+		};
+		427E55F52472326E00F67280 /* Bridge */ = {
+			isa = PBXGroup;
+			children = (
+				427E55F62472326E00F67280 /* Bridge.Core.swift */,
+				427E55F72472326E00F67280 /* Bridge.LogAction.swift */,
+				427E55F82472326E00F67280 /* Bridge.DefaultLogger.swift */,
+			);
+			path = Bridge;
+			sourceTree = "<group>";
+		};
+		427E55F92472326E00F67280 /* Senna.spdlog */ = {
+			isa = PBXGroup;
+			children = (
+				427E55FB2472326E00F67280 /* Sinks */,
+				427E55FD2472326E00F67280 /* include */,
+				427E56602472326E00F67280 /* Template */,
+				427E56622472326E00F67280 /* SennaContext */,
+				427E566C2472326E00F67280 /* Bridge.Senna.DefaultLogger.h */,
+				427E566D2472326E00F67280 /* Bridge.Senna.LogAction.h */,
+				427E566E2472326E00F67280 /* Bridge.Senna.DefaultLogger.cpp */,
+				427E566F2472326E00F67280 /* Bridge.Senna.LogAction.cpp */,
+				427E56702472326E00F67280 /* Bridge.Senna.Core.h */,
+				427E55FA2472326E00F67280 /* Bridge.Senna.Core.cpp */,
 			);
 			path = Senna.spdlog;
 			sourceTree = "<group>";
 		};
-		427A550F2463B686006C5837 /* Senna */ = {
+		427E55FB2472326E00F67280 /* Sinks */ = {
 			isa = PBXGroup;
 			children = (
-				100267C62340B91B004DC9B3 /* Bridge */,
-				100267C12340B91B004DC9B3 /* Frontend */,
+				427E55FC2472326E00F67280 /* os_log_sink.h */,
 			);
-			path = Senna;
+			path = Sinks;
+			sourceTree = "<group>";
+		};
+		427E55FD2472326E00F67280 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				427E55FE2472326E00F67280 /* os_log_sink.h */,
+				427E565D2472326E00F67280 /* Senna.Singleton.h */,
+				427E565E2472326E00F67280 /* SennaContext.h */,
+				427E565F2472326E00F67280 /* Bridge.Senna.Core.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		427E56602472326E00F67280 /* Template */ = {
+			isa = PBXGroup;
+			children = (
+				427E56612472326E00F67280 /* Senna.Singleton.h */,
+			);
+			path = Template;
+			sourceTree = "<group>";
+		};
+		427E56622472326E00F67280 /* SennaContext */ = {
+			isa = PBXGroup;
+			children = (
+				427E56632472326E00F67280 /* SennaContext.OSLog.cpp */,
+				427E56642472326E00F67280 /* SennaContext.FileLog.cpp */,
+				427E56652472326E00F67280 /* SennaContext.DailyFile.cpp */,
+				427E56662472326E00F67280 /* SennaContext.cpp */,
+				427E56672472326E00F67280 /* SennaContext.RotatingFile.cpp */,
+				427E56682472326E00F67280 /* SennaContext.Flush.cpp */,
+				427E56692472326E00F67280 /* SennaContext.Base.cpp */,
+				427E566A2472326E00F67280 /* SennaContext.SysLog.cpp */,
+				427E566B2472326E00F67280 /* SennaContext.h */,
+			);
+			path = SennaContext;
 			sourceTree = "<group>";
 		};
 		428B108A2398A09600ED9293 /* .github */ = {
@@ -303,29 +344,12 @@
 			path = Senna.macOS;
 			sourceTree = "<group>";
 		};
-		42FB1043235ED0E60039F223 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				427A550E2463B67C006C5837 /* Senna.spdlog */,
-				427A550F2463B686006C5837 /* Senna */,
-			);
-			path = Source;
-			sourceTree = "<group>";
-		};
 		42FB1062235ED2A60039F223 /* Senna.iOS */ = {
 			isa = PBXGroup;
 			children = (
 				42FB1064235ED2A60039F223 /* Info.plist */,
 			);
 			path = Senna.iOS;
-			sourceTree = "<group>";
-		};
-		45304AF740C0B41CCD778BB2 /* Sinks */ = {
-			isa = PBXGroup;
-			children = (
-				4530424B84CE18BA92508A7F /* os_log_sink.h */,
-			);
-			path = Sinks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,11 +359,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				424ED1A02463C86E0080439B /* Bridge.Senna.Core.h in Headers */,
-				424ED1A22463C86E0080439B /* Bridge.Senna.LogAction.h in Headers */,
-				424ED19E2463C86E0080439B /* Bridge.Senna.DefaultLogger.h in Headers */,
-				42FB1056235ED15F0039F223 /* SennaContext.h in Headers */,
-				42FB1058235ED16B0039F223 /* Senna.Singleton.h in Headers */,
+				427E57352472326E00F67280 /* Senna.Singleton.h in Headers */,
+				427E56832472326E00F67280 /* os_log_sink.h in Headers */,
+				427E57512472326E00F67280 /* Bridge.Senna.LogAction.h in Headers */,
+				427E574F2472326E00F67280 /* Bridge.Senna.DefaultLogger.h in Headers */,
+				427E56812472326E00F67280 /* os_log_sink.h in Headers */,
+				427E57572472326E00F67280 /* Bridge.Senna.Core.h in Headers */,
+				427E57392472326E00F67280 /* Bridge.Senna.Core.h in Headers */,
+				427E573B2472326E00F67280 /* Senna.Singleton.h in Headers */,
+				427E574D2472326E00F67280 /* SennaContext.h in Headers */,
+				427E57372472326E00F67280 /* SennaContext.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,12 +376,16 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				424ED1A12463C86E0080439B /* Bridge.Senna.Core.h in Headers */,
-				42FB106E235ED2DF0039F223 /* SennaContext.h in Headers */,
-				424ED1A32463C86E0080439B /* Bridge.Senna.LogAction.h in Headers */,
-				424ED19F2463C86E0080439B /* Bridge.Senna.DefaultLogger.h in Headers */,
-				42FB1077235ED2E80039F223 /* os_log_sink.h in Headers */,
-				42FB106D235ED2DC0039F223 /* Senna.Singleton.h in Headers */,
+				427E57362472326E00F67280 /* Senna.Singleton.h in Headers */,
+				427E56842472326E00F67280 /* os_log_sink.h in Headers */,
+				427E57522472326E00F67280 /* Bridge.Senna.LogAction.h in Headers */,
+				427E57502472326E00F67280 /* Bridge.Senna.DefaultLogger.h in Headers */,
+				427E56822472326E00F67280 /* os_log_sink.h in Headers */,
+				427E57582472326E00F67280 /* Bridge.Senna.Core.h in Headers */,
+				427E573A2472326E00F67280 /* Bridge.Senna.Core.h in Headers */,
+				427E573C2472326E00F67280 /* Senna.Singleton.h in Headers */,
+				427E574E2472326E00F67280 /* SennaContext.h in Headers */,
+				427E57382472326E00F67280 /* SennaContext.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,25 +530,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42FB104A235ED1370039F223 /* LogFlag.swift in Sources */,
-				42FB1048235ED1370039F223 /* DefaultLogger.swift in Sources */,
-				42FB1049235ED1370039F223 /* Logger.swift in Sources */,
-				42FB104B235ED1440039F223 /* SennaContext.cpp in Sources */,
-				42FB104E235ED1440039F223 /* SennaContext.RotatingFile.cpp in Sources */,
-				42FB1046235ED1370039F223 /* Bridge.DefaultLogger.swift in Sources */,
-				42FB1054235ED1440039F223 /* Bridge.Senna.LogAction.cpp in Sources */,
-				42FB104F235ED1440039F223 /* SennaContext.DailyFile.cpp in Sources */,
-				42FB1045235ED1370039F223 /* Bridge.LogAction.swift in Sources */,
-				42FB1044235ED1370039F223 /* Bridge.Core.swift in Sources */,
-				42FB1051235ED1440039F223 /* SennaContext.Flush.cpp in Sources */,
-				42FB104D235ED1440039F223 /* SennaContext.SysLog.cpp in Sources */,
-				42FB1047235ED1370039F223 /* Senna.swift in Sources */,
-				42FB104C235ED1440039F223 /* SennaContext.Base.cpp in Sources */,
-				42FB1055235ED1440039F223 /* Bridge.Senna.DefaultLogger.cpp in Sources */,
-				42FB1053235ED1440039F223 /* Bridge.Senna.Core.cpp in Sources */,
-				42FB1057235ED1660039F223 /* os_log_sink.h in Sources */,
-				42FB1050235ED1440039F223 /* SennaContext.FileLog.cpp in Sources */,
-				42FB1052235ED1440039F223 /* SennaContext.OSLog.cpp in Sources */,
+				427E57532472326E00F67280 /* Bridge.Senna.DefaultLogger.cpp in Sources */,
+				427E567B2472326E00F67280 /* Bridge.LogAction.swift in Sources */,
+				427E574B2472326E00F67280 /* SennaContext.SysLog.cpp in Sources */,
+				427E567D2472326E00F67280 /* Bridge.DefaultLogger.swift in Sources */,
+				427E573D2472326E00F67280 /* SennaContext.OSLog.cpp in Sources */,
+				427E57552472326E00F67280 /* Bridge.Senna.LogAction.cpp in Sources */,
+				427E57432472326E00F67280 /* SennaContext.cpp in Sources */,
+				427E56792472326E00F67280 /* Bridge.Core.swift in Sources */,
+				427E56772472326E00F67280 /* LogFlag.swift in Sources */,
+				427E56712472326E00F67280 /* Senna.swift in Sources */,
+				427E567F2472326E00F67280 /* Bridge.Senna.Core.cpp in Sources */,
+				427E57492472326E00F67280 /* SennaContext.Base.cpp in Sources */,
+				427E56752472326E00F67280 /* Logger.swift in Sources */,
+				427E57472472326E00F67280 /* SennaContext.Flush.cpp in Sources */,
+				427E56732472326E00F67280 /* DefaultLogger.swift in Sources */,
+				427E57412472326E00F67280 /* SennaContext.DailyFile.cpp in Sources */,
+				427E57452472326E00F67280 /* SennaContext.RotatingFile.cpp in Sources */,
+				427E573F2472326E00F67280 /* SennaContext.FileLog.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -523,24 +555,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42FB1071235ED2E30039F223 /* SennaContext.SysLog.cpp in Sources */,
-				42FB1081235ED2F50039F223 /* Senna.swift in Sources */,
-				42FB106F235ED2E30039F223 /* SennaContext.cpp in Sources */,
-				42FB1082235ED2F50039F223 /* DefaultLogger.swift in Sources */,
-				42FB1075235ED2E30039F223 /* SennaContext.Flush.cpp in Sources */,
-				42FB107D235ED2F00039F223 /* Bridge.Senna.LogAction.cpp in Sources */,
-				42FB107F235ED2F00039F223 /* Bridge.Senna.DefaultLogger.cpp in Sources */,
-				42FB107A235ED2F00039F223 /* Bridge.DefaultLogger.swift in Sources */,
-				42FB1083235ED2F50039F223 /* Logger.swift in Sources */,
-				42FB1076235ED2E30039F223 /* SennaContext.OSLog.cpp in Sources */,
-				42FB1079235ED2F00039F223 /* Bridge.LogAction.swift in Sources */,
-				42FB1072235ED2E30039F223 /* SennaContext.RotatingFile.cpp in Sources */,
-				42FB1084235ED2F50039F223 /* LogFlag.swift in Sources */,
-				42FB1078235ED2F00039F223 /* Bridge.Core.swift in Sources */,
-				42FB1074235ED2E30039F223 /* SennaContext.FileLog.cpp in Sources */,
-				42FB107C235ED2F00039F223 /* Bridge.Senna.Core.cpp in Sources */,
-				42FB1070235ED2E30039F223 /* SennaContext.Base.cpp in Sources */,
-				42FB1073235ED2E30039F223 /* SennaContext.DailyFile.cpp in Sources */,
+				427E57542472326E00F67280 /* Bridge.Senna.DefaultLogger.cpp in Sources */,
+				427E567C2472326E00F67280 /* Bridge.LogAction.swift in Sources */,
+				427E574C2472326E00F67280 /* SennaContext.SysLog.cpp in Sources */,
+				427E567E2472326E00F67280 /* Bridge.DefaultLogger.swift in Sources */,
+				427E573E2472326E00F67280 /* SennaContext.OSLog.cpp in Sources */,
+				427E57562472326E00F67280 /* Bridge.Senna.LogAction.cpp in Sources */,
+				427E57442472326E00F67280 /* SennaContext.cpp in Sources */,
+				427E567A2472326E00F67280 /* Bridge.Core.swift in Sources */,
+				427E56782472326E00F67280 /* LogFlag.swift in Sources */,
+				427E56722472326E00F67280 /* Senna.swift in Sources */,
+				427E56802472326E00F67280 /* Bridge.Senna.Core.cpp in Sources */,
+				427E574A2472326E00F67280 /* SennaContext.Base.cpp in Sources */,
+				427E56762472326E00F67280 /* Logger.swift in Sources */,
+				427E57482472326E00F67280 /* SennaContext.Flush.cpp in Sources */,
+				427E56742472326E00F67280 /* DefaultLogger.swift in Sources */,
+				427E57422472326E00F67280 /* SennaContext.DailyFile.cpp in Sources */,
+				427E57462472326E00F67280 /* SennaContext.RotatingFile.cpp in Sources */,
+				427E57402472326E00F67280 /* SennaContext.FileLog.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,6 +729,7 @@
 		425292FE23A37D4200262E27 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X8L4B689D4;
@@ -716,6 +749,7 @@
 		425292FF23A37D4200262E27 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X8L4B689D4;
@@ -742,7 +776,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				HEADER_SEARCH_PATHS = $PROJECT_DIR/ExternalLibrary/include;
+				HEADER_SEARCH_PATHS = Sources/Senna.spdlog/include;
 				INFOPLIST_FILE = Senna.macOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -771,7 +805,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				HEADER_SEARCH_PATHS = $PROJECT_DIR/ExternalLibrary/include;
+				HEADER_SEARCH_PATHS = Sources/Senna.spdlog/include;
 				INFOPLIST_FILE = Senna.macOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -799,7 +833,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				HEADER_SEARCH_PATHS = $PROJECT_DIR/ExternalLibrary/include;
+				HEADER_SEARCH_PATHS = Sources/Senna.spdlog/include;
 				INFOPLIST_FILE = Senna.iOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -827,7 +861,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				HEADER_SEARCH_PATHS = $PROJECT_DIR/ExternalLibrary/include;
+				HEADER_SEARCH_PATHS = Sources/Senna.spdlog/include;
 				INFOPLIST_FILE = Senna.iOS/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
