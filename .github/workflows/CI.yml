@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-        submodules: recursive
+          submodules: recursive
       - name: Build iOS
         run: xcodebuild archive -target Senna.iOS
       - name: Build macOS
