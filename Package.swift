@@ -5,6 +5,10 @@ import PackageDescription
 
 let package = Package(
         name: "Senna",
+        platforms: [
+            SupportedPlatform.iOS(.v10),
+            SupportedPlatform.macOS(.v10_13),
+        ],
         products: [
             // Products define the executables and libraries produced by a package, and make them visible to other packages.
             .library(name: "Senna", type: .dynamic, targets: ["Senna"]),
