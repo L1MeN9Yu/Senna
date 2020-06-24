@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
         name: "Senna",
         platforms: [
-            SupportedPlatform.iOS(.v10),
+            SupportedPlatform.iOS(.v9),
             SupportedPlatform.macOS(.v10_13),
         ],
         products: [
