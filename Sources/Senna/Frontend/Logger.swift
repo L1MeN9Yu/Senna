@@ -60,8 +60,8 @@ extension Logger {
     }
 
     @discardableResult
-    public func enableOSLog(flag: LogFlag = .trace, pattern: String = DefaultOSLogPattern, subSystem: String? = nil, category: String? = nil, format: Bool = true) -> Self {
-        senna_logger_enable_oslog(name, flag.unsignedIntValue, pattern, subSystem?.cString(using: .utf8), category?.cString(using: .utf8), format)
+    public func enableOSLog(flag: LogFlag = .trace, pattern: String = DefaultOSLogPattern, subSystem: String = "Senna", category: String = "Logger", format: Bool = true) -> Self {
+        senna_logger_enable_oslog(name, flag.unsignedIntValue, pattern, subSystem.cString(using: .utf8), category.cString(using: .utf8), format)
         return self
     }
 
