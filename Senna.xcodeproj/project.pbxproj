@@ -791,7 +791,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.2.28;
+				MARKETING_VERSION = 1.2.29;
 				PRODUCT_BUNDLE_IDENTIFIER = top.limengyu.Senna;
 				PRODUCT_NAME = Senna;
 				SDKROOT = macosx;
@@ -820,7 +820,7 @@
 					"@loader_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
-				MARKETING_VERSION = 1.2.28;
+				MARKETING_VERSION = 1.2.29;
 				PRODUCT_BUNDLE_IDENTIFIER = top.limengyu.Senna;
 				PRODUCT_NAME = Senna;
 				SDKROOT = macosx;
@@ -848,7 +848,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.28;
+				MARKETING_VERSION = 1.2.29;
 				PRODUCT_BUNDLE_IDENTIFIER = top.limengyu.Senna;
 				PRODUCT_NAME = Senna;
 				SKIP_INSTALL = YES;
@@ -876,7 +876,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.28;
+				MARKETING_VERSION = 1.2.29;
 				PRODUCT_BUNDLE_IDENTIFIER = top.limengyu.Senna;
 				PRODUCT_NAME = Senna;
 				SKIP_INSTALL = YES;
