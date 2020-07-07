@@ -71,6 +71,8 @@
 		427E57562472326E00F67280 /* Bridge.Senna.LogAction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 427E566F2472326E00F67280 /* Bridge.Senna.LogAction.cpp */; };
 		427E57572472326E00F67280 /* Bridge.Senna.Core.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E56702472326E00F67280 /* Bridge.Senna.Core.h */; };
 		427E57582472326E00F67280 /* Bridge.Senna.Core.h in Headers */ = {isa = PBXBuildFile; fileRef = 427E56702472326E00F67280 /* Bridge.Senna.Core.h */; };
+		429B9F8424B4817900B969EE /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429B9F8324B4817900B969EE /* Version.swift */; };
+		429B9F8524B4817900B969EE /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 429B9F8324B4817900B969EE /* Version.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -139,6 +141,7 @@
 		427E56702472326E00F67280 /* Bridge.Senna.Core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bridge.Senna.Core.h; sourceTree = "<group>"; };
 		4287AFB8235859E6005D4B17 /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/usr/lib/libc++.1.tbd"; sourceTree = DEVELOPER_DIR; };
 		428B108C2398A09600ED9293 /* CI.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = CI.yml; sourceTree = "<group>"; };
+		429B9F8324B4817900B969EE /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		42FB103B235ED0C60039F223 /* Senna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Senna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		42FB103E235ED0C60039F223 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		42FB1061235ED2A60039F223 /* Senna.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Senna.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +245,7 @@
 		427E55F02472326E00F67280 /* Frontend */ = {
 			isa = PBXGroup;
 			children = (
+				429B9F8324B4817900B969EE /* Version.swift */,
 				427E55F12472326E00F67280 /* Senna.swift */,
 				427E55F22472326E00F67280 /* DefaultLogger.swift */,
 				427E55F32472326E00F67280 /* Logger.swift */,
@@ -543,6 +547,7 @@
 				427E567F2472326E00F67280 /* Bridge.Senna.Core.cpp in Sources */,
 				427E57492472326E00F67280 /* SennaContext.Base.cpp in Sources */,
 				427E56752472326E00F67280 /* Logger.swift in Sources */,
+				429B9F8424B4817900B969EE /* Version.swift in Sources */,
 				427E57472472326E00F67280 /* SennaContext.Flush.cpp in Sources */,
 				427E56732472326E00F67280 /* DefaultLogger.swift in Sources */,
 				427E57412472326E00F67280 /* SennaContext.DailyFile.cpp in Sources */,
@@ -568,6 +573,7 @@
 				427E56802472326E00F67280 /* Bridge.Senna.Core.cpp in Sources */,
 				427E574A2472326E00F67280 /* SennaContext.Base.cpp in Sources */,
 				427E56762472326E00F67280 /* Logger.swift in Sources */,
+				429B9F8524B4817900B969EE /* Version.swift in Sources */,
 				427E57482472326E00F67280 /* SennaContext.Flush.cpp in Sources */,
 				427E56742472326E00F67280 /* DefaultLogger.swift in Sources */,
 				427E57422472326E00F67280 /* SennaContext.DailyFile.cpp in Sources */,
