@@ -14,6 +14,12 @@ func senna_drop_logger(_ name: UnsafePointer<Int8>)
 @_silgen_name("senna_shutdown")
 func senna_shutdown()
 
+@_silgen_name("senna_spdlog_version")
+func senna_spdlog_version(_ major: UnsafeMutablePointer<Int32>, _ minor: UnsafeMutablePointer<Int32>, _ patch: UnsafeMutablePointer<Int32>)
+
+@_silgen_name("senna_fmt_version")
+func senna_fmt_version(_ version: UnsafeMutablePointer<Int32>)
+
 @_silgen_name("senna_logger_flush")
 func senna_logger_flush(_ name: UnsafePointer<Int8>)
 

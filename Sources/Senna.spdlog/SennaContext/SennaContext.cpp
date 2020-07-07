@@ -21,6 +21,5 @@ SennaContext::SennaContext() {
     p_default_logger = spdlog::stdout_color_mt((const std::string &) default_logger_name);
     p_default_logger->set_pattern((const std::string &) "[%D %T] [%=10n] %^[pid : %P] [tid : %t] [%1L] %v%$");
     p_default_logger->set_level(spdlog::level::trace);
-    p_default_logger->trace("Senna Start Succeed ! [spdlog version {}.{}.{} !] [fmt version {} !]", SPDLOG_VER_MAJOR, SPDLOG_VER_MINOR, SPDLOG_VER_PATCH, FMT_VERSION);
     spdlog::set_default_logger(p_default_logger);
 }

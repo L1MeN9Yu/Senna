@@ -9,6 +9,7 @@
 #include "Bridge.Senna.Core.h"
 #include "Senna.Singleton.h"
 #include "SennaContext.h"
+#include <spdlog/spdlog.h>
 
 void senna_add_logger(const char *name, unsigned int flag, const char *pattern) {
     spdlog::level::level_enum level = spdlog::level::level_enum(flag);
@@ -17,6 +18,20 @@ void senna_add_logger(const char *name, unsigned int flag, const char *pattern) 
 
 void senna_drop_logger(const char *name) {
     Singleton<SennaContext>::sharedInstance()->dropLogger(name);
+}
+
+void senna_shutdown(void) {
+    Singleton<SennaContext>::sharedInstance()->shutDown();
+}
+
+void senna_spdlog_version(int *major, int *minor, int *patch){
+    *major = SPDLOG_VER_MAJOR;
+    *minor = SPDLOG_VER_MINOR;
+    *patch = SPDLOG_VER_PATCH;
+}
+
+void senna_fmt_version(int *version){
+    *version = FMT_VERSION;
 }
 
 void senna_logger_flush(const char *name) {
@@ -51,8 +66,4 @@ void senna_logger_enable_rotating_file(const char *name, unsigned int flag, cons
 void senna_logger_enable_daily_file(const char *name, unsigned int flag, const char *pattern, const char *file_path, int hour, int minute) {
     spdlog::level::level_enum level = spdlog::level::level_enum(flag);
     Singleton<SennaContext>::sharedInstance()->enableDailyFileLog(name, level, pattern, file_path, hour, minute);
-}
-
-void senna_shutdown(void) {
-    Singleton<SennaContext>::sharedInstance()->shutDown();
 }
