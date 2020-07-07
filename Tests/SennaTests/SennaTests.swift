@@ -21,6 +21,10 @@ final class SennaTests: XCTestCase {
         logger.warn("error")
         logger.error("error")
         logger.crit("crit")
+
+        logger.info("senna version: \(Version.current)")
+        logger.info("spdlog version: \(Version.spdlog)")
+        logger.info("fmt version: \(Version.fmt)")
     }
 
     static var allTests = [

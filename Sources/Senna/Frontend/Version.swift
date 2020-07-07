@@ -39,10 +39,11 @@ public extension Version {
     static let fmt = { () -> Version in
         let versionPointer = UnsafeMutablePointer<Int32>.allocate(capacity: MemoryLayout<Int32>.size)
         defer { versionPointer.deallocate() }
+        senna_fmt_version(versionPointer)
         let version = versionPointer.pointee
         let major = version / 10000
         let minor = (version - major * 10000) / 100
         let patch = version - major * 10000 - minor * 100
         return Version(major: Int(major), minor: Int(minor), patch: Int(patch))
-    }
+    }()
 }
