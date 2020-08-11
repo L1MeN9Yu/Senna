@@ -7,42 +7,43 @@
 //
 
 public func register(loggers: [Logger]) {
-    assert(!loggers.isEmpty)
-    loggers.forEach { logger in
-        register(logger: logger)
-    }
+	assert(!loggers.isEmpty)
+	loggers.forEach { logger in
+		register(logger: logger)
+	}
 }
 
 public func drop(loggers: [Logger]) {
-    assert(!loggers.isEmpty)
-    loggers.forEach { logger in
-        drop(logger: logger)
-    }
+	assert(!loggers.isEmpty)
+	loggers.forEach { logger in
+		drop(logger: logger)
+	}
 }
 
 public func register(logger: Logger) {
-    if let loggerName = logger.name.cString(using: .utf8),
-       let pattern = logger.pattern.cString(using: .utf8) {
-        senna_add_logger(loggerName, logger.flag.unsignedIntValue, pattern)
-    }
+	if let loggerName = logger.name.cString(using: .utf8),
+		let pattern = logger.pattern.cString(using: .utf8)
+	{
+		senna_add_logger(loggerName, logger.flag.unsignedIntValue, pattern)
+	}
 }
 
 public func drop(logger: Logger) {
-    if let loggerName = logger.name.cString(using: .utf8) {
-        senna_drop_logger(loggerName)
-    }
+	if let loggerName = logger.name.cString(using: .utf8) {
+		senna_drop_logger(loggerName)
+	}
 }
 
 public typealias MessageConvert = (_ message: CustomStringConvertible?, _ filename: String, _ function: String, _ line: Int) -> String
 
 public func register(messageConvert: @escaping MessageConvert) {
-    __messageConvert = messageConvert
+	__messageConvert = messageConvert
 }
 
 var __messageConvert: MessageConvert = { message, filename, function, line in
-    let fileName = filename.components(separatedBy: "/").last ?? ""
-    let allMessage = "[\(fileName):\(line)] \(function) - \(message?.description ?? "")"
-    return allMessage
+	let fileName = filename.components(separatedBy: "/").last ?? ""
+	let allMessage = "[\(fileName):\(line)] \(function) - \(message?.description ?? "")"
+	return allMessage
 }
 
 public let DefaultPattern = "[%D %T] [%=10n] %^[pid : %P] [tid : %t] [%1L] %v%$"
@@ -50,5 +51,5 @@ public let DefaultPattern = "[%D %T] [%=10n] %^[pid : %P] [tid : %t] [%1L] %v%$"
 public let DefaultOSLogPattern = "[%=10n] %^%v%$"
 
 public func shutDown() {
-    senna_shutdown()
+	senna_shutdown()
 }

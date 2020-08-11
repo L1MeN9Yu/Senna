@@ -4,23 +4,28 @@
 import PackageDescription
 
 let package = Package(
-        name: "Senna",
-        platforms: [
-            SupportedPlatform.iOS(.v10),
-            SupportedPlatform.macOS(.v10_14),
-        ],
-        products: [
-            // Products define the executables and libraries produced by a package, and make them visible to other packages.
-            .library(name: "Senna", targets: ["Senna"]),
-            .library(name: "Senna.Dynamic", type: .dynamic, targets: ["Senna"]),
-            .library(name: "Senna.Static", type: .static, targets: ["Senna"]),
-        ],
-        targets: [
-            // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-            // Targets can depend on other targets in this package, and on products in packages which this package depends on.
-            .target(name: "Senna.spdlog"),
-            .target(name: "Senna", dependencies: ["Senna.spdlog"]),
-            .testTarget(name: "SennaTests", dependencies: ["Senna"]),
-        ],
-        cxxLanguageStandard: .cxx14
+	name: "Senna",
+	platforms: [
+		SupportedPlatform.iOS(.v10),
+		SupportedPlatform.macOS(.v10_14),
+	],
+	products: [
+		.library(name: "Senna", targets: ["Senna"]),
+		.library(name: "Senna.Dynamic", type: .dynamic, targets: ["Senna"]),
+		.library(name: "Senna.Static", type: .static, targets: ["Senna"]),
+	],
+	dependencies: [
+		.package(url: "https://github.com/apple/swift-log.git", from: "1.0.0"),
+	],
+	targets: [
+		.target(name: "Senna.spdlog"),
+		.target(name: "Senna", dependencies: [
+			"Senna.spdlog",
+		]),
+		.target(name: "Senna_", dependencies: [
+			.product(name: "Logging", package: "swift-log"),
+		]),
+		.testTarget(name: "SennaTests", dependencies: ["Senna", "Senna_"]),
+	],
+	cxxLanguageStandard: .cxx14
 )
