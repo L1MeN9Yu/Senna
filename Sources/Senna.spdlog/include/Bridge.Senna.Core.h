@@ -1,1 +1,0 @@
-../Bridge.Senna.Core.h

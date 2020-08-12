@@ -1,30 +1,16 @@
-@testable import Senna
+import Logging
+@testable import Senna_
 import XCTest
 
 final class SennaTests: XCTestCase {
 	func testExample() {
-		// This is an example of a functional test case.
-		// Use XCTAssert and related functions to verify your tests produce the correct
-		// results.
-		class Logger: Senna.Logger {
-			let name: String = "Test"
-
-			init() { register() }
-
-			deinit { self.drop() }
+		let logger = Logger(label: "logger") { (_: String) -> LogHandler in
+			Handler(sink: Standard.error, formatter: Formatter.apple, logLevel: .trace)
 		}
-
-		let logger = Logger()
-		logger.trace("trace")
-		logger.debug("debug")
-		logger.info("info")
-		logger.warn("error")
-		logger.error("error")
-		logger.crit("crit")
-
-		logger.info("senna version: \(Version.current)")
-		logger.info("spdlog version: \(Version.spdlog)")
-		logger.info("fmt version: \(Version.fmt)")
+		logger.error("Test error message")
+		logger.info("Test info message")
+		logger.logLevel = .error
+		logger.info("Test info message")
 	}
 
 	static var allTests = [

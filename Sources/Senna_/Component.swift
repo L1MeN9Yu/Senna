@@ -7,7 +7,7 @@ import Foundation
 public enum Component {
 	/// Timestamp of log
 	/// Specifying your timestamp format can be done by providing a DateFormatter through `Formatter.timestampFormatter`
-	case timestamp
+	case timestamp(DateFormatter)
 
 	/// Log level
 	case level
@@ -26,16 +26,21 @@ public enum Component {
 	case text(String)
 	/// A group of `LogComponents`, not using the specified `separator`
 	case group([Component])
+}
 
-	public static var metaComponents: [Component] {
-		[
-			.timestamp,
-			.level,
-			.message,
-			.metadata,
-			.file,
-			.function,
-			.line,
-		]
-	}
+public extension Component {
+	static let defaultComponents: [Component] = [
+		.timestamp(Self.defaultDateFormatter),
+		.level,
+		.message,
+		.metadata,
+		.file,
+		.function,
+		.line,
+	]
+	static let defaultDateFormatter: DateFormatter = {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+		return dateFormatter
+	}()
 }
