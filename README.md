@@ -1,58 +1,10 @@
 # Senna
 
-a log engine based on [spdlog](https://github.com/gabime/spdlog)
+a logging engine backend of Apple's [swift-log](https://github.com/apple/swift-log)
 
-## Platforms
+## Credit
 
-* iOS : 10.0+
-* macOS : 10.14+
-
-## Install
-
-specify it in your `Cartfile`:
-
-```shell script
-github "L1MeN9Yu/Senna"
-```
-
-## Usage
-
-See Demo
-
-## OSLog in Console.app
-
-As a dynamic library dependency,add 'Senna' as the library name in the filter.
-
-## Log Format
-
-### Backend format
-
-See spdlog wiki : [Custom formatting](https://github.com/gabime/spdlog/wiki/3.-Custom-formatting)
-
-The default pattern is : `[%D %T] [%=10n] %^[pid : %P] [tid : %t] [%L] %v%$`
-
-### Frontend format
-
-All the frontend message will be the `%v` value to backend.
-
-The default `MessageConvert` is below:
-
-```swift
-public typealias MessageConvert = (_ message: CustomStringConvertible?, _ filename: String, _ function: String, _ line: Int) -> String
-
-public func register(messageConvert: @escaping MessageConvert) {
-    __messageConvert = messageConvert
-}
-
-var __messageConvert: MessageConvert = { message, filename, function, line in
-    let fileName = filename.components(separatedBy: "/").last ?? ""
-    let allMessage = "[\(fileName):\(line)] \(function) - \(message?.description ?? "")"
-    return allMessage
-}
-```
-
-You can call
-```swift
-Senna.register(messageConvert: your_custom_message_convert)
-``` 
-to disable `filename`,`function`,`line` or whatever you want.
+* [swift-log](https://github.com/apple/swift-log)
+* [swift-log-format-and-pipe](https://github.com/Adorkable/swift-log-format-and-pipe)
+* [spdlog](https://github.com/gabime/spdlog)
+* [Rainbow](https://github.com/onevcat/Rainbow)

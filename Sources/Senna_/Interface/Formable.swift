@@ -25,7 +25,7 @@ public extension Formable {
 		case .metadata:
 			return "\(prettyMetadata.map { "\($0)" } ?? "")"
 		case .file:
-			return "\(file)"
+			return "\(URL(fileURLWithPath: file).lastPathComponent)"
 		case .function:
 			return "\(function)"
 		case .line:

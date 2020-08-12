@@ -19,14 +19,61 @@ public struct Formatter: Formable {
 		level: Logger.Level, message: Logger.Message, prettyMetadata: String?,
 		file: String, function: String, line: UInt
 	) -> String {
-		let now = Date()
+		components
+			.map { (component) -> (Component, String) in
+				let formatted = self.format(
+					component: component, date: Date(), level: level, message: message, prettyMetadata: prettyMetadata,
+					file: file, function: function, line: line
+				)
+				return (component, formatted)
+			}
+			.map { (component, formatted) -> String in
+				var codes: [UInt8] = []
+				if let textColor = self.textColor(for: level, component: component) {
+					codes.append(contentsOf: Style.textColor)
+					codes.append(contentsOf: textColor.value)
+				}
+				if let backgroundColor = self.backgroundColor(for: level, component: component) {
+					codes.append(contentsOf: Style.backgroundColor)
+					codes.append(contentsOf: backgroundColor.value)
+				}
+				if let styles = self.styles(for: level, component: component) {
+					codes.append(contentsOf: styles.value)
+				}
+				guard !codes.isEmpty else { return formatted }
+				return "\(ControlCode.CSI)\(codes.map { String($0) }.joined(separator: ";"))m\(formatted)\(ControlCode.CSI)0m"
+			}
+			.filter { !$0.isEmpty }
+			.joined(separator: separator ?? "")
+	}
+}
 
-		return components.map {
-			self.format(
-				component: $0, date: now, level: level, message: message, prettyMetadata: prettyMetadata,
-				file: file, function: function, line: line
-			)
-		}.filter { !$0.isEmpty }.joined(separator: separator ?? "")
+extension Formatter: Enhanceable {
+	public func textColor(for level: Logger.Level, component: Component) -> Color? {
+		switch (level, component) {
+		case (.trace, .level):
+			return Color.traceText
+		case (.critical, .level):
+			return nil
+		default:
+			return nil
+		}
+	}
+
+	public func backgroundColor(for level: Logger.Level, component: Component) -> Color? {
+		switch (level, component) {
+		case (.critical, .level):
+			return Color.criticalBackground
+		default:
+			return nil
+		}
+	}
+
+	public func styles(for level: Logger.Level, component: Component) -> [Style]? {
+		switch (level, component) {
+		default:
+			return nil
+		}
 	}
 }
 

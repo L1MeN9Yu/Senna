@@ -24,7 +24,7 @@ public enum Component {
 
 	/// Literal text
 	case text(String)
-	/// A group of `LogComponents`, not using the specified `separator`
+	/// A group of `Components`, not using the specified `separator`
 	case group([Component])
 }
 
@@ -40,7 +40,7 @@ public extension Component {
 	]
 	static let defaultDateFormatter: DateFormatter = {
 		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+		dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
 		return dateFormatter
 	}()
 }
