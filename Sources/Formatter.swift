@@ -51,10 +51,18 @@ public struct Formatter: Formable {
 extension Formatter: Enhanceable {
 	public func textColor(for level: Logger.Level, component: Component) -> Color? {
 		switch (level, component) {
-		case (.trace, .level):
+		case (.error, .level), (.error, .message):
+			return Color.errorText
+		case (.warning, .level), (.warning, .message):
+			return Color.warningText
+		case (.notice, .level), (.notice, .message):
+			return Color.noticeText
+		case (.info, .level), (.info, .message):
+			return Color.infoText
+		case (.debug, .level), (.debug, .message):
+			return Color.debugText
+		case (.trace, .level), (.trace, .message):
 			return Color.traceText
-		case (.critical, .level):
-			return nil
 		default:
 			return nil
 		}
@@ -62,7 +70,7 @@ extension Formatter: Enhanceable {
 
 	public func backgroundColor(for level: Logger.Level, component: Component) -> Color? {
 		switch (level, component) {
-		case (.critical, .level):
+		case (.critical, .level), (.critical, .message):
 			return Color.criticalBackground
 		default:
 			return nil
@@ -71,6 +79,12 @@ extension Formatter: Enhanceable {
 
 	public func styles(for level: Logger.Level, component: Component) -> [Style]? {
 		switch (level, component) {
+		case (.critical, .level), (.critical, .message):
+			return [.bold, .underline]
+		case (.error, .level), (.error, .message):
+			return [.bold, .underline]
+		case (.warning, .level), (.warning, .message):
+			return [.bold]
 		default:
 			return nil
 		}

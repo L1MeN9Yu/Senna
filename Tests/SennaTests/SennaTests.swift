@@ -1,11 +1,11 @@
 import Logging
-@testable import Senna_
+@testable import Senna
 import XCTest
 
 final class SennaTests: XCTestCase {
 	func testExample() {
 		var logger = Logger(label: "logger") { (_: String) -> LogHandler in
-			Handler(sink: Standard.out, formatter: Formatter.default, logLevel: .trace)
+			Handler(sink: Standard.error, formatter: Formatter.default, logLevel: .trace)
 		}
 		logger.trace("\(UInt8.max)")
 		logger.debug("\(UInt8.max)")
