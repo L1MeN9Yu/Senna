@@ -9,9 +9,5 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: recursive
-      - name: Build iOS
-        run: xcodebuild archive -target Senna.iOS
-      - name: Build macOS
-        run: xcodebuild archive -target Senna.macOS
       - name: Run tests
-        run: echo Run tests not implemented
+        run: swift test
