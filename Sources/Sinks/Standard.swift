@@ -5,15 +5,17 @@
 import Darwin
 import Foundation
 
-public struct Standard: Sink {
+public struct Standard {
 	private let stream: TextOutputStream
 
+	private init(stream: TextOutputStream) { self.stream = stream }
+}
+
+extension Standard: Sink {
 	public func process(_ formattedLog: String) {
 		var stream = self.stream
 		stream.write("\(formattedLog)\n")
 	}
-
-	private init(stream: TextOutputStream) { self.stream = stream }
 }
 
 public extension Standard {
@@ -22,7 +24,9 @@ public extension Standard {
 }
 
 private struct StandardOutStream: TextOutputStream {
-	let file: UnsafeMutablePointer<FILE> = Darwin.stdout
+	fileprivate init() {}
+
+	private let file: UnsafeMutablePointer<FILE> = Darwin.stdout
 
 	func write(_ string: String) {
 		flockfile(file)
@@ -34,7 +38,9 @@ private struct StandardOutStream: TextOutputStream {
 }
 
 private struct StandardErrorStream: TextOutputStream {
-	let file: UnsafeMutablePointer<FILE> = Darwin.stderr
+	fileprivate init() {}
+
+	private let file: UnsafeMutablePointer<FILE> = Darwin.stderr
 
 	func write(_ string: String) {
 		flockfile(file)

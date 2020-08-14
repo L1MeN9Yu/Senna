@@ -17,8 +17,12 @@
 
 - [ ] oslog
 - [ ] syslog
-- [ ] file
-- [ ] rotating file
+- [x] file
+
+### File
+
+- [ ] rotating style
+- [ ] flush level
 
 ## Other
 
