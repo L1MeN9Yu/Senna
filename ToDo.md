@@ -1,5 +1,9 @@
 # ToDo
 
+## WorkFlow
+
+- [ ] Logger->Handler->Sinks,Each Sink->Formatter->Printer->Stream
+
 ## Logger
 
 - [ ] add/remove sink

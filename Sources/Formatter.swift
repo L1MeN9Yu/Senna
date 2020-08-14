@@ -48,7 +48,7 @@ public struct Formatter: Formable {
 	}
 }
 
-extension Formatter: Enhanceable {
+extension Formatter: Printable {
 	public func textColor(for level: Logger.Level, component: Component) -> Color? {
 		switch (level, component) {
 		case (.error, .level), (.error, .message):
