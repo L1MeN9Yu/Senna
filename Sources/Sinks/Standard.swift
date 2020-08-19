@@ -31,7 +31,7 @@ private struct StandardOutStream: TextOutputStream {
 	func write(_ string: String) {
 		flockfile(file)
 		defer { funlockfile(file) }
-		string.withCString { (ptr) -> () in
+		string.withCString { (ptr) -> Void in
 			fputs(ptr, file)
 		}
 	}
@@ -45,7 +45,7 @@ private struct StandardErrorStream: TextOutputStream {
 	func write(_ string: String) {
 		flockfile(file)
 		defer { funlockfile(file) }
-		string.withCString { (ptr) -> () in
+		string.withCString { (ptr) -> Void in
 			fputs(ptr, file)
 		}
 	}

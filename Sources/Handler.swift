@@ -8,7 +8,7 @@ import Logging
 public struct Handler: LogHandler {
 	private var prettyMetadata: String?
 
-	public let sink: Sink
+	public let sinks: [Sink]
 	public let formatter: Formable
 
 	public var metadata = Logger.Metadata() {
@@ -22,8 +22,8 @@ public struct Handler: LogHandler {
 		set { metadata[metadataKey] = newValue }
 	}
 
-	public init(sink: Sink, formatter: Formable, logLevel: Logger.Level) {
-		self.sink = sink
+	public init(sinks: [Sink], formatter: Formable, logLevel: Logger.Level) {
+		self.sinks = sinks
 		self.formatter = formatter
 		self.logLevel = logLevel
 	}
@@ -34,7 +34,7 @@ public struct Handler: LogHandler {
 			: prettify(self.metadata.merging(metadata!, uniquingKeysWith: { _, new in new }))
 
 		let formattedMessage = formatter.format(level: level, message: message, prettyMetadata: prettyMetadata, file: file, function: function, line: line)
-		sink.process(formattedMessage)
+		sinks.forEach { $0.process(formattedMessage) }
 	}
 }
 
