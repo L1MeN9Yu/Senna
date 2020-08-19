@@ -1,0 +1,36 @@
+//
+// Created by Mengyu Li on 2020/8/19.
+//
+
+import Foundation
+import Logging
+import os.log
+
+@available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
+struct OS: Sink {
+	private let osLog: OSLog
+
+	init(subsystem: String, category: String) {
+		osLog = OSLog(subsystem: subsystem, category: category)
+	}
+
+	func process(_ formattedLog: String, _ level: Logger.Level) {
+		os_log("%{public}@", log: osLog, type: OSLogType.from(loggerLevel: level), formattedLog)
+	}
+}
+
+@available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
+extension OSLogType {
+	static func from(loggerLevel: Logger.Level) -> Self {
+		switch loggerLevel {
+		case .trace, .debug:
+			return .debug
+		case .info, .notice, .warning:
+			return .info
+		case .error:
+			return .error
+		case .critical:
+			return .fault
+		}
+	}
+}

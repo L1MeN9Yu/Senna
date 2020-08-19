@@ -1,18 +1,5 @@
 # ToDo
 
-## WorkFlow
-
-- [ ] Logger->Handler->Sinks,Each Sink->Formatter->Printer->Stream
-
-## Logger
-
-- [ ] add/remove sink
-
-## Handler
-
-- [ ] add/remove sink
-- [ ] multi sinks
-
 ## Formatter
 
 - [ ] component string range
@@ -23,10 +10,14 @@
 - [ ] syslog
 - [x] file
 
+## Standard
+
+- [ ] flush mode
+
 ### File
 
 - [ ] rotating style
-- [ ] flush level
+- [ ] flush mode
 
 ## Other
 

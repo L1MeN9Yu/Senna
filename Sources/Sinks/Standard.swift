@@ -4,6 +4,7 @@
 
 import Darwin
 import Foundation
+import struct Logging.Logger
 
 public struct Standard {
 	private let stream: TextOutputStream
@@ -12,7 +13,7 @@ public struct Standard {
 }
 
 extension Standard: Sink {
-	public func process(_ formattedLog: String) {
+	public func process(_ formattedLog: String, _ level: Logger.Level) {
 		var stream = self.stream
 		stream.write("\(formattedLog)\n")
 	}

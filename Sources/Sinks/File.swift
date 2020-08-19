@@ -4,6 +4,7 @@
 
 import Darwin
 import Foundation
+import struct Logging.Logger
 
 public struct File {
 	public let fileURL: URL
@@ -21,7 +22,7 @@ public struct File {
 }
 
 extension File: Sink {
-	public func process(_ formattedLog: String) {
+	public func process(_ formattedLog: String, _ level: Logger.Level) {
 		fileStream.write("\(formattedLog)\n")
 	}
 }
@@ -36,7 +37,7 @@ private struct FileStream: TextOutputStream {
 	public func write(_ string: String) {
 		flockfile(file)
 		defer { funlockfile(file) }
-		string.withCString { (ptr) -> () in
+		string.withCString { (ptr) -> Void in
 			fputs(ptr, file)
 		}
 		fflush(file)
