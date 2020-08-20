@@ -35,7 +35,7 @@ final class SennaTests: XCTestCase {
             logger.error("\(UInt8.max)")
             logger.critical("\(UInt8.max)")
             count -= 1
-            Thread.sleep(forTimeInterval: 1)
+            Thread.sleep(forTimeInterval: 0.1)
         }
 
         logger.logLevel = .error
@@ -62,5 +62,6 @@ final class SennaTests: XCTestCase {
     static var allTests = [
         ("testStandardOut", testStandardOut),
         ("testFile", testFile),
+        ("testOS", testOS),
     ]
 }
