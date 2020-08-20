@@ -5,5 +5,5 @@
 import Foundation
 
 public protocol EscapeCode {
-	var value: [UInt8] { get }
+    var value: [UInt8] { get }
 }

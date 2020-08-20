@@ -6,34 +6,34 @@ import Foundation
 import Logging
 
 public protocol Formable {
-	var components: [Component] { get }
-	func format(level: Logger.Level, message: Logger.Message, prettyMetadata: String?,
-	            file: String, function: String, line: UInt) -> String
+    var components: [Component] { get }
+    func format(level: Logger.Level, message: Logger.Message, prettyMetadata: String?,
+                file: String, function: String, line: UInt) -> String
 }
 
 public extension Formable {
-	func format(component: Component, date: Date, level: Logger.Level, message: Logger.Message,
-	            prettyMetadata: String?, file: String, function: String, line: UInt) -> String
-	{
-		switch component {
-		case let .timestamp(dateFormatter):
-			return dateFormatter.string(from: date)
-		case .level:
-			return "\(level)"
-		case .message:
-			return "\(message)"
-		case .metadata:
-			return "\(prettyMetadata.map { "\($0)" } ?? "")"
-		case .file:
-			return "\(URL(fileURLWithPath: file).lastPathComponent)"
-		case .function:
-			return "\(function)"
-		case .line:
-			return "\(line)"
-		case let .text(value):
-			return value
-		case let .group(components):
-			return components.map { format(component: $0, date: date, level: level, message: message, prettyMetadata: prettyMetadata, file: file, function: function, line: line) }.joined()
-		}
-	}
+    func format(component: Component, date: Date, level: Logger.Level, message: Logger.Message,
+                prettyMetadata: String?, file: String, function: String, line: UInt) -> String
+    {
+        switch component {
+        case let .timestamp(dateFormatter):
+            return dateFormatter.string(from: date)
+        case .level:
+            return "\(level)"
+        case .message:
+            return "\(message)"
+        case .metadata:
+            return "\(prettyMetadata.map { "\($0)" } ?? "")"
+        case .file:
+            return "\(URL(fileURLWithPath: file).lastPathComponent)"
+        case .function:
+            return "\(function)"
+        case .line:
+            return "\(line)"
+        case let .text(value):
+            return value
+        case let .group(components):
+            return components.map { format(component: $0, date: date, level: level, message: message, prettyMetadata: prettyMetadata, file: file, function: function, line: line) }.joined()
+        }
+    }
 }

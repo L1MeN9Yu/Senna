@@ -1,5 +1,4 @@
---indent tab
---tabwidth 4
+--indent 4
 --indentcase false
 --trimwhitespace always
 --nospaceoperators ..<,...

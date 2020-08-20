@@ -5,5 +5,5 @@
 import struct Logging.Logger
 
 public protocol Sink {
-	func process(_ formattedLog: String, _ level: Logger.Level)
+    func process(_ formattedLog: String, _ level: Logger.Level)
 }

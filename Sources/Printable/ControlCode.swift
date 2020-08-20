@@ -5,6 +5,6 @@
 import Foundation
 
 enum ControlCode {
-	static let ESC = "\u{001B}"
-	static let CSI = "\(ESC)["
+    static let ESC = "\u{001B}"
+    static let CSI = "\(ESC)["
 }
