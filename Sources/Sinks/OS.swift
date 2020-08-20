@@ -7,14 +7,14 @@ import Logging
 import os.log
 
 @available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
-struct OS: Sink {
+public struct OS: Sink {
     private let osLog: OSLog
 
-    init(subsystem: String, category: String) {
+    public init(subsystem: String, category: String) {
         osLog = OSLog(subsystem: subsystem, category: category)
     }
 
-    func process(_ formattedLog: String, _ level: Logger.Level) {
+    public func process(_ formattedLog: String, _ level: Logger.Level) {
         os_log("%{public}@", log: osLog, type: OSLogType.from(loggerLevel: level), formattedLog)
     }
 }
