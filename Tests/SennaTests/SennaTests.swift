@@ -42,7 +42,7 @@ final class SennaTests: XCTestCase {
         logger.info("Test info message")
     }
 
-    @available(OSX 10.12, *)
+    @available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
     func testOS() {
         var logger = Logger(label: "Standard") { (_: String) -> LogHandler in
             Handler(sink: OS(subsystem: "subsystem", category: "category"), formatter: Formatter.os, logLevel: .trace)
@@ -59,9 +59,14 @@ final class SennaTests: XCTestCase {
         logger.error("\(UInt8.max)")
     }
 
-    static var allTests = [
-        ("testStandardOut", testStandardOut),
-        ("testFile", testFile),
-        ("testOS", testOS),
-    ]
+    static var allTests = { () -> [(String, (SennaTests) -> () -> Void)] in
+        var allTests = [
+            ("testStandardOut", testStandardOut),
+            ("testFile", testFile),
+        ]
+        if #available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *) {
+            allTests.append(("testOS", testOS))
+        }
+        return allTests
+    }()
 }
