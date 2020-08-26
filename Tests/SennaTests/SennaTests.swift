@@ -59,10 +59,30 @@ final class SennaTests: XCTestCase {
         logger.error("\(UInt8.max)")
     }
 
+    func testMultiHandler() {
+        var logger = Logger(label: "multi") { _ in
+            MultiplexLogHandler([
+                Handler(sink: Standard.out, formatter: Formatter.default, logLevel: .trace),
+                Handler(sink: Standard.error, formatter: Formatter.default, logLevel: .trace),
+            ])
+        }
+        logger.trace("\(UInt8.max)")
+        logger.debug("\(UInt8.max)")
+        logger.info("\(UInt8.max)")
+        logger.notice("\(UInt8.max)")
+        logger.warning("\(UInt8.max)")
+        logger.error("\(UInt8.max)")
+        logger.critical("\(UInt8.max)")
+        logger.logLevel = .error
+        logger.warning("\(UInt8.max)")
+        logger.error("\(UInt8.max)")
+    }
+
     static var allTests = { () -> [(String, (SennaTests) -> () -> Void)] in
         var allTests = [
             ("testStandardOut", testStandardOut),
             ("testFile", testFile),
+            ("testMultiHandler", testMultiHandler),
         ]
         if #available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *) {
             allTests.append(("testOS", testOS))
