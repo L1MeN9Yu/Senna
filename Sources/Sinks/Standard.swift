@@ -2,7 +2,11 @@
 // Created by Mengyu Li on 2020/8/11.
 //
 
+#if os(Linux)
+import Glibc
+#else
 import Darwin
+#endif
 import Foundation
 import struct Logging.Logger
 
@@ -27,7 +31,7 @@ public extension Standard {
 private struct StandardOutStream: TextOutputStream {
     fileprivate init() {}
 
-    private let file: UnsafeMutablePointer<FILE> = Darwin.stdout
+    private let file: UnsafeMutablePointer<FILE> = STDOUT
 
     func write(_ string: String) {
         flockfile(file)
@@ -41,7 +45,7 @@ private struct StandardOutStream: TextOutputStream {
 private struct StandardErrorStream: TextOutputStream {
     fileprivate init() {}
 
-    private let file: UnsafeMutablePointer<FILE> = Darwin.stderr
+    private let file: UnsafeMutablePointer<FILE> = STDERR
 
     func write(_ string: String) {
         flockfile(file)
@@ -51,3 +55,11 @@ private struct StandardErrorStream: TextOutputStream {
         }
     }
 }
+
+#if os(Linux)
+private let STDOUT = Glibc.stdout!
+private let STDERR = Glibc.stderr!
+#else
+private let STDOUT = Darwin.stdout
+private let STDERR = Darwin.stderr
+#endif

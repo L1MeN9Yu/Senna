@@ -2,7 +2,11 @@
 // Created by Mengyu Li on 2020/8/14.
 //
 
+#if os(Linux)
+import Glibc
+#else
 import Darwin
+#endif
 import Foundation
 import struct Logging.Logger
 

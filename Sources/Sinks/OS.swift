@@ -2,6 +2,7 @@
 // Created by Mengyu Li on 2020/8/19.
 //
 
+#if os(iOS) || os(OSX) || os(tvOS) || os(watchOS)
 import Foundation
 import Logging
 import os.log
@@ -34,3 +35,4 @@ extension OSLogType {
         }
     }
 }
+#endif

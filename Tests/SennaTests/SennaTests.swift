@@ -42,6 +42,8 @@ final class SennaTests: XCTestCase {
         logger.info("Test info message")
     }
 
+    #if os(Linux)
+    #else
     @available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
     func testOS() {
         var logger = Logger(label: "Standard") { (_: String) -> LogHandler in
@@ -58,6 +60,7 @@ final class SennaTests: XCTestCase {
         logger.warning("\(UInt8.max)")
         logger.error("\(UInt8.max)")
     }
+    #endif
 
     func testMultiHandler() {
         var logger = Logger(label: "multi") { _ in
@@ -84,9 +87,12 @@ final class SennaTests: XCTestCase {
             ("testFile", testFile),
             ("testMultiHandler", testMultiHandler),
         ]
+        #if os(Linux)
+        #else
         if #available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *) {
             allTests.append(("testOS", testOS))
         }
+        #endif
         return allTests
     }()
 }
