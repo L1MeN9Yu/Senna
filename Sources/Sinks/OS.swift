@@ -15,14 +15,14 @@ public struct OS: Sink {
         osLog = OSLog(subsystem: subsystem, category: category)
     }
 
-    public func process(_ formattedLog: String, _ level: Logger.Level) {
+    public func process(_ formattedLog: String, _ level: Logging.Logger.Level) {
         os_log("%{public}@", log: osLog, type: OSLogType.from(loggerLevel: level), formattedLog)
     }
 }
 
 @available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
 extension OSLogType {
-    static func from(loggerLevel: Logger.Level) -> Self {
+    static func from(loggerLevel: Logging.Logger.Level) -> Self {
         switch loggerLevel {
         case .trace, .debug:
             return .debug
