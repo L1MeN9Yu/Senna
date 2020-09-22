@@ -20,6 +20,9 @@ public struct Printer: Printable {
 public extension Printer {
     static let `default` = Printer(
         textColor: { level, component in
+            #if Xcode
+            return nil
+            #else
             switch (level, component) {
             case (.trace, .level), (.trace, .message):
                 return traceTextColor
@@ -36,16 +39,24 @@ public extension Printer {
             default:
                 return nil
             }
+            #endif
         },
         backgroundColor: { level, component in
+            #if Xcode
+            return nil
+            #else
             switch (level, component) {
             case (.critical, .level), (.critical, .message):
                 return criticalBackgroundColor
             default:
                 return nil
             }
+            #endif
         },
         styles: { level, component in
+            #if Xcode
+            return nil
+            #else
             switch (level, component) {
             case (.critical, .level), (.critical, .message):
                 return [.bold, .underline]
@@ -56,6 +67,7 @@ public extension Printer {
             default:
                 return nil
             }
+            #endif
         }
     )
 }
