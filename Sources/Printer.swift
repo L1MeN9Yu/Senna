@@ -20,53 +20,77 @@ public struct Printer: Printable {
 public extension Printer {
     static let `default` = Printer(
         textColor: { level, component in
-            #if Xcode
-            return nil
-            #else
-            switch (level, component) {
-            case (.trace, .level), (.trace, .message):
-                return traceTextColor
-            case (.debug, .level), (.debug, .message):
-                return debugTextColor
-            case (.info, .level), (.info, .message):
-                return infoTextColor
-            case (.notice, .level), (.notice, .message):
-                return noticeTextColor
-            case (.warning, .level), (.warning, .message):
-                return warningTextColor
-            case (.error, .level), (.error, .message):
-                return errorTextColor
-            default:
-                return nil
+            let color: () -> Color? = {
+                switch (level, component) {
+                case (.trace, .level), (.trace, .message):
+                    return traceTextColor
+                case (.debug, .level), (.debug, .message):
+                    return debugTextColor
+                case (.info, .level), (.info, .message):
+                    return infoTextColor
+                case (.notice, .level), (.notice, .message):
+                    return noticeTextColor
+                case (.warning, .level), (.warning, .message):
+                    return warningTextColor
+                case (.error, .level), (.error, .message):
+                    return errorTextColor
+                default:
+                    return nil
+                }
             }
+            #if Xcode
+            switch Self.forceColor {
+            case false:
+                return nil
+            case true:
+                return color()
+            }
+            #else
+            return color()
             #endif
         },
         backgroundColor: { level, component in
-            #if Xcode
-            return nil
-            #else
-            switch (level, component) {
-            case (.critical, .level), (.critical, .message):
-                return criticalBackgroundColor
-            default:
-                return nil
+            let color: () -> Color? = {
+                switch (level, component) {
+                case (.critical, .level), (.critical, .message):
+                    return criticalBackgroundColor
+                default:
+                    return nil
+                }
             }
+            #if Xcode
+            switch Self.forceColor {
+            case false:
+                return nil
+            case true:
+                return color()
+            }
+            #else
+            return color()
             #endif
         },
         styles: { level, component in
-            #if Xcode
-            return nil
-            #else
-            switch (level, component) {
-            case (.critical, .level), (.critical, .message):
-                return [.bold, .underline]
-            case (.error, .level), (.error, .message):
-                return [.bold, .underline]
-            case (.warning, .level), (.warning, .message):
-                return [.bold]
-            default:
-                return nil
+            let style: () -> [Style]? = {
+                switch (level, component) {
+                case (.critical, .level), (.critical, .message):
+                    return [.bold, .underline]
+                case (.error, .level), (.error, .message):
+                    return [.bold, .underline]
+                case (.warning, .level), (.warning, .message):
+                    return [.bold]
+                default:
+                    return nil
+                }
             }
+            #if Xcode
+            switch Self.forceColor {
+            case false:
+                return nil
+            case true:
+                return style()
+            }
+            #else
+            return style()
             #endif
         }
     )
@@ -87,4 +111,10 @@ public extension Printer {
 
 public extension Printer {
     static let criticalBackgroundColor = Color(red: 255, green: 0, blue: 0)
+}
+
+public extension Printer {
+    static var forceColor: Bool {
+        ProcessInfo.processInfo.environment["SennaColor"] == "1"
+    }
 }
