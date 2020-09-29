@@ -13,10 +13,12 @@ jobs:
       - run: swift test --enable-test-discovery --sanitize=thread
   test_linux:
     runs-on: ubuntu-latest
-    matrix:
-      image:
-        - swiftlang/swift:nightly-5.3-xenial
-        - swiftlang/swift:nightly-5.3-bionic
+    strategy:
+      fail-fast: false
+      matrix:
+        image:
+          - swiftlang/swift:nightly-5.3-xenial
+          - swiftlang/swift:nightly-5.3-bionic
     container: ${{ matrix.image }}
     steps:
       - uses: actions/checkout@v2
