@@ -6,7 +6,7 @@
 
 ## Sinks
 
-- [ ] oslog
+- [x] oslog
 - [ ] syslog
 - [x] file
 

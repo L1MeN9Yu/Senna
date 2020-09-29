@@ -11,15 +11,28 @@ import Foundation
 import struct Logging.Logger
 
 public struct Standard {
-    private let stream: TextOutputStream
+    private let stream: FileDescriptorTextOutputStream
+    private let flushMode: FlushMode
 
-    private init(stream: TextOutputStream) { self.stream = stream }
+    private init(stream: FileDescriptorTextOutputStream, flushMode: FlushMode = .none) {
+        self.stream = stream
+        self.flushMode = flushMode
+    }
 }
 
 extension Standard: Sink {
     public func process(_ formattedLog: String, _ level: Logger.Level) {
         var stream = self.stream
-        stream.write("\(formattedLog)\n")
+        let flush: Bool
+        switch flushMode {
+        case .none:
+            flush = false
+        case let .when(whenLevel):
+            flush = level >= whenLevel ? true : false
+        case .always:
+            flush = true
+        }
+        stream.write("\(formattedLog)\n", flush: flush)
     }
 }
 
@@ -28,10 +41,10 @@ public extension Standard {
     static let error = Standard(stream: StandardErrorStream())
 }
 
-private struct StandardOutStream: TextOutputStream {
+private struct StandardOutStream: FileDescriptorTextOutputStream {
     fileprivate init() {}
 
-    private let file: UnsafeMutablePointer<FILE> = STDOUT
+    fileprivate let file: UnsafeMutablePointer<FILE> = STDOUT
 
     func write(_ string: String) {
         flockfile(file)
@@ -42,10 +55,10 @@ private struct StandardOutStream: TextOutputStream {
     }
 }
 
-private struct StandardErrorStream: TextOutputStream {
+private struct StandardErrorStream: FileDescriptorTextOutputStream {
     fileprivate init() {}
 
-    private let file: UnsafeMutablePointer<FILE> = STDERR
+    fileprivate let file: UnsafeMutablePointer<FILE> = STDERR
 
     func write(_ string: String) {
         flockfile(file)
