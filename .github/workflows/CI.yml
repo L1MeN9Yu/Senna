@@ -1,4 +1,4 @@
-name: Test Archive
+name: Test
 
 on: [ push ]
 
