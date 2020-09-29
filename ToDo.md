@@ -12,13 +12,13 @@
 
 ## Standard
 
-- [ ] flush mode
+- [x] flush mode
 
 ### File
 
 - [ ] rotating style
-- [ ] flush mode
+- [x] flush mode
 
 ## Other
 
-- [ ] linux support
+- [x] linux support

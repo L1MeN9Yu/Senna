@@ -1,13 +1,25 @@
 name: Test Archive
 
-on: [push]
+on: [ push ]
 
 jobs:
-  archive:
-    runs-on: macOS-latest
+  test_macos:
+    runs-on: macos-latest
+    steps:
+      - name: Select latest available Xcode
+        uses: maxim-lobanov/setup-xcode@1.0
+        with: { 'xcode-version': 'latest' }
+      - uses: actions/checkout@v2
+      - run: swift test --enable-test-discovery --sanitize=thread
+  test_linux:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: falses
+      matrix:
+        image:
+          - swiftlang/swift:nightly-5.3-xenial
+          - swiftlang/swift:nightly-5.3-bionic
+    container: ${{ matrix.image }}
     steps:
       - uses: actions/checkout@v2
-        with:
-          submodules: recursive
-      - name: Run tests
-        run: swift test
+      - run: swift test --enable-test-discovery --sanitize=thread
