@@ -16,29 +16,28 @@ public struct Formatter: Formable {
         self.separator = separator
     }
 
-    public func format(
-        level: Logger.Level, message: Logger.Message, prettyMetadata: String?,
-        file: String, function: String, line: UInt
-    ) -> String {
+    public func format(name: String, level: Logger.Level, message: Logger.Message, prettyMetadata: String?,
+                       file: String, function: String, line: UInt) -> String
+    {
         components
             .map { (component) -> (Component, String) in
                 let formatted = self.format(
-                    component: component, date: Date(), level: level, message: message, prettyMetadata: prettyMetadata,
+                    name: name, component: component, date: Date(), level: level, message: message, prettyMetadata: prettyMetadata,
                     file: file, function: function, line: line
                 )
                 return (component, formatted)
             }
             .map { (component, formatted) -> String in
                 var codes: [UInt8] = []
-                if let textColor = self.printable?.textColor(for: level, component: component) {
+                if let textColor = printable?.textColor(for: level, component: component) {
                     codes.append(contentsOf: Style.textColor)
                     codes.append(contentsOf: textColor.value)
                 }
-                if let backgroundColor = self.printable?.backgroundColor(for: level, component: component) {
+                if let backgroundColor = printable?.backgroundColor(for: level, component: component) {
                     codes.append(contentsOf: Style.backgroundColor)
                     codes.append(contentsOf: backgroundColor.value)
                 }
-                if let styles = self.printable?.styles(for: level, component: component) {
+                if let styles = printable?.styles(for: level, component: component) {
                     codes.append(contentsOf: styles.value)
                 }
                 guard !codes.isEmpty else { return formatted }
@@ -50,8 +49,9 @@ public struct Formatter: Formable {
 }
 
 public extension Formatter {
-    static let `default` = Formatter(
+    static let standard = Formatter(
         components: [
+            .name,
             .timestamp(Component.defaultDateFormatter),
             .level,
             .group([
@@ -68,6 +68,7 @@ public extension Formatter {
     )
 
     static let file = Formatter(components: [
+        .name,
         .timestamp(Component.defaultDateFormatter),
         .group([
             .level,

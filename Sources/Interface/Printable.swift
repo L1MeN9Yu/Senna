@@ -11,10 +11,10 @@ public protocol Printable {
     func styles(for level: Logger.Level, component: Component) -> [Style]?
 }
 
-extension Printable {
-    public func textColor(for level: Logger.Level, component: Component) -> Color? { nil }
+public extension Printable {
+    func textColor(for level: Logger.Level, component: Component) -> Color? { nil }
 
-    public func backgroundColor(for level: Logger.Level, component: Component) -> Color? { nil }
+    func backgroundColor(for level: Logger.Level, component: Component) -> Color? { nil }
 
-    public func styles(for level: Logger.Level, component: Component) -> [Style]? { nil }
+    func styles(for level: Logger.Level, component: Component) -> [Style]? { nil }
 }

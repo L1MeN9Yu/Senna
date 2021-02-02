@@ -1,3 +1,4 @@
+import Darwin.C.stdio
 import Foundation
 import Logging
 @testable import Senna
@@ -5,8 +6,8 @@ import XCTest
 
 final class SennaTests: XCTestCase {
     func testStandardOut() {
-        var logger = Logger(label: "Standard") { (_: String) -> LogHandler in
-            Handler(sink: Standard.out, formatter: Formatter.default, logLevel: .trace)
+        var logger = Logger(label: "Standard") {
+            Handler(name: $0, sink: Standard.out, formatter: Formatter.standard, logLevel: .trace)
         }
         logger.trace("\(UInt8.max)")
         logger.debug("\(UInt8.max)")
@@ -21,10 +22,9 @@ final class SennaTests: XCTestCase {
 
     func testFile() {
         let fileURL = URL(fileURLWithPath: "file")
-        var logger = Logger(label: "Standard") { (_: String) -> LogHandler in
-            Handler(sink: File(fileURL), formatter: Formatter.file, logLevel: .trace)
+        var logger = Logger(label: "Standard") {
+            Handler(name: $0, sink: File(fileURL), formatter: Formatter.file, logLevel: .trace)
         }
-
         var count = 500
         while count >= 0 {
             logger.trace("\(UInt8.max)")
@@ -46,8 +46,8 @@ final class SennaTests: XCTestCase {
     #else
     @available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
     func testOS() {
-        var logger = Logger(label: "Standard") { (_: String) -> LogHandler in
-            Handler(sink: OS(subsystem: "subsystem", category: "category"), formatter: Formatter.os, logLevel: .trace)
+        var logger = Logger(label: "Standard") {
+            Handler(name: $0, sink: OS(subsystem: "subsystem", category: "category"), formatter: Formatter.os, logLevel: .trace)
         }
         logger.trace("\(UInt8.max)")
         logger.debug("\(UInt8.max)")
@@ -62,11 +62,13 @@ final class SennaTests: XCTestCase {
     }
     #endif
 
-    func testMultiHandler() {
-        var logger = Logger(label: "multi") { _ in
+    func testMultiHandler() throws {
+        let fileURL = try FileManager.default.url(for: .itemReplacementDirectory, in: .userDomainMask, appropriateFor: URL(fileURLWithPath: "."), create: true).appendingPathExtension(ProcessInfo().globallyUniqueString)
+        print("url = \(fileURL)")
+        var logger = Logger(label: "Multi") {
             MultiplexLogHandler([
-                Handler(sink: Standard.out, formatter: Formatter.default, logLevel: .trace),
-                Handler(sink: Standard.error, formatter: Formatter.default, logLevel: .trace),
+                Handler(name: $0, sink: Standard.out, formatter: Formatter.standard, logLevel: .trace),
+                Handler(name: $0, sink: File(fileURL), formatter: Formatter.file, logLevel: .trace),
             ])
         }
         logger.trace("\(UInt8.max)")
@@ -81,7 +83,7 @@ final class SennaTests: XCTestCase {
         logger.error("\(UInt8.max)")
     }
 
-    static var allTests = { () -> [(String, (SennaTests) -> () -> Void)] in
+    static var allTests = { () -> [(String, (SennaTests) -> () throws -> Void)] in
         var allTests = [
             ("testStandardOut", testStandardOut),
             ("testFile", testFile),

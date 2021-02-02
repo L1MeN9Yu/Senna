@@ -5,6 +5,9 @@
 import Foundation
 
 public enum Component {
+    /// The name
+    case name
+
     /// Timestamp of log
     /// Specifying your timestamp format can be done by providing a DateFormatter through `Formatter.timestampFormatter`
     case timestamp(DateFormatter)
