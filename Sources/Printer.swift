@@ -6,9 +6,12 @@ import Foundation
 import Logging
 
 public struct Printer: Printable {
+    let emoji: (Logger.Level, Component) -> String?
     let textColor: (Logger.Level, Component) -> Color?
     let backgroundColor: (Logger.Level, Component) -> Color?
     let styles: (Logger.Level, Component) -> [Style]?
+
+    public func emoji(for level: Logger.Level, component: Component) -> String? { emoji(level, component) }
 
     public func textColor(for level: Logger.Level, component: Component) -> Color? { textColor(level, component) }
 
@@ -19,6 +22,38 @@ public struct Printer: Printable {
 
 public extension Printer {
     static let `default` = Printer(
+        emoji: { level, component in
+            let emoji: () -> String? = {
+                switch (level, component) {
+                case (.trace, .level):
+                    return "⚫️"
+                case (.debug, .level):
+                    return "🟢"
+                case (.info, .level):
+                    return "🔵"
+                case (.notice, .level):
+                    return "🟣"
+                case (.warning, .level):
+                    return "⚠️"
+                case (.error, .level):
+                    return "❗️"
+                case (.critical, .level):
+                    return "❌"
+                default:
+                    return nil
+                }
+            }
+            #if Xcode
+            switch Self.forceColor {
+            case false:
+                return emoji()
+            case true:
+                return nil
+            }
+            #else
+            return nil
+            #endif
+        },
         textColor: { level, component in
             let color: () -> Color? = {
                 switch (level, component) {

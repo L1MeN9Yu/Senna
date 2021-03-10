@@ -27,6 +27,10 @@ public struct Formatter: Formable {
                 )
                 return (component, formatted)
             }
+            .map { component, formatted -> (Component, String) in
+                guard let emoji = printable?.emoji(for: level, component: component) else { return (component, formatted) }
+                return (component, "\(emoji)")
+            }
             .map { (component, formatted) -> String in
                 var codes: [UInt8] = []
                 if let textColor = printable?.textColor(for: level, component: component) {
