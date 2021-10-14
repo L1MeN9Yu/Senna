@@ -20,7 +20,7 @@ public struct Formatter: Formable {
                        file: String, function: String, line: UInt) -> String
     {
         components
-            .map { (component) -> (Component, String) in
+            .map { component -> (Component, String) in
                 let formatted = self.format(
                     name: name, component: component, date: Date(), level: level, message: message, prettyMetadata: prettyMetadata,
                     file: file, function: function, line: line
@@ -31,7 +31,7 @@ public struct Formatter: Formable {
                 guard let emoji = printable?.emoji(for: level, component: component) else { return (component, formatted) }
                 return (component, "\(emoji)")
             }
-            .map { (component, formatted) -> String in
+            .map { component, formatted -> String in
                 var codes: [UInt8] = []
                 if let textColor = printable?.textColor(for: level, component: component) {
                     codes.append(contentsOf: Style.textColor)

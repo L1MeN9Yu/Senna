@@ -9,7 +9,7 @@ let package = Package(
         .library(name: "Senna", targets: ["Senna"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-log.git", from: "1.0.0"),
+        .package(url: "https://github.com/apple/swift-log.git", from: "1.4.2"),
     ],
     targets: [
         .target(name: "Senna", dependencies: [
