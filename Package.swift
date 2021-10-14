@@ -15,6 +15,8 @@ let package = Package(
         .target(name: "Senna", dependencies: [
             .product(name: "Logging", package: "swift-log"),
         ], path: "Sources"),
-        .testTarget(name: "SennaTests", dependencies: ["Senna"]),
+        .testTarget(name: "SennaTests", dependencies: [
+            .target(name: "Senna"),
+        ], path: "Tests"),
     ]
 )
