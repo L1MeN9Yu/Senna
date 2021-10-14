@@ -67,7 +67,7 @@ final class SennaTests: XCTestCase {
     #endif
 
     func testMultiHandler() throws {
-        let fileURL = try FileManager.default.url(for: .itemReplacementDirectory, in: .userDomainMask, appropriateFor: URL(fileURLWithPath: "."), create: true).appendingPathExtension(ProcessInfo().globallyUniqueString)
+        let fileURL = URL(fileURLWithPath: ProcessInfo.processInfo.globallyUniqueString)
         print("url = \(fileURL)")
         var logger = Logger(label: "Multi") {
             MultiplexLogHandler([
@@ -86,19 +86,4 @@ final class SennaTests: XCTestCase {
         logger.warning("\(UInt8.max)")
         logger.error("\(UInt8.max)")
     }
-
-    static var allTests = { () -> [(String, (SennaTests) -> () throws -> Void)] in
-        var allTests = [
-            ("testStandardOut", testStandardOut),
-            ("testFile", testFile),
-            ("testMultiHandler", testMultiHandler),
-        ]
-        #if os(Linux)
-        #else
-        if #available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *) {
-            allTests.append(("testOS", testOS))
-        }
-        #endif
-        return allTests
-    }()
 }
