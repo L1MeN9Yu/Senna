@@ -1,4 +1,8 @@
-import Darwin.C.stdio
+#if os(Linux)
+import Glibc
+#else
+import Darwin
+#endif
 import Foundation
 import Logging
 @testable import Senna
