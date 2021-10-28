@@ -12,13 +12,13 @@ final class OSTests: XCTestCase {
         let logger = Logger(label: "OSLog") {
             Handler(name: $0, sink: OS(subsystem: "subsystem", category: "category"), formatter: Formatter.os, logLevel: .trace)
         }
-        logger.trace("\(UInt8.max)")
-        logger.debug("\(UInt8.max)")
-        logger.info("\(UInt8.max)")
-        logger.notice("\(UInt8.max)")
-        logger.warning("\(UInt8.max)")
-        logger.error("\(UInt8.max)")
-        logger.critical("\(UInt8.max)")
+        logger.trace("\(UInt8.random(in: .min ..< .max))")
+        logger.debug("\(UInt8.random(in: .min ..< .max))")
+        logger.info("\(UInt8.random(in: .min ..< .max))")
+        logger.notice("\(UInt8.random(in: .min ..< .max))")
+        logger.warning("\(UInt8.random(in: .min ..< .max))")
+        logger.error("\(UInt8.random(in: .min ..< .max))")
+        logger.critical("\(UInt8.random(in: .min ..< .max))")
     }
     #else
     #endif
