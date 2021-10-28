@@ -75,4 +75,23 @@ final class StandardSinkTests: XCTestCase {
         logger.error("\(UInt8.random(in: .min ..< .max))")
         logger.critical("\(UInt8.random(in: .min ..< .max))")
     }
+
+    func testCustomPrinter() {
+        struct NilPrinter: Printable {}
+
+        let logger = Logger(label: "stdout+xcode") {
+            Handler(name: $0, sink: Standard.out(), formatter: Senna.Formatter(components: [
+                .message,
+                .metadata,
+            ], printer: NilPrinter()), logLevel: .trace)
+        }
+
+        logger.trace("\(UInt8.random(in: .min ..< .max))")
+        logger.debug("\(UInt8.random(in: .min ..< .max))")
+        logger.info("\(UInt8.random(in: .min ..< .max))")
+        logger.notice("\(UInt8.random(in: .min ..< .max))")
+        logger.warning("\(UInt8.random(in: .min ..< .max))")
+        logger.error("\(UInt8.random(in: .min ..< .max))")
+        logger.critical("\(UInt8.random(in: .min ..< .max))")
+    }
 }
