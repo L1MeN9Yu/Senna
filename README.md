@@ -6,6 +6,9 @@ a logging engine backend of Apple's [swift-log](https://github.com/apple/swift-l
 
 [![Build](https://github.com/L1MeN9Yu/Senna/actions/workflows/Build.yml/badge.svg)](https://github.com/L1MeN9Yu/Senna/actions/workflows/Build.yml)
 [![codecov](https://codecov.io/gh/L1MeN9Yu/Senna/branch/main/graph/badge.svg?token=0ZQSVH4ERX)](https://codecov.io/gh/L1MeN9Yu/Senna)
+[![platforms](https://img.shields.io/badge/Platforms-macOS%20%7C%20iOS%20%7C%20tvOS%20%7C%20watchOS%20%7C%20Linux-orange.svg?style=flat)](https://github.com/L1MeN9Yu/Senna/blob/main/Package.swift)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/L1MeN9Yu/Senna/blob/main/LICENSE)
+[![release](https://img.shields.io/github/v/release/L1MeN9Yu/Senna.svg?color=blue)](https://github.com/L1MeN9Yu/Senna/releases)
 
 ## Credit
 
@@ -13,6 +16,10 @@ a logging engine backend of Apple's [swift-log](https://github.com/apple/swift-l
 * [swift-log-format-and-pipe](https://github.com/Adorkable/swift-log-format-and-pipe)
 * [spdlog](https://github.com/gabime/spdlog)
 * [Rainbow](https://github.com/onevcat/Rainbow)
+
+## License
+
+Senna is available under the [MIT license](http://www.opensource.org/licenses/mit-license). See the LICENSE file for details.
 
 ## Thanks | 鸣谢
 
