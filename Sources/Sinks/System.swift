@@ -2,7 +2,13 @@
 // Created by Mengyu Li on 2021/10/28.
 //
 
+#if os(iOS) || os(OSX) || os(tvOS) || os(watchOS)
 import Darwin.POSIX.syslog
+#elseif os(Linux)
+import Glibc
+#else
+#error("not support yet")
+#endif
 
 struct System: Sink {
     func process(_ formattedLog: String, _ level: Logger.Level) {
