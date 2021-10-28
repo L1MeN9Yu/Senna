@@ -6,12 +6,11 @@ import Foundation
 import Logging
 
 public struct Handler: LogHandler {
-    private var prettyMetadata: String?
-
     public let name: String
     public let sink: Sink
     public let formatter: Formable
 
+    private var prettyMetadata: String?
     public var metadata = Logger.Metadata() {
         didSet { prettyMetadata = prettify(metadata) }
     }
@@ -31,9 +30,11 @@ public struct Handler: LogHandler {
     }
 
     public func log(level: Logger.Level, message: Logger.Message, metadata: Logger.Metadata?, source: String, file: String, function: String, line: UInt) {
-        let prettyMetadata = metadata?.isEmpty ?? true
-            ? self.prettyMetadata
-            : prettify(self.metadata.merging(metadata!, uniquingKeysWith: { _, new in new }))
+        let prettyMetadata = metadata.map { metadata -> String? in
+            prettify(self.metadata.merging(metadata, uniquingKeysWith: { $1 }))
+        }
+            ??
+            prettyMetadata
 
         let formattedMessage = formatter.format(name: name, level: level, message: message, prettyMetadata: prettyMetadata, file: file, function: function, line: line)
         sink.process(formattedMessage, level)

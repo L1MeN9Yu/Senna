@@ -7,18 +7,17 @@ import Glibc
 #else
 import Darwin
 #endif
-import Foundation
 import struct Logging.Logger
 
 public struct File {
-    public let url: URL
+    public let path: String
     private let fileStream: FileStream
     private let flushMode: FlushMode
 
-    public init(_ url: URL, flushMode: FlushMode = .none) {
-        self.url = url
+    public init(_ path: String, flushMode: FlushMode = .none) {
+        self.path = path
         self.flushMode = flushMode
-        let file = url.path.withCString { (filename: UnsafePointer<Int8>) -> UnsafeMutablePointer<FILE> in
+        let file = path.withCString { (filename: UnsafePointer<Int8>) -> UnsafeMutablePointer<FILE> in
             "w".withCString { (mode: UnsafePointer<Int8>) -> UnsafeMutablePointer<FILE> in
                 fopen(filename, mode)
             }
@@ -34,11 +33,11 @@ extension File: Sink {
         case .none:
             flush = false
         case let .when(whenLevel):
-            flush = level >= whenLevel ? true : false
+            flush = level >= whenLevel
         case .always:
             flush = true
         }
-        var fileStream = self.fileStream
+        var fileStream = fileStream
         fileStream.write("\(formattedLog)\n", flush: flush)
     }
 }

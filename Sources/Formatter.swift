@@ -16,15 +16,10 @@ public struct Formatter: Formable {
         self.separator = separator
     }
 
-    public func format(name: String, level: Logger.Level, message: Logger.Message, prettyMetadata: String?,
-                       file: String, function: String, line: UInt) -> String
-    {
+    public func format(name: String, level: Logger.Level, message: Logger.Message, prettyMetadata: String?, file: String, function: String, line: UInt) -> String {
         components
             .map { component -> (Component, String) in
-                let formatted = self.format(
-                    name: name, component: component, date: Date(), level: level, message: message, prettyMetadata: prettyMetadata,
-                    file: file, function: function, line: line
-                )
+                let formatted = self.format(name: name, component: component, date: Date(), level: level, message: message, prettyMetadata: prettyMetadata, file: file, function: function, line: line)
                 return (component, formatted)
             }
             .map { component, formatted -> (Component, String) in

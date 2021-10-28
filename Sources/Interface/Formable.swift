@@ -7,15 +7,12 @@ import Logging
 
 public protocol Formable {
     var components: [Component] { get }
-    func format(name: String, level: Logger.Level, message: Logger.Message, prettyMetadata: String?,
-                file: String, function: String, line: UInt) -> String
+    func format(name: String, level: Logger.Level, message: Logger.Message, prettyMetadata: String?, file: String, function: String, line: UInt) -> String
 }
 
 public extension Formable {
     // swiftlint:disable function_parameter_count
-    func format(name: String, component: Component, date: Date, level: Logger.Level, message: Logger.Message,
-                prettyMetadata: String?, file: String, function: String, line: UInt) -> String
-    {
+    func format(name: String, component: Component, date: Date, level: Logger.Level, message: Logger.Message, prettyMetadata: String?, file: String, function: String, line: UInt) -> String {
         switch component {
         case .name:
             return "<\(name)>"
@@ -37,11 +34,10 @@ public extension Formable {
             return value
         case let .group(components):
             return components.map {
-                format(
-                    name: name, component: $0, date: date, level: level, message: message,
-                    prettyMetadata: prettyMetadata, file: file, function: function, line: line
-                )
-            }.joined()
+                format(name: name, component: $0, date: date, level: level, message: message, prettyMetadata: prettyMetadata, file: file, function: function, line: line)
+            }
+            .joined()
         }
     }
+    // swiftlint:enable function_parameter_count
 }

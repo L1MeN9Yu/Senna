@@ -2,8 +2,6 @@
 // Created by Mengyu Li on 2020/8/12.
 //
 
-import Foundation
-
 /// https://en.wikipedia.org/wiki/ANSI_escape_code#SGR_parameters
 public enum Style: UInt8 {
     case normal = 0

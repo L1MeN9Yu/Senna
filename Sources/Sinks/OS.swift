@@ -3,7 +3,6 @@
 //
 
 #if os(iOS) || os(OSX) || os(tvOS) || os(watchOS)
-import Foundation
 import Logging
 import os.log
 

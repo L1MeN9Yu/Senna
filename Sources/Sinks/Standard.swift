@@ -7,7 +7,6 @@ import Glibc
 #else
 import Darwin
 #endif
-import Foundation
 import struct Logging.Logger
 
 public struct Standard {
@@ -28,7 +27,7 @@ extension Standard: Sink {
         case .none:
             flush = false
         case let .when(whenLevel):
-            flush = level >= whenLevel ? true : false
+            flush = level >= whenLevel
         case .always:
             flush = true
         }

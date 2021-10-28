@@ -27,7 +27,7 @@ final class SennaTests: XCTestCase {
     func testFile() {
         let fileURL = URL(fileURLWithPath: "file")
         var logger = Logger(label: "Standard") {
-            Handler(name: $0, sink: File(fileURL), formatter: Formatter.file, logLevel: .trace)
+            Handler(name: $0, sink: File(fileURL.path), formatter: Formatter.file, logLevel: .trace)
         }
         var count = 500
         while count >= 0 {
@@ -72,7 +72,7 @@ final class SennaTests: XCTestCase {
         var logger = Logger(label: "Multi") {
             MultiplexLogHandler([
                 Handler(name: $0, sink: Standard.out, formatter: Formatter.standard, logLevel: .trace),
-                Handler(name: $0, sink: File(fileURL), formatter: Formatter.file, logLevel: .trace),
+                Handler(name: $0, sink: File(fileURL.path), formatter: Formatter.file, logLevel: .trace),
             ])
         }
         logger.trace("\(UInt8.max)")

@@ -10,12 +10,16 @@ disabled_rules:
   - todo
   - large_tuple
 
-line_length: 120
+line_length: 240
 
 indentation_width: 4
 
 function_body_length:
   - 50
+
+function_parameter_count:
+  warning: 8
+  error: 8
 
 included:
   - Sources
