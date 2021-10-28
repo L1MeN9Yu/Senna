@@ -2,14 +2,20 @@
 // Created by Mengyu Li on 2020/8/20.
 //
 
-import Foundation
 import Logging
 
 public struct Printer: Printable {
-    let emoji: (Logger.Level, Component) -> String?
-    let textColor: (Logger.Level, Component) -> Color?
-    let backgroundColor: (Logger.Level, Component) -> Color?
-    let styles: (Logger.Level, Component) -> [Style]?
+    private let emoji: EmojiGeneration
+    private let textColor: TextColorGeneration
+    private let backgroundColor: BackgroundColorGeneration
+    private let styles: StylesGeneration
+
+    public init(emoji: @escaping EmojiGeneration, textColor: @escaping TextColorGeneration, backgroundColor: @escaping BackgroundColorGeneration, styles: @escaping StylesGeneration) {
+        self.emoji = emoji
+        self.textColor = textColor
+        self.backgroundColor = backgroundColor
+        self.styles = styles
+    }
 
     public func emoji(for level: Logger.Level, component: Component) -> String? { emoji(level, component) }
 
@@ -21,113 +27,79 @@ public struct Printer: Printable {
 }
 
 public extension Printer {
+    typealias EmojiGeneration = (Logger.Level, Component) -> String?
+    typealias TextColorGeneration = (Logger.Level, Component) -> Color?
+    typealias BackgroundColorGeneration = (Logger.Level, Component) -> Color?
+    typealias StylesGeneration = (Logger.Level, Component) -> [Style]?
+}
+
+public extension Printer {
     static let `default` = Printer(
-        emoji: { level, component in
-            let emoji: () -> String? = {
-                switch (level, component) {
-                case (.trace, .level):
-                    return "⚫️"
-                case (.debug, .level):
-                    return "🟢"
-                case (.info, .level):
-                    return "🔵"
-                case (.notice, .level):
-                    return "🟣"
-                case (.warning, .level):
-                    return "⚠️"
-                case (.error, .level):
-                    return "❗️"
-                case (.critical, .level):
-                    return "❌"
-                default:
-                    return nil
-                }
-            }
-            #if Xcode
-            switch Self.forceColor {
-            case false:
-                return emoji()
-            case true:
+        emoji: { _, _ in nil },
+        textColor: {
+            switch ($0, $1) {
+            case (.trace, .level), (.trace, .message):
+                return traceTextColor
+            case (.debug, .level), (.debug, .message):
+                return debugTextColor
+            case (.info, .level), (.info, .message):
+                return infoTextColor
+            case (.notice, .level), (.notice, .message):
+                return noticeTextColor
+            case (.warning, .level), (.warning, .message):
+                return warningTextColor
+            case (.error, .level), (.error, .message):
+                return errorTextColor
+            default:
                 return nil
             }
-            #else
-            return nil
-            #endif
         },
-        textColor: { level, component in
-            let color: () -> Color? = {
-                switch (level, component) {
-                case (.trace, .level), (.trace, .message):
-                    return traceTextColor
-                case (.debug, .level), (.debug, .message):
-                    return debugTextColor
-                case (.info, .level), (.info, .message):
-                    return infoTextColor
-                case (.notice, .level), (.notice, .message):
-                    return noticeTextColor
-                case (.warning, .level), (.warning, .message):
-                    return warningTextColor
-                case (.error, .level), (.error, .message):
-                    return errorTextColor
-                default:
-                    return nil
-                }
-            }
-            #if Xcode
-            switch Self.forceColor {
-            case false:
+        backgroundColor: {
+            switch ($0, $1) {
+            case (.critical, .level), (.critical, .message):
+                return criticalBackgroundColor
+            default:
                 return nil
-            case true:
-                return color()
             }
-            #else
-            return color()
-            #endif
         },
-        backgroundColor: { level, component in
-            let color: () -> Color? = {
-                switch (level, component) {
-                case (.critical, .level), (.critical, .message):
-                    return criticalBackgroundColor
-                default:
-                    return nil
-                }
-            }
-            #if Xcode
-            switch Self.forceColor {
-            case false:
+        styles: {
+            switch ($0, $1) {
+            case (.critical, .level), (.critical, .message):
+                return [.bold, .underline]
+            case (.error, .level), (.error, .message):
+                return [.bold, .underline]
+            case (.warning, .level), (.warning, .message):
+                return [.bold]
+            default:
                 return nil
-            case true:
-                return color()
             }
-            #else
-            return color()
-            #endif
-        },
-        styles: { level, component in
-            let style: () -> [Style]? = {
-                switch (level, component) {
-                case (.critical, .level), (.critical, .message):
-                    return [.bold, .underline]
-                case (.error, .level), (.error, .message):
-                    return [.bold, .underline]
-                case (.warning, .level), (.warning, .message):
-                    return [.bold]
-                default:
-                    return nil
-                }
-            }
-            #if Xcode
-            switch Self.forceColor {
-            case false:
-                return nil
-            case true:
-                return style()
-            }
-            #else
-            return style()
-            #endif
         }
+    )
+
+    static let xcode = Printer(
+        emoji: {
+            switch ($0, $1) {
+            case (.trace, .level):
+                return "⚫️"
+            case (.debug, .level):
+                return "🟢"
+            case (.info, .level):
+                return "🔵"
+            case (.notice, .level):
+                return "🟣"
+            case (.warning, .level):
+                return "⚠️"
+            case (.error, .level):
+                return "❗️"
+            case (.critical, .level):
+                return "❌"
+            default:
+                return nil
+            }
+        },
+        textColor: { _, _ in nil },
+        backgroundColor: { _, _ in nil },
+        styles: { _, _ in nil }
     )
 }
 
@@ -146,10 +118,4 @@ public extension Printer {
 
 public extension Printer {
     static let criticalBackgroundColor = Color(red: 255, green: 0, blue: 0)
-}
-
-public extension Printer {
-    static var forceColor: Bool {
-        ProcessInfo.processInfo.environment["SennaColor"] == "1"
-    }
 }

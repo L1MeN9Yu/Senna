@@ -7,12 +7,12 @@ import Logging
 
 public struct Formatter: Formable {
     public let components: [Component]
-    public let printable: Printable?
+    public let printer: Printable?
     public let separator: String?
 
-    public init(components: [Component] = Component.defaultComponents, printable: Printable? = nil, separator: String? = " ") {
+    public init(components: [Component] = Component.defaultComponents, printer: Printable? = nil, separator: String? = " ") {
         self.components = components
-        self.printable = printable
+        self.printer = printer
         self.separator = separator
     }
 
@@ -23,20 +23,20 @@ public struct Formatter: Formable {
                 return (component, formatted)
             }
             .map { component, formatted -> (Component, String) in
-                guard let emoji = printable?.emoji(for: level, component: component) else { return (component, formatted) }
+                guard let emoji = printer?.emoji(for: level, component: component) else { return (component, formatted) }
                 return (component, "\(emoji)")
             }
             .map { component, formatted -> String in
                 var codes: [UInt8] = []
-                if let textColor = printable?.textColor(for: level, component: component) {
+                if let textColor = printer?.textColor(for: level, component: component) {
                     codes.append(contentsOf: Style.textColor)
                     codes.append(contentsOf: textColor.value)
                 }
-                if let backgroundColor = printable?.backgroundColor(for: level, component: component) {
+                if let backgroundColor = printer?.backgroundColor(for: level, component: component) {
                     codes.append(contentsOf: Style.backgroundColor)
                     codes.append(contentsOf: backgroundColor.value)
                 }
-                if let styles = printable?.styles(for: level, component: component) {
+                if let styles = printer?.styles(for: level, component: component) {
                     codes.append(contentsOf: styles.value)
                 }
                 guard !codes.isEmpty else { return formatted }
@@ -62,7 +62,7 @@ public extension Formatter {
             .message,
             .metadata,
         ],
-        printable: Printer.default,
+        printer: Printer.default,
         separator: " ▶ "
     )
 
