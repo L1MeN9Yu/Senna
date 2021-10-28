@@ -4,6 +4,6 @@
 
 import Logging
 
-public protocol Sink {
+public protocol SinkCapable {
     func process(_ formattedLog: String, _ level: Logger.Level)
 }

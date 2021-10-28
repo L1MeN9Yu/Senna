@@ -5,11 +5,11 @@
 @testable import Senna
 import XCTest
 
-final class FileTests: XCTestCase {
+final class FileSinkTests: XCTestCase {
     func testFile() throws {
         let fileURL = URL(fileURLWithPath: "file.log")
         try Data().write(to: fileURL, options: .atomic)
-        let fileSink = File(fileURL.path)
+        let fileSink = FileSink(fileURL.path)
         let logger = Logger(label: "File") {
             Handler(name: $0, sink: fileSink, formatter: Formatter.file, logLevel: .trace)
         }
@@ -37,7 +37,7 @@ final class FileTests: XCTestCase {
     func testFileFlush() throws {
         let fileURL = URL(fileURLWithPath: "file.log")
         try Data().write(to: fileURL, options: .atomic)
-        let fileSink = File(fileURL.path, flushMode: .always)
+        let fileSink = FileSink(fileURL.path, flushMode: .always)
         let logger = Logger(label: "File") {
             Handler(name: $0, sink: fileSink, formatter: Formatter.file, logLevel: .trace)
         }

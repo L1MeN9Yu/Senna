@@ -9,7 +9,7 @@ import Darwin
 #endif
 import Logging
 
-public struct File {
+public struct FileSink {
     public let path: String
     private let fileStream: FileStream
     private let flushMode: FlushMode
@@ -26,7 +26,7 @@ public struct File {
     }
 }
 
-public extension File {
+public extension FileSink {
     @discardableResult
     func flush() -> Self {
         fflush(fileStream.file)
@@ -40,7 +40,7 @@ public extension File {
     }
 }
 
-extension File: Sink {
+extension FileSink: SinkCapable {
     public func process(_ formattedLog: String, _ level: Logger.Level) {
         let flush: Bool
         switch flushMode {

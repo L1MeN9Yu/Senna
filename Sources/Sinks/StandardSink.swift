@@ -19,7 +19,7 @@ public struct Standard {
     }
 }
 
-extension Standard: Sink {
+extension Standard: SinkCapable {
     public func process(_ formattedLog: String, _ level: Logger.Level) {
         var stream = stream
         let flush: Bool

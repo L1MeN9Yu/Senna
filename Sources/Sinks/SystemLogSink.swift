@@ -10,7 +10,7 @@ import Glibc
 #error("not support yet")
 #endif
 
-struct System: Sink {
+struct SystemLogSink: SinkCapable {
     func process(_ formattedLog: String, _ level: Logger.Level) {
         withVaList([]) { args in
             formattedLog.withCString {
@@ -20,7 +20,7 @@ struct System: Sink {
     }
 }
 
-private extension System {
+private extension SystemLogSink {
     func priority(_ level: Logger.Level) -> Int32 {
         switch level {
         case .trace:

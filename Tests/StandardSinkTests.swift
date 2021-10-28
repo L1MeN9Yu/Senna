@@ -5,7 +5,7 @@
 @testable import Senna
 import XCTest
 
-final class StandardTests: XCTestCase {
+final class StandardSinkTests: XCTestCase {
     func testStandardOut() {
         let logger = Logger(label: "stdout") {
             Handler(name: $0, sink: Standard.out(), formatter: Formatter.standard, logLevel: .trace)

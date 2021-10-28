@@ -7,7 +7,7 @@ import Logging
 import os.log
 
 @available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
-public struct OS: Sink {
+public struct OSLogSink: SinkCapable {
     private let osLog: OSLog
 
     public init(subsystem: String, category: String) {
