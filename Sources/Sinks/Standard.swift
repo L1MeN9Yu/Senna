@@ -21,7 +21,7 @@ public struct Standard {
 
 extension Standard: Sink {
     public func process(_ formattedLog: String, _ level: Logger.Level) {
-        var stream = self.stream
+        var stream = stream
         let flush: Bool
         switch flushMode {
         case .none:
@@ -69,8 +69,8 @@ private struct StandardErrorStream: FileDescriptorTextOutputStream {
 }
 
 #if os(Linux)
-private let STDOUT = Glibc.stdout!
-private let STDERR = Glibc.stderr!
+private let STDOUT = Glibc.stdout.unsafelyUnwrapped
+private let STDERR = Glibc.stderr.unsafelyUnwrapped
 #else
 private let STDOUT = Darwin.stdout
 private let STDERR = Darwin.stderr

@@ -7,7 +7,7 @@ import Glibc
 #else
 import Darwin
 #endif
-import struct Logging.Logger
+import Logging
 
 public struct File {
     public let path: String
@@ -18,11 +18,25 @@ public struct File {
         self.path = path
         self.flushMode = flushMode
         let file = path.withCString { (filename: UnsafePointer<Int8>) -> UnsafeMutablePointer<FILE> in
-            "w".withCString { (mode: UnsafePointer<Int8>) -> UnsafeMutablePointer<FILE> in
+            "a".withCString { (mode: UnsafePointer<Int8>) -> UnsafeMutablePointer<FILE> in
                 fopen(filename, mode)
             }
         }
         fileStream = FileStream(file)
+    }
+}
+
+public extension File {
+    @discardableResult
+    func flush() -> Self {
+        fflush(fileStream.file)
+        return self
+    }
+
+    @discardableResult
+    func close() -> Self {
+        fclose(fileStream.file)
+        return self
     }
 }
 

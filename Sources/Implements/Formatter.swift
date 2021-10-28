@@ -66,6 +66,24 @@ public extension Formatter {
         separator: " ▶ "
     )
 
+    static let standardXcode = Formatter(
+        components: [
+            .name,
+            .timestamp(Component.defaultDateFormatter),
+            .level,
+            .group([
+                .file,
+                .text(":"),
+                .line,
+            ]),
+            .function,
+            .message,
+            .metadata,
+        ],
+        printer: Printer.xcode,
+        separator: " ▶ "
+    )
+
     static let file = Formatter(components: [
         .name,
         .timestamp(Component.defaultDateFormatter),
