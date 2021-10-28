@@ -5,8 +5,8 @@ final class MultiHandlerTests: XCTestCase {
     func testMultiHandler() throws {
         var logger = Logger(label: "Multi") {
             MultiplexLogHandler([
-                Handler(name: $0, sink: Standard.out, formatter: Formatter.standard, logLevel: .trace),
-                Handler(name: $0, sink: Standard.error, formatter: Formatter.standardXcode, logLevel: .notice),
+                Handler(name: $0, sink: Standard.out(flushMode: .when(.warning)), formatter: Formatter.standard, logLevel: .trace),
+                Handler(name: $0, sink: Standard.error(flushMode: .always), formatter: Formatter.standardXcode, logLevel: .notice),
             ])
         }
         logger.trace("\(UInt8.random(in: .min ..< .max))")

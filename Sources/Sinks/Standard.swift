@@ -36,8 +36,13 @@ extension Standard: Sink {
 }
 
 public extension Standard {
-    static let out = Standard(stream: StandardOutStream())
-    static let error = Standard(stream: StandardErrorStream())
+    static func out(flushMode: FlushMode = .none) -> Self {
+        Standard(stream: StandardOutStream(), flushMode: flushMode)
+    }
+
+    static func error(flushMode: FlushMode = .none) -> Self {
+        Standard(stream: StandardErrorStream(), flushMode: flushMode)
+    }
 }
 
 private struct StandardOutStream: FileDescriptorTextOutputStream {
