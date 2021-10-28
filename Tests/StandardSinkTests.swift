@@ -45,6 +45,7 @@ final class StandardSinkTests: XCTestCase {
         logger.warning("\(UInt8.random(in: .min ..< .max))")
         logger.error("\(UInt8.random(in: .min ..< .max))")
         logger.critical("\(UInt8.random(in: .min ..< .max))", metadata: ["Key": .dictionary(["String": .stringConvertible(6)])])
+        XCTAssertEqual(logger[metadataKey: "UserID"], .stringConvertible(9527))
     }
 
     func testLevel() {
