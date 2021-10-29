@@ -9,7 +9,7 @@ import Darwin
 #endif
 import struct Logging.Logger
 
-public struct Standard {
+public struct StandardSink {
     private let stream: FileDescriptorTextOutputStream
     private let flushMode: FlushMode
 
@@ -19,7 +19,7 @@ public struct Standard {
     }
 }
 
-extension Standard: SinkCapable {
+extension StandardSink: SinkCapable {
     public func process(_ formattedLog: String, _ level: Logger.Level) {
         var stream = stream
         let flush: Bool
@@ -35,13 +35,13 @@ extension Standard: SinkCapable {
     }
 }
 
-public extension Standard {
+public extension StandardSink {
     static func out(flushMode: FlushMode = .none) -> Self {
-        Standard(stream: StandardOutStream(), flushMode: flushMode)
+        StandardSink(stream: StandardOutStream(), flushMode: flushMode)
     }
 
     static func error(flushMode: FlushMode = .none) -> Self {
-        Standard(stream: StandardErrorStream(), flushMode: flushMode)
+        StandardSink(stream: StandardErrorStream(), flushMode: flushMode)
     }
 }
 
