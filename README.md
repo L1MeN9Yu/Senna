@@ -2,6 +2,16 @@
 
 **a logging engine backend of Apple's** [swift-log](https://github.com/apple/swift-log)
 
+## Status
+
+![Swift5.0+](https://img.shields.io/badge/Swift-5.0%2B-orange.svg?style=flat)
+[![release](https://img.shields.io/github/v/release/L1MeN9Yu/Senna.svg?color=blue)](https://github.com/L1MeN9Yu/Senna/releases)
+[![Build](https://github.com/L1MeN9Yu/Senna/actions/workflows/Build.yml/badge.svg)](https://github.com/L1MeN9Yu/Senna/actions/workflows/Build.yml)
+[![codecov](https://codecov.io/gh/L1MeN9Yu/Senna/branch/main/graph/badge.svg?token=0ZQSVH4ERX)](https://codecov.io/gh/L1MeN9Yu/Senna)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/L1MeN9Yu/Senna/blob/main/LICENSE)
+
+[![platforms](https://img.shields.io/badge/Platforms-macOS%20%7C%20iOS%20%7C%20tvOS%20%7C%20watchOS%20%7C%20Linux-orange.svg?style=flat)](https://github.com/L1MeN9Yu/Senna/blob/main/Package.swift)
+
 ## Features
 
 * Pure Swift
@@ -23,16 +33,6 @@ dependencies: [
     .package(url: "https://github.com/L1MeN9Yu/Senna.git", from: "2.4.0")
 ]
 ```
-
-## Status
-
-![Swift5.0+](https://img.shields.io/badge/Swift-5.0%2B-orange.svg?style=flat)
-[![release](https://img.shields.io/github/v/release/L1MeN9Yu/Senna.svg?color=blue)](https://github.com/L1MeN9Yu/Senna/releases)
-[![Build](https://github.com/L1MeN9Yu/Senna/actions/workflows/Build.yml/badge.svg)](https://github.com/L1MeN9Yu/Senna/actions/workflows/Build.yml)
-[![codecov](https://codecov.io/gh/L1MeN9Yu/Senna/branch/main/graph/badge.svg?token=0ZQSVH4ERX)](https://codecov.io/gh/L1MeN9Yu/Senna)
-[![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/L1MeN9Yu/Senna/blob/main/LICENSE)
-
-[![platforms](https://img.shields.io/badge/Platforms-macOS%20%7C%20iOS%20%7C%20tvOS%20%7C%20watchOS%20%7C%20Linux-orange.svg?style=flat)](https://github.com/L1MeN9Yu/Senna/blob/main/Package.swift)
 
 ## Credit
 
