@@ -8,7 +8,7 @@ import XCTest
 final class SystemLogSinkTests: XCTestCase {
     func testSystem() {
         let logger = Logger(label: "syslog") {
-            Handler(name: $0, sink: SystemLogSink(), formatter: Formatter.os, logLevel: .trace)
+            Handler(name: $0, sink: SystemLogSink(), formation: Formation.system, logLevel: .trace)
         }
         logger.trace("\(UInt8.random(in: .min ..< .max))")
         logger.debug("\(UInt8.random(in: .min ..< .max))")
@@ -21,7 +21,7 @@ final class SystemLogSinkTests: XCTestCase {
 
     func testMetaData() {
         var logger = Logger(label: "syslog") {
-            Handler(name: $0, sink: SystemLogSink(), formatter: Formatter.os, logLevel: .trace)
+            Handler(name: $0, sink: SystemLogSink(), formation: Formation.system, logLevel: .trace)
         }
         logger[metadataKey: "UserName"] = .string("L1MeN9Yu")
         logger[metadataKey: "UserID"] = .stringConvertible(9527)

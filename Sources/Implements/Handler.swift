@@ -8,7 +8,7 @@ import Logging
 public struct Handler: LogHandler {
     public let name: String
     public let sink: SinkCapable
-    public let formatter: Formable
+    public let formation: Formable
 
     private var prettyMetadata: String?
     public var metadata = Logger.Metadata() {
@@ -22,10 +22,10 @@ public struct Handler: LogHandler {
         set { metadata[metadataKey] = newValue }
     }
 
-    public init(name: String, sink: SinkCapable, formatter: Formable, logLevel: Logger.Level) {
+    public init(name: String, sink: SinkCapable, formation: Formable, logLevel: Logger.Level) {
         self.name = name
         self.sink = sink
-        self.formatter = formatter
+        self.formation = formation
         self.logLevel = logLevel
     }
 
@@ -36,7 +36,7 @@ public struct Handler: LogHandler {
             ??
             prettyMetadata
 
-        let formattedMessage = formatter.format(name: name, level: level, message: message, prettyMetadata: prettyMetadata, file: file, function: function, line: line)
+        let formattedMessage = formation.format(name: name, level: level, message: message, prettyMetadata: prettyMetadata, file: file, function: function, line: line)
         sink.process(formattedMessage, level)
     }
 }

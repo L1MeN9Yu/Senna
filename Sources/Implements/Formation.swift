@@ -5,7 +5,7 @@
 import Foundation
 import Logging
 
-public struct Formatter: Formable {
+public struct Formation: Formable {
     public let components: [Component]
     public let printer: Printable?
     public let separator: String?
@@ -47,8 +47,8 @@ public struct Formatter: Formable {
     }
 }
 
-public extension Formatter {
-    static let standard = Formatter(
+public extension Formation {
+    static let standard = Formation(
         components: [
             .name,
             .timestamp(Component.defaultDateFormatter),
@@ -62,11 +62,11 @@ public extension Formatter {
             .message,
             .metadata,
         ],
-        printer: Printer.default,
+        printer: Printer.standard,
         separator: " ▶ "
     )
 
-    static let standardXcode = Formatter(
+    static let standardXcode = Formation(
         components: [
             .name,
             .timestamp(Component.defaultDateFormatter),
@@ -84,7 +84,7 @@ public extension Formatter {
         separator: " ▶ "
     )
 
-    static let file = Formatter(components: [
+    static let file = Formation(components: [
         .name,
         .timestamp(Component.defaultDateFormatter),
         .group([
@@ -95,7 +95,12 @@ public extension Formatter {
         .metadata,
     ])
 
-    static let os = Formatter(components: [
+    static let os = Formation(components: [
+        .message,
+        .metadata,
+    ])
+
+    static let system = Formation(components: [
         .message,
         .metadata,
     ])

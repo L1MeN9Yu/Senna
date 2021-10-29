@@ -8,7 +8,7 @@ import XCTest
 final class StandardSinkTests: XCTestCase {
     func testStandardOut() {
         let logger = Logger(label: "stdout") {
-            Handler(name: $0, sink: StandardSink.out(), formatter: Formatter.standard, logLevel: .trace)
+            Handler(name: $0, sink: StandardSink.out(), formation: Formation.standard, logLevel: .trace)
         }
         logger.trace("\(UInt8.random(in: .min ..< .max))")
         logger.debug("\(UInt8.random(in: .min ..< .max))")
@@ -21,7 +21,7 @@ final class StandardSinkTests: XCTestCase {
 
     func testStandardError() {
         let logger = Logger(label: "stderr") {
-            Handler(name: $0, sink: StandardSink.error(), formatter: Formatter.standard, logLevel: .trace)
+            Handler(name: $0, sink: StandardSink.error(), formation: Formation.standard, logLevel: .trace)
         }
         logger.trace("\(UInt8.random(in: .min ..< .max))")
         logger.debug("\(UInt8.random(in: .min ..< .max))")
@@ -34,7 +34,7 @@ final class StandardSinkTests: XCTestCase {
 
     func testMetaData() {
         var logger = Logger(label: "stdout") {
-            Handler(name: $0, sink: StandardSink.out(), formatter: Formatter.standard, logLevel: .trace)
+            Handler(name: $0, sink: StandardSink.out(), formation: Formation.standard, logLevel: .trace)
         }
         logger[metadataKey: "UserName"] = .string("L1MeN9Yu")
         logger[metadataKey: "UserID"] = .stringConvertible(9527)
@@ -50,7 +50,7 @@ final class StandardSinkTests: XCTestCase {
 
     func testLevel() {
         var logger = Logger(label: "stdout") {
-            Handler(name: $0, sink: StandardSink.out(), formatter: Formatter.standard, logLevel: .trace)
+            Handler(name: $0, sink: StandardSink.out(), formation: Formation.standard, logLevel: .trace)
         }
         logger.trace("\(UInt8.random(in: .min ..< .max))")
         logger.debug("\(UInt8.random(in: .min ..< .max))")
@@ -66,7 +66,7 @@ final class StandardSinkTests: XCTestCase {
 
     func testStandardXcode() {
         let logger = Logger(label: "stdout+xcode") {
-            Handler(name: $0, sink: StandardSink.out(), formatter: Formatter.standardXcode, logLevel: .trace)
+            Handler(name: $0, sink: StandardSink.out(), formation: Formation.standardXcode, logLevel: .trace)
         }
         logger.trace("\(UInt8.random(in: .min ..< .max))")
         logger.debug("\(UInt8.random(in: .min ..< .max))")
@@ -81,7 +81,7 @@ final class StandardSinkTests: XCTestCase {
         struct NilPrinter: Printable {}
 
         let logger = Logger(label: "stdout+xcode") {
-            Handler(name: $0, sink: StandardSink.out(), formatter: Senna.Formatter(components: [
+            Handler(name: $0, sink: StandardSink.out(), formation: Senna.Formation(components: [
                 .message,
                 .metadata,
             ], printer: NilPrinter()), logLevel: .trace)

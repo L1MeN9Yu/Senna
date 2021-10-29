@@ -34,7 +34,7 @@ public extension Printer {
 }
 
 public extension Printer {
-    static let `default` = Printer(
+    static let standard = Printer(
         emoji: { _, _ in nil },
         textColor: {
             switch ($0, $1) {

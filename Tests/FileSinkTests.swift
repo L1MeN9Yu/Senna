@@ -11,7 +11,7 @@ final class FileSinkTests: XCTestCase {
         try Data().write(to: fileURL, options: .atomic)
         let fileSink = FileSink(fileURL.path)
         let logger = Logger(label: "File") {
-            Handler(name: $0, sink: fileSink, formatter: Formatter.file, logLevel: .trace)
+            Handler(name: $0, sink: fileSink, formation: Formation.file, logLevel: .trace)
         }
         var count = 10
         while count > 0 {
@@ -39,7 +39,7 @@ final class FileSinkTests: XCTestCase {
         try Data().write(to: fileURL, options: .atomic)
         let fileSink = FileSink(fileURL.path, flushMode: .always)
         let logger = Logger(label: "File") {
-            Handler(name: $0, sink: fileSink, formatter: Formatter.file, logLevel: .trace)
+            Handler(name: $0, sink: fileSink, formation: Formation.file, logLevel: .trace)
         }
         var count = 10
         while count > 0 {
