@@ -12,17 +12,33 @@ import Glibc
 
 struct SystemLogSink: SinkCapable {
     func process(_ formattedLog: String, _ level: Logger.Level) {
-        #if arch(arm) || arch(arm64)
-        formattedLog.withCString {
-            vsyslog(priority(level), $0, nil)
-        }
-        #elseif arch(i386) || arch(x86_64)
+        #if os(iOS) || os(Linux)
         withVaList([]) { args in
             formattedLog.withCString {
                 vsyslog(priority(level), $0, args)
             }
         }
         #endif
+
+//        #if __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__
+//        withVaList([]) { args in
+//            formattedLog.withCString {
+//                vsyslog(priority(level), $0, args)
+//            }
+//        }
+//        #else
+//        #if arch(arm) || arch(arm64)
+//        formattedLog.withCString {
+//            vsyslog(priority(level), $0, nil)
+//        }
+//        #elseif arch(i386) || arch(x86_64)
+//        withVaList([]) { args in
+//            formattedLog.withCString {
+//                vsyslog(priority(level), $0, args)
+//            }
+//        }
+//        #endif
+//        #endif
     }
 }
 

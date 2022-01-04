@@ -66,7 +66,7 @@ private struct FileStream: FileDescriptorTextOutputStream {
     public func write(_ string: String) {
         flockfile(file)
         defer { funlockfile(file) }
-        string.withCString { ptr -> Void in
+        string.withCString { ptr in
             fputs(ptr, file)
         }
     }

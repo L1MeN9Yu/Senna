@@ -91,3 +91,6 @@ iOSInjectionProject/
 
 # Brew Bundle
 Brewfile.lock.json
+
+# Swift Package
+.swiftpm
