@@ -12,7 +12,7 @@ import Glibc
 
 struct SystemLogSink: SinkCapable {
     func process(_ formattedLog: String, _ level: Logger.Level) {
-        #if os(iOS) || os(Linux)
+        #if os(OSX) || os(Linux)
         withVaList([]) { args in
             formattedLog.withCString {
                 vsyslog(priority(level), $0, args)
