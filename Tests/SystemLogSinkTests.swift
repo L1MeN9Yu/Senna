@@ -2,6 +2,8 @@
 // Created by Mengyu Li on 2021/10/28.
 //
 
+#if os(Linux)
+
 @testable import Senna
 import XCTest
 
@@ -34,3 +36,4 @@ final class SystemLogSinkTests: XCTestCase {
         logger.critical("\(UInt8.random(in: .min ..< .max))", metadata: ["Key": .dictionary(["String": .stringConvertible(6)])])
     }
 }
+#endif

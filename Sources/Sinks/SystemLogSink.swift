@@ -2,43 +2,16 @@
 // Created by Mengyu Li on 2021/10/28.
 //
 
-#if os(iOS) || os(OSX) || os(tvOS) || os(watchOS)
-import Darwin.POSIX.syslog
-#elseif os(Linux)
+#if os(Linux)
 import Glibc
-#else
-#error("not support yet")
-#endif
 
 struct SystemLogSink: SinkCapable {
     func process(_ formattedLog: String, _ level: Logger.Level) {
-        #if os(OSX) || os(Linux)
         withVaList([]) { args in
             formattedLog.withCString {
                 vsyslog(priority(level), $0, args)
             }
         }
-        #endif
-
-//        #if __ENVIRONMENT_MAC_OS_X_VERSION_MIN_REQUIRED__
-//        withVaList([]) { args in
-//            formattedLog.withCString {
-//                vsyslog(priority(level), $0, args)
-//            }
-//        }
-//        #else
-//        #if arch(arm) || arch(arm64)
-//        formattedLog.withCString {
-//            vsyslog(priority(level), $0, nil)
-//        }
-//        #elseif arch(i386) || arch(x86_64)
-//        withVaList([]) { args in
-//            formattedLog.withCString {
-//                vsyslog(priority(level), $0, args)
-//            }
-//        }
-//        #endif
-//        #endif
     }
 }
 
@@ -63,3 +36,4 @@ private extension SystemLogSink {
         }
     }
 }
+#endif
