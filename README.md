@@ -99,7 +99,7 @@ See [Tests](Tests/OSLogSinkTests.swift) for more.
 let systemLogSink = SystemLogSink()
 ```
 
-Log message will write to syslgo.
+Log message will write to syslog.
 
 See [Tests](Tests/SystemLogSinkTests.swift) for more.
 
@@ -151,7 +151,7 @@ Add the following to your `Package.swift` file:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/L1MeN9Yu/Senna.git", from: "2.4.0")
+    .package(url: "https://github.com/L1MeN9Yu/Senna.git", from: "2.5.0")
 ]
 ```
 
