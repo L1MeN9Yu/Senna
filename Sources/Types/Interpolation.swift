@@ -2,7 +2,13 @@
 // Created by Mengyu Li on 2022/3/1.
 //
 
+#if canImport(CoreGraphics)
 import CoreGraphics
+#endif
+
+#if canImport(ObjectiveC)
+import ObjectiveC
+#endif
 
 public struct Interpolation: StringInterpolationProtocol {
     private(set) var storage: [Value] = []
@@ -25,10 +31,14 @@ extension Interpolation {
         case signedInt(() -> Int64, format: IntegerFormatter, privacy: Privacy)
         case unsignedInt(() -> UInt64, format: IntegerFormatter, privacy: Privacy)
         case float(() -> Float, format: FloatFormatter, privacy: Privacy)
+        #if canImport(CoreGraphics)
         case cgfloat(() -> CGFloat, format: FloatFormatter, privacy: Privacy)
+        #endif
         case double(() -> Double, format: FloatFormatter, privacy: Privacy)
         case bool(() -> Bool, privacy: Privacy)
+        #if canImport(ObjectiveC)
         case object(() -> NSObject, privacy: Privacy)
+        #endif
         case meta(() -> Any.Type, privacy: Privacy)
     }
 }
@@ -52,10 +62,12 @@ public extension Interpolation {
         storage.append(.meta(value, privacy: privacy))
     }
 
+    #if canImport(ObjectiveC)
     /// Defines interpolation for expressions of type NSObject.
     mutating func appendInterpolation(_ argumentObject: @autoclosure @escaping () -> NSObject, privacy: Privacy = .private) {
         storage.append(.object(argumentObject, privacy: privacy))
     }
+    #endif
 }
 
 public extension Interpolation {
@@ -76,10 +88,12 @@ public extension Interpolation {
         storage.append(.float(number, format: format, privacy: privacy))
     }
 
+    #if canImport(CoreGraphics)
     /// Defines interpolation for expressions of type CGFloat
     mutating func appendInterpolation(_ number: @autoclosure @escaping () -> CGFloat, format: FloatFormatter = .fixed, privacy: Privacy = .private) {
         storage.append(.cgfloat(number, format: format, privacy: privacy))
     }
+    #endif
 
     /// Defines interpolation for expressions of type Double
     mutating func appendInterpolation(_ number: @autoclosure @escaping () -> Double, format: FloatFormatter = .fixed, privacy: Privacy = .private) {

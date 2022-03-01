@@ -46,6 +46,7 @@ extension Message: CustomStringConvertible {
                     let string = String(format: "\(explicitPositiveSign ? "+" : "")%.0\(precision())f", value)
                     return $0.appending(privacy.value(for: string))
                 }
+            #if canImport(CoreGraphics)
             case let .cgfloat(value, format: format, privacy: privacy):
                 switch format.format {
                 case let .fixed(precision, explicitPositiveSign):
@@ -53,6 +54,7 @@ extension Message: CustomStringConvertible {
                     let string = String(format: "\(explicitPositiveSign ? "+" : "")%.0\(precision())f", value)
                     return $0.appending(privacy.value(for: string))
                 }
+            #endif
             case let .double(value, format: format, privacy: privacy):
                 switch format.format {
                 case let .fixed(precision, explicitPositiveSign):
@@ -62,8 +64,10 @@ extension Message: CustomStringConvertible {
                 }
             case let .bool(value, privacy: privacy):
                 return $0.appending(privacy.value(for: value() ? "true" : "false"))
+            #if canImport(ObjectiveC)
             case let .object(value, privacy: privacy):
                 return $0.appending(privacy.value(for: value()))
+            #endif
             case let .meta(value, privacy: privacy):
                 return $0.appending(privacy.value(for: String(describing: value())))
             }
