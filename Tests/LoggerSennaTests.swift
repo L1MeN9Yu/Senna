@@ -127,4 +127,50 @@ final class LoggerSennaTests: XCTestCase {
         public meta Logger
         """)
     }
+
+    #if canImport(CoreGraphics)
+    func testCGFloat() {
+        let logger = Logger(label: "stdout") {
+            Handler(name: $0, sink: StandardSink.out(), formation: Formation.standard, logLevel: .trace)
+        }
+        let message: Message = """
+        public message
+        public cgfloat \(CGFloat(Double.pi), format: .fixed(precision: 6, explicitPositiveSign: true), privacy: .public)
+        """
+        logger.senna.trace(message)
+        logger.senna.debug(message)
+        logger.senna.info(message)
+        logger.senna.notice(message)
+        logger.senna.warning(message)
+        logger.senna.error(message)
+        logger.senna.critical(message)
+        XCTAssertEqual(message.description, """
+        public message
+        public cgfloat +3.141593
+        """)
+    }
+    #endif
+
+    #if canImport(ObjectiveC)
+    func testNSObject() {
+        let logger = Logger(label: "stdout") {
+            Handler(name: $0, sink: StandardSink.out(), formation: Formation.standard, logLevel: .trace)
+        }
+        let message: Message = """
+        public message
+        public nsobject \(self, privacy: .public)
+        """
+        logger.senna.trace(message)
+        logger.senna.debug(message)
+        logger.senna.info(message)
+        logger.senna.notice(message)
+        logger.senna.warning(message)
+        logger.senna.error(message)
+        logger.senna.critical(message)
+        XCTAssertEqual(message.description, """
+        public message
+        public nsobject \(String(describing: self))
+        """)
+    }
+    #endif
 }
