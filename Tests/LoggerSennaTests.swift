@@ -86,4 +86,37 @@ final class LoggerSennaTests: XCTestCase {
         logger.senna.critical(message)
         XCTAssertEqual(message.description, "public L1MeN9Yu + private 🚫")
     }
+
+    func testValues() {
+        let logger = Logger(label: "stdout") {
+            Handler(name: $0, sink: StandardSink.out(), formation: Formation.standard, logLevel: .trace)
+        }
+        let message: Message = """
+        public message
+        public sint \(Int(256), format: .decimal(explicitPositiveSign: true, minDigits: 6), privacy: .public))
+        public uint \(UInt(256), format: .decimal(explicitPositiveSign: true, minDigits: 6), privacy: .public))
+        public double \(Double.pi, format: .fixed(precision: 6, explicitPositiveSign: true), privacy: .public)
+        public float \(Float(Double.pi), format: .fixed(precision: 6, explicitPositiveSign: true), privacy: .public)
+        public bool \(true, privacy: .public)
+        public bool \(false, privacy: .public)
+        public meta \(Logger.self, privacy: .public)
+        """
+        logger.senna.trace(message)
+        logger.senna.debug(message)
+        logger.senna.info(message)
+        logger.senna.notice(message)
+        logger.senna.warning(message)
+        logger.senna.error(message)
+        logger.senna.critical(message)
+        XCTAssertEqual(message.description, """
+        public message
+        public sint +000256)
+        public uint +000256)
+        public double +3.141593
+        public float +3.141593
+        public bool true
+        public bool false
+        public meta Logger
+        """)
+    }
 }
