@@ -6,6 +6,21 @@
 import XCTest
 
 final class LoggerSennaTests: XCTestCase {
+    func testLiteral() {
+        let logger = Logger(label: "stdout") {
+            Handler(name: $0, sink: StandardSink.out(), formation: Formation.standard, logLevel: .trace)
+        }
+        let message: Message = "Literal Message"
+        logger.senna.trace(message)
+        logger.senna.debug(message)
+        logger.senna.info(message)
+        logger.senna.notice(message)
+        logger.senna.warning(message)
+        logger.senna.error(message)
+        logger.senna.critical(message)
+        XCTAssertEqual(message.description, "Literal Message")
+    }
+
     func testPrivate() {
         let logger = Logger(label: "stdout") {
             Handler(name: $0, sink: StandardSink.out(), formation: Formation.standard, logLevel: .trace)
