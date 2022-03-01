@@ -93,9 +93,13 @@ final class LoggerSennaTests: XCTestCase {
         }
         let message: Message = """
         public message
+        public sint \(Int(256), format: .decimal(explicitPositiveSign: true), privacy: .public))
         public sint \(Int(256), format: .decimal(explicitPositiveSign: true, minDigits: 6), privacy: .public))
+        public uint \(UInt(256), format: .decimal, privacy: .public))
         public uint \(UInt(256), format: .decimal(explicitPositiveSign: true, minDigits: 6), privacy: .public))
+        public double \(Double.pi, format: .fixed(precision: 6), privacy: .public)
         public double \(Double.pi, format: .fixed(precision: 6, explicitPositiveSign: true), privacy: .public)
+        public float \(Float(Double.pi), format: .fixed, privacy: .public)
         public float \(Float(Double.pi), format: .fixed(precision: 6, explicitPositiveSign: true), privacy: .public)
         public bool \(true, privacy: .public)
         public bool \(false, privacy: .public)
@@ -110,9 +114,13 @@ final class LoggerSennaTests: XCTestCase {
         logger.senna.critical(message)
         XCTAssertEqual(message.description, """
         public message
+        public sint +256)
         public sint +000256)
+        public uint 256)
         public uint +000256)
+        public double 3.141593
         public double +3.141593
+        public float 3.141593
         public float +3.141593
         public bool true
         public bool false
