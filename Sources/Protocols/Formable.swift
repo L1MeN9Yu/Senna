@@ -27,7 +27,7 @@ public extension Formable {
         case .source:
             return "\(source)"
         case .file:
-            return "\(file)"
+            return "\(URL(fileURLWithPath: file).lastPathComponent)"
         case .function:
             return "\(function)"
         case .line:
