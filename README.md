@@ -109,12 +109,12 @@ See [Tests](Tests/SystemLogSinkTests.swift) for more.
 
 There are some builtin `Formation`:
 
-1. Formation.standard. This is default for `stdout/stderr`.
-2. Formation.standardXcode. This is default for `stdout/stderr` display in Xcode due Xcode's console is not support ANSI escape code.
+1. `Formation.standard`. This is default for `stdout/stderr`.
+2. `Formation.standardXcode`. This is default for `stdout/stderr` display in Xcode due Xcode's console is not support ANSI escape code.
 ![](Documentations/README/Resources/stdout_xcode.png)
-3. Formation.file. This is default for `File`.
-4. Formation.os. This is default for `OSLog`.
-5. Formation.system. This is default for `syslog`.
+3. `Formation.file`. This is default for `File`.
+4. `Formation.os`. This is default for `OSLog`.
+5. `Formation.system`. This is default for `syslog`.
 
 ### Advanced Customize Formation
 
@@ -132,7 +132,7 @@ The `Printable` enhanced your log messages, It can add color or style to the com
 
 The builtin `Printer` has two default instance.
 `Printer.standard` for `stdout/stderr`.
-`Printer.standard` for `stdout/stderr` in Xcode.
+`Printer.xcode` for `stdout/stderr` in Xcode.
 
 You can create new `Printer` instance or Use `YourPrinter` which implements `Printable` protocol.
 
