@@ -20,6 +20,7 @@
 * Builtin output target : `[stdout/stderr,file,oslog,syslog]`
 * ANSI escape code
 * Complete customizable for text out
+* Support string interpolation the same as [Apple's Unified Logging System](https://developer.apple.com/documentation/os/logging/generating_log_messages_from_your_code)
 * 100% Code Coverage
 
 ## Examples
@@ -143,6 +144,33 @@ See [Printer](Sources/Implements/Printer.swift) and [Printable](Sources/Protocol
 The `Separator` string is used for split log message's component.
 The `Formation.standard`'s separator is `" ▶ "`.
 
+### Apple's Unified Logging System
+
+Senna reimplement the string interpolation behavior of [Apple's Unified Logging System](https://developer.apple.com/documentation/os/logging/generating_log_messages_from_your_code)
+
+```swift
+let sink = StandardSink.out()
+let formation = Formation.standard
+var logger = Logger(label: "LogName") {
+    Handler(name: $0, sink: sink, formation: formation, logLevel: .trace)
+}
+logger[metadataKey: "UserID"] = .stringConvertible(9527)
+#if DEBUG
+let privacy = Privacy.public
+#else
+let privacy = Privacy.private
+#endif
+// default is private
+logger.senna.notice("the user name is \("L1MeN9Yu")")
+logger.senna.notice("the user name is \("L1MeN9Yu", privacy: privacy)")
+```
+
+Terminal out :
+
+![](Documentations/README/Resources/stdout.string.interpolation.png)
+
+see [LoggerSennaTests.swift](Tests/LoggerSennaTests.swift) for more usages.
+
 ## Installation
 
 ### Swift Package Manager
@@ -151,7 +179,7 @@ Add the following to your `Package.swift` file:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/L1MeN9Yu/Senna.git", from: "2.5.0")
+    .package(url: "https://github.com/L1MeN9Yu/Senna.git", from: "3.0.0")
 ]
 ```
 
@@ -161,6 +189,7 @@ dependencies: [
 * [swift-log-format-and-pipe](https://github.com/Adorkable/swift-log-format-and-pipe)
 * [spdlog](https://github.com/gabime/spdlog)
 * [Rainbow](https://github.com/onevcat/Rainbow)
+* [Logging](https://github.com/shaps80/Logging)
 
 ## License
 
