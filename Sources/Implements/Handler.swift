@@ -36,7 +36,7 @@ public struct Handler: LogHandler {
             ??
             prettyMetadata
 
-        let formattedMessage = formation.format(name: name, level: level, message: message, prettyMetadata: prettyMetadata, file: file, function: function, line: line)
+        let formattedMessage = formation.format(name: name, level: level, message: message, prettyMetadata: prettyMetadata, source: source, file: file, function: function, line: line)
         sink.process(formattedMessage, level)
     }
 }

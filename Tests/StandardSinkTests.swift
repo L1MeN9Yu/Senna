@@ -81,7 +81,7 @@ final class StandardSinkTests: XCTestCase {
         struct NilPrinter: Printable {}
 
         let logger = Logger(label: "stdout+xcode") {
-            Handler(name: $0, sink: StandardSink.out(), formation: Senna.Formation(components: [
+            Handler(name: $0, sink: StandardSink.out(), formation: Formation(components: [
                 .message,
                 .metadata,
             ], printer: NilPrinter()), logLevel: .trace)

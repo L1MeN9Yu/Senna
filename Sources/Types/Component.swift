@@ -18,6 +18,8 @@ public enum Component {
     case message
     /// Log metadata
     case metadata
+    /// The log's messages originates to
+    case source
     /// The log's originating file
     case file
     /// The log's originating function
