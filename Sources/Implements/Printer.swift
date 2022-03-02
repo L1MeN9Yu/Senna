@@ -80,7 +80,7 @@ public extension Printer {
         emoji: {
             switch ($0, $1) {
             case (.trace, .level):
-                return "⚫️"
+                return "🟤"
             case (.debug, .level):
                 return "🟢"
             case (.info, .level):
@@ -88,7 +88,7 @@ public extension Printer {
             case (.notice, .level):
                 return "🟣"
             case (.warning, .level):
-                return "⚠️"
+                return "🟡️"
             case (.error, .level):
                 return "❗️"
             case (.critical, .level):
