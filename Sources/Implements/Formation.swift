@@ -53,7 +53,6 @@ public extension Formation {
             .name,
             .timestamp(Component.defaultDateFormatter),
             .level,
-            .source,
             .group([
                 .file,
                 .text(":"),
@@ -72,7 +71,6 @@ public extension Formation {
             .name,
             .timestamp(Component.defaultDateFormatter),
             .level,
-            .source,
             .group([
                 .file,
                 .text(":"),
