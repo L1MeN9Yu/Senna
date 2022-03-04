@@ -48,60 +48,70 @@ public struct Formation: Formable {
 }
 
 public extension Formation {
-    static let standard = Formation(
-        components: [
+    static var standard: Self {
+        Formation(
+            components: [
+                .name,
+                .timestamp(Component.defaultDateFormatter),
+                .level,
+                .group([
+                    .file,
+                    .text(":"),
+                    .line,
+                ]),
+                .function,
+                .message,
+                .metadata,
+            ],
+            printer: Printer.standard,
+            separator: " ▶ "
+        )
+    }
+
+    static var standardXcode: Self {
+        Formation(
+            components: [
+                .name,
+                .timestamp(Component.defaultDateFormatter),
+                .level,
+                .group([
+                    .file,
+                    .text(":"),
+                    .line,
+                ]),
+                .function,
+                .message,
+                .metadata,
+            ],
+            printer: Printer.xcode,
+            separator: " ▶ "
+        )
+    }
+
+    static var file: Self {
+        Formation(components: [
             .name,
             .timestamp(Component.defaultDateFormatter),
-            .level,
             .group([
-                .file,
+                .level,
                 .text(":"),
-                .line,
             ]),
-            .function,
             .message,
             .metadata,
-        ],
-        printer: Printer.standard,
-        separator: " ▶ "
-    )
+        ])
+    }
 
-    static let standardXcode = Formation(
-        components: [
-            .name,
-            .timestamp(Component.defaultDateFormatter),
-            .level,
-            .group([
-                .file,
-                .text(":"),
-                .line,
-            ]),
-            .function,
+    static var os: Self {
+        Formation(components: [
             .message,
             .metadata,
-        ],
-        printer: Printer.xcode,
-        separator: " ▶ "
-    )
+        ])
+    }
 
-    static let file = Formation(components: [
-        .name,
-        .timestamp(Component.defaultDateFormatter),
-        .group([
-            .level,
-            .text(":"),
-        ]),
-        .message,
-        .metadata,
-    ])
-
-    static let os = Formation(components: [
-        .message,
-        .metadata,
-    ])
-
-    static let system = Formation(components: [
-        .message,
-        .metadata,
-    ])
+    static var system: Self {
+        Formation(components: [
+            .message,
+            .metadata,
+        ])
+    }
 }
