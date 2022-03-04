@@ -34,15 +34,6 @@ public enum Component {
 }
 
 public extension Component {
-    static let defaultComponents: [Component] = [
-        .timestamp(Self.defaultDateFormatter),
-        .level,
-        .message,
-        .metadata,
-        .file,
-        .function,
-        .line,
-    ]
     static let defaultDateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"

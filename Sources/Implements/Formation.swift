@@ -11,7 +11,7 @@ public struct Formation: Formable {
     public let printer: Printable?
     public let separator: String?
 
-    public init(components: [Component] = Component.defaultComponents, levelStyle: LevelStyle = .default, printer: Printable? = nil, separator: String? = " ") {
+    public init(components: [Component], levelStyle: LevelStyle = .default, printer: Printable? = nil, separator: String? = " ") {
         self.components = components
         self.levelStyle = levelStyle
         self.printer = printer
