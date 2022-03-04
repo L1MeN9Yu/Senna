@@ -169,10 +169,12 @@ public extension Formation {
         ])
     }
 
+    #if os(Linux)
     static var system: Self {
         Formation(components: [
             .message,
             .metadata,
         ])
     }
+    #endif
 }
