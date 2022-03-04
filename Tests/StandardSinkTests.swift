@@ -96,6 +96,24 @@ final class StandardSinkTests: XCTestCase {
         logger.critical("\(UInt8.random(in: .min ..< .max))")
     }
 
+    func testSource() {
+        let logger = Logger(label: "source") {
+            Handler(name: $0, sink: StandardSink.out(), formation: Formation(components: [
+                .source,
+                .message,
+                .metadata,
+            ]))
+        }
+
+        logger.trace("\(UInt8.random(in: .min ..< .max))")
+        logger.debug("\(UInt8.random(in: .min ..< .max))")
+        logger.info("\(UInt8.random(in: .min ..< .max))")
+        logger.notice("\(UInt8.random(in: .min ..< .max))")
+        logger.warning("\(UInt8.random(in: .min ..< .max))")
+        logger.error("\(UInt8.random(in: .min ..< .max))")
+        logger.critical("\(UInt8.random(in: .min ..< .max))")
+    }
+
     func testCustomLevelStyle() {
         let levelStyles: [LevelStyle] = [
             .default,
@@ -114,7 +132,7 @@ final class StandardSinkTests: XCTestCase {
                 ],
                 levelStyle: $0
             )
-            let logger = Logger(label: "stdout+xcode") {
+            let logger = Logger(label: "custom level style") {
                 Handler(name: $0, sink: StandardSink.out(), formation: formation, logLevel: .trace)
             }
             logger.trace("\(UInt8.random(in: .min ..< .max))")

@@ -22,7 +22,7 @@ public struct Handler: LogHandler {
         set { metadata[metadataKey] = newValue }
     }
 
-    public init(name: String, sink: SinkCapable, formation: Formable, logLevel: Logger.Level) {
+    public init(name: String, sink: SinkCapable, formation: Formable, logLevel: Logger.Level = .trace) {
         self.name = name
         self.sink = sink
         self.formation = formation
