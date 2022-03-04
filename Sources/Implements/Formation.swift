@@ -26,10 +26,6 @@ public struct Formation: Formable {
                 let formatted = self.format(name: name, component: component, date: Date(), level: level, message: message, prettyMetadata: prettyMetadata, source: source, file: file, function: function, line: line)
                 return (component, formatted)
             }
-            .map { component, formatted -> (Component, String) in
-                guard let emoji = printer?.emoji(for: level, component: component) else { return (component, formatted) }
-                return (component, "\(emoji)")
-            }
             .map { component, formatted -> String in
                 var codes: [UInt8] = []
                 if let textColor = printer?.textColor(for: level, component: component) {
@@ -130,6 +126,24 @@ public extension Formation {
                 .message,
                 .metadata,
             ],
+            levelStyle: .custom {
+                switch $0 {
+                case .trace:
+                    return "🟤"
+                case .debug:
+                    return "🟢"
+                case .info:
+                    return "🔵"
+                case .notice:
+                    return "🟣"
+                case .warning:
+                    return "🟡️"
+                case .error:
+                    return "❗️"
+                case .critical:
+                    return "❌"
+                }
+            },
             printer: Printer.xcode,
             separator: " ▶ "
         )

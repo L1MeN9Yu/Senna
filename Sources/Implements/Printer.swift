@@ -5,19 +5,15 @@
 import Logging
 
 public struct Printer: Printable {
-    private let emoji: EmojiGeneration
     private let textColor: TextColorGeneration
     private let backgroundColor: BackgroundColorGeneration
     private let styles: StylesGeneration
 
-    public init(emoji: @escaping EmojiGeneration, textColor: @escaping TextColorGeneration, backgroundColor: @escaping BackgroundColorGeneration, styles: @escaping StylesGeneration) {
-        self.emoji = emoji
+    public init(textColor: @escaping TextColorGeneration, backgroundColor: @escaping BackgroundColorGeneration, styles: @escaping StylesGeneration) {
         self.textColor = textColor
         self.backgroundColor = backgroundColor
         self.styles = styles
     }
-
-    public func emoji(for level: Logger.Level, component: Component) -> String? { emoji(level, component) }
 
     public func textColor(for level: Logger.Level, component: Component) -> Color? { textColor(level, component) }
 
@@ -27,7 +23,6 @@ public struct Printer: Printable {
 }
 
 public extension Printer {
-    typealias EmojiGeneration = (Logger.Level, Component) -> String?
     typealias TextColorGeneration = (Logger.Level, Component) -> Color?
     typealias BackgroundColorGeneration = (Logger.Level, Component) -> Color?
     typealias StylesGeneration = (Logger.Level, Component) -> [Style]?
@@ -35,7 +30,6 @@ public extension Printer {
 
 public extension Printer {
     static let standard = Printer(
-        emoji: { _, _ in nil },
         textColor: {
             switch ($0, $1) {
             case (.trace, .level), (.trace, .message):
@@ -76,31 +70,7 @@ public extension Printer {
         }
     )
 
-    static let xcode = Printer(
-        emoji: {
-            switch ($0, $1) {
-            case (.trace, .level):
-                return "🟤"
-            case (.debug, .level):
-                return "🟢"
-            case (.info, .level):
-                return "🔵"
-            case (.notice, .level):
-                return "🟣"
-            case (.warning, .level):
-                return "🟡️"
-            case (.error, .level):
-                return "❗️"
-            case (.critical, .level):
-                return "❌"
-            default:
-                return nil
-            }
-        },
-        textColor: { _, _ in nil },
-        backgroundColor: { _, _ in nil },
-        styles: { _, _ in nil }
-    )
+    static let xcode: Self? = nil
 }
 
 // MARK: - Text Color
