@@ -60,7 +60,7 @@ private extension Formation {
         case .timestamp:
             return dateFormatter.string(from: date)
         case .level:
-            return "\(level)"
+            return level.output(of: levelStyle)
         case .message:
             return "\(message)"
         case .metadata:
