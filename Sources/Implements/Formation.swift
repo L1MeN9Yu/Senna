@@ -8,12 +8,14 @@ import Logging
 public struct Formation: Formable {
     public let components: [Component]
     public let levelStyle: LevelStyle
+    public let dateFormatter: DateFormatter
     public let printer: Printable?
     public let separator: String?
 
-    public init(components: [Component], levelStyle: LevelStyle = .default, printer: Printable? = nil, separator: String? = " ") {
+    public init(components: [Component], levelStyle: LevelStyle = .default, dateFormatter: DateFormatter = Self.dateFormatter, printer: Printable? = nil, separator: String? = " ") {
         self.components = components
         self.levelStyle = levelStyle
+        self.dateFormatter = dateFormatter
         self.printer = printer
         self.separator = separator
     }
@@ -55,7 +57,7 @@ private extension Formation {
         switch component {
         case .name:
             return "<\(name)>"
-        case let .timestamp(dateFormatter):
+        case .timestamp:
             return dateFormatter.string(from: date)
         case .level:
             return "\(level)"
@@ -85,11 +87,19 @@ private extension Formation {
 }
 
 public extension Formation {
+    static let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
+        return dateFormatter
+    }()
+}
+
+public extension Formation {
     static var standard: Self {
         Formation(
             components: [
                 .name,
-                .timestamp(Component.defaultDateFormatter),
+                .timestamp,
                 .level,
                 .group([
                     .file,
@@ -109,7 +119,7 @@ public extension Formation {
         Formation(
             components: [
                 .name,
-                .timestamp(Component.defaultDateFormatter),
+                .timestamp,
                 .level,
                 .group([
                     .file,
@@ -128,7 +138,7 @@ public extension Formation {
     static var file: Self {
         Formation(components: [
             .name,
-            .timestamp(Component.defaultDateFormatter),
+            .timestamp,
             .group([
                 .level,
                 .text(":"),

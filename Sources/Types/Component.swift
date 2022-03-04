@@ -9,8 +9,7 @@ public enum Component {
     case name
 
     /// Timestamp of log
-    /// Specifying your timestamp format can be done by providing a DateFormatter through `Formatter.timestampFormatter`
-    case timestamp(DateFormatter)
+    case timestamp
 
     /// Log level
     case level
@@ -31,12 +30,4 @@ public enum Component {
     case text(String)
     /// A group of `Components`, not using the specified `separator`
     case group([Component])
-}
-
-public extension Component {
-    static let defaultDateFormatter: DateFormatter = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy/MM/dd HH:mm:ss"
-        return dateFormatter
-    }()
 }
