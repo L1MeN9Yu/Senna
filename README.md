@@ -16,7 +16,7 @@
 
 * Pure Swift
 * Backend of `apple/swift-log`
-* Both Darwin(iOS macOS watchOS tcOS) and Linux compatibility
+* Both Darwin(iOS macOS watchOS tvOS) and Linux compatibility
 * Builtin output target : `[stdout/stderr,file,oslog,syslog]`
 * ANSI escape code
 * Complete customizable for text out
