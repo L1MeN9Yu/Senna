@@ -5,7 +5,7 @@
 #if os(Linux)
 import Glibc
 
-struct SystemLogSink: SinkCapable {
+public struct SystemLogSink: SinkCapable {
     func process(_ formattedLog: String, _ level: Logger.Level) {
         withVaList([]) { args in
             formattedLog.withCString {
@@ -36,4 +36,5 @@ private extension SystemLogSink {
         }
     }
 }
+
 #endif

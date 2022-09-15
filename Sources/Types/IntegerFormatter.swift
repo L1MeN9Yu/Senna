@@ -27,3 +27,7 @@ public extension IntegerFormatter {
         Self(format: .decimal(minDigits: minDigits, explicitPositiveSign: explicitPositiveSign))
     }
 }
+
+#if compiler(>=5.6)
+extension IntegerFormatter: Sendable {}
+#endif

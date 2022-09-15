@@ -10,3 +10,7 @@ public enum FlushMode {
     case when(Logger.Level)
     case always
 }
+
+#if compiler(>=5.6)
+extension FlushMode: Sendable {}
+#endif

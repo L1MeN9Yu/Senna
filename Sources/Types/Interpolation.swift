@@ -26,21 +26,55 @@ extension Interpolation {
     @usableFromInline
     enum Value {
         case literal(String)
-        case string(() -> String, privacy: Privacy)
-        case convertible(() -> CustomStringConvertible, privacy: Privacy)
-        case signedInt(() -> Int64, format: IntegerFormatter, privacy: Privacy)
-        case unsignedInt(() -> UInt64, format: IntegerFormatter, privacy: Privacy)
-        case float(() -> Float, format: FloatFormatter, privacy: Privacy)
+        case string(StringTransform, privacy: Privacy)
+        case convertible(CustomStringConvertibleTransform, privacy: Privacy)
+        case signedInt(SignedIntTransform, format: IntegerFormatter, privacy: Privacy)
+        case unsignedInt(UnsignedIntTransform, format: IntegerFormatter, privacy: Privacy)
+        case float(FloatTransform, format: FloatFormatter, privacy: Privacy)
         #if canImport(CoreGraphics)
-        case cgfloat(() -> CGFloat, format: FloatFormatter, privacy: Privacy)
+        case cgfloat(CGFloatTransform, format: FloatFormatter, privacy: Privacy)
         #endif
-        case double(() -> Double, format: FloatFormatter, privacy: Privacy)
-        case bool(() -> Bool, privacy: Privacy)
+        case double(DoubleTransform, format: FloatFormatter, privacy: Privacy)
+        case bool(BoolTransform, privacy: Privacy)
         #if canImport(ObjectiveC)
-        case object(() -> NSObject, privacy: Privacy)
+        case object(ObjectTransform, privacy: Privacy)
         #endif
-        case meta(() -> Any.Type, privacy: Privacy)
+        case meta(MetaTransform, privacy: Privacy)
     }
+}
+
+extension Interpolation {
+    #if compiler(>=5.6)
+    @usableFromInline typealias StringTransform = @Sendable () -> String
+    @usableFromInline typealias CustomStringConvertibleTransform = @Sendable () -> CustomStringConvertible
+    @usableFromInline typealias SignedIntTransform = @Sendable () -> Int64
+    @usableFromInline typealias UnsignedIntTransform = @Sendable () -> UInt64
+    @usableFromInline typealias FloatTransform = @Sendable () -> Float
+    #if canImport(CoreGraphics)
+    @usableFromInline typealias CGFloatTransform = @Sendable () -> CGFloat
+    #endif
+    @usableFromInline typealias DoubleTransform = @Sendable () -> Double
+    @usableFromInline typealias BoolTransform = @Sendable () -> Bool
+    #if canImport(ObjectiveC)
+    @usableFromInline typealias ObjectTransform = @Sendable () -> NSObject
+    #endif
+    @usableFromInline typealias MetaTransform = @Sendable () -> Any.Type
+    #else
+    @usableFromInline typealias StringTransform = () -> String
+    @usableFromInline typealias CustomStringConvertibleTransform = () -> CustomStringConvertible
+    @usableFromInline typealias SignedIntTransform = () -> Int64
+    @usableFromInline typealias UnsignedIntTransform = () -> UInt64
+    @usableFromInline typealias FloatTransform = () -> Float
+    #if canImport(CoreGraphics)
+    @usableFromInline typealias CGFloatTransform = () -> CGFloat
+    #endif
+    @usableFromInline typealias DoubleTransform = () -> Double
+    @usableFromInline typealias BoolTransform = () -> Bool
+    #if canImport(ObjectiveC)
+    @usableFromInline typealias ObjectTransform = () -> NSObject
+    #endif
+    @usableFromInline typealias MetaTransform = () -> Any.Type
+    #endif
 }
 
 public extension Interpolation {
@@ -107,3 +141,9 @@ public extension Interpolation {
         storage.append(.bool(boolean, privacy: privacy))
     }
 }
+
+#if compiler(>=5.6)
+extension Interpolation: Sendable {}
+
+extension Interpolation.Value: Sendable {}
+#endif

@@ -49,3 +49,9 @@ extension Privacy {
         }
     }
 }
+
+#if compiler(>=5.6)
+extension Privacy: Sendable {}
+
+extension Privacy.Mask: Sendable {}
+#endif

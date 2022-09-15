@@ -6,3 +6,7 @@ enum ControlCode {
     static let ESC = "\u{001B}"
     static let CSI = "\(ESC)["
 }
+
+#if compiler(>=5.6)
+extension ControlCode: Sendable {}
+#endif

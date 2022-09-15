@@ -9,7 +9,15 @@ public enum LevelStyle {
     case `default`
     case firstCharacter
     case full
-    case custom(transform: (Logger.Level) -> String)
+    case custom(transform: Transform)
+}
+
+public extension LevelStyle {
+    #if compiler(>=5.6)
+    typealias Transform = @Sendable (Logger.Level) -> String
+    #else
+    typealias Transform = (Logger.Level) -> String
+    #endif
 }
 
 extension Logger.Level {
@@ -56,3 +64,7 @@ extension Logger.Level {
         }
     }
 }
+
+#if compiler(>=5.6)
+extension LevelStyle: Sendable {}
+#endif

@@ -27,3 +27,7 @@ public extension FloatFormatter {
         Self(format: .fixed(precision: precision, explicitPositiveSign: explicitPositiveSign))
     }
 }
+
+#if compiler(>=5.6)
+extension FloatFormatter: Sendable {}
+#endif

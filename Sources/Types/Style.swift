@@ -18,8 +18,12 @@ extension Style {
     static let backgroundColor: [UInt8] = [48, 2]
 }
 
-extension Array: EscapeCode where Element == Style {
+extension Array: SennaEscapeCode where Element == Style {
     public var value: [UInt8] {
         map(\.rawValue)
     }
 }
+
+#if compiler(>=5.6)
+extension Style: Sendable {}
+#endif

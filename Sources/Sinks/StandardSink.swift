@@ -65,7 +65,7 @@ private struct StandardErrorStream: FileDescriptorTextOutputStream {
     func write(_ string: String) {
         flockfile(file)
         defer { funlockfile(file) }
-        fputs(string, file)
+        string.withCString { _ = fputs($0, file) }
     }
 }
 

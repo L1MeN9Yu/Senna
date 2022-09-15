@@ -66,6 +66,10 @@ private struct FileStream: FileDescriptorTextOutputStream {
     public func write(_ string: String) {
         flockfile(file)
         defer { funlockfile(file) }
-        fputs(string, file)
+        string.withCString { _ = fputs($0, file) }
     }
 }
+
+#if compiler(>=5.6)
+extension FileStream: Sendable {}
+#endif

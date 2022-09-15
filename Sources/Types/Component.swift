@@ -31,3 +31,7 @@ public enum Component {
     /// A group of `Components`, not using the specified `separator`
     case group([Component])
 }
+
+#if compiler(>=5.6)
+extension Component: Sendable {}
+#endif

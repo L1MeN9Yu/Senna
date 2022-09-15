@@ -8,7 +8,7 @@ import os.log
 
 @available(OSX 10.12, iOS 10.0, tvOS 10.0, watchOS 3.0, *)
 public struct OSLogSink: SinkCapable {
-    private let osLog: OSLog
+    private let osLog: os.OSLog
 
     public init(subsystem: String, category: String) {
         osLog = OSLog(subsystem: subsystem, category: category)
@@ -34,4 +34,8 @@ extension OSLogType {
         }
     }
 }
+#endif
+
+#if compiler(>=5.6)
+extension OSLog: @unchecked Sendable {}
 #endif

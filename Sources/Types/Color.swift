@@ -13,3 +13,7 @@ extension Color: EscapeCode {
         [red, green, blue]
     }
 }
+
+#if compiler(>=5.6)
+extension Color: Sendable {}
+#endif
