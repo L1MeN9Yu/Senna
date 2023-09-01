@@ -7,7 +7,7 @@ import XCTest
 
 final class PrinterTests: XCTestCase {
     func testLegacy8Bit() {
-        let formation = Formation(components: [.message], printer: Printer.legacy8bit)
+        let formation = Formation(components: [.name, .message], printer: Printer.legacy8bit)
         let logger = Logger(label: "LogName") {
             Handler(name: $0, sink: StandardSink.out(), formation: formation, logLevel: .trace)
         }
@@ -22,7 +22,7 @@ final class PrinterTests: XCTestCase {
     }
 
     func testLegacy16Bit() {
-        let formation = Formation(components: [.message], printer: Printer.legacy16bit)
+        let formation = Formation(components: [.name, .message], printer: Printer.legacy16bit)
         let logger = Logger(label: "LogName") {
             Handler(name: $0, sink: StandardSink.out(), formation: formation, logLevel: .trace)
         }
