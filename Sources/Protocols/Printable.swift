@@ -5,15 +5,15 @@
 import Logging
 
 public protocol Printable {
-    func textColor(for level: Logger.Level, component: Component) -> Color?
-    func backgroundColor(for level: Logger.Level, component: Component) -> Color?
+    func textColor(for level: Logger.Level, component: Component) -> EscapeCode?
+    func backgroundColor(for level: Logger.Level, component: Component) -> EscapeCode?
     func styles(for level: Logger.Level, component: Component) -> [Style]?
 }
 
 public extension Printable {
-    func textColor(for level: Logger.Level, component: Component) -> Color? { nil }
+    func textColor(for level: Logger.Level, component: Component) -> EscapeCode? { nil }
 
-    func backgroundColor(for level: Logger.Level, component: Component) -> Color? { nil }
+    func backgroundColor(for level: Logger.Level, component: Component) -> EscapeCode? { nil }
 
     func styles(for level: Logger.Level, component: Component) -> [Style]? { nil }
 }
