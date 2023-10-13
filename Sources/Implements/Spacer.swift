@@ -2,14 +2,14 @@
 // Created by mengyu.li on 2023/10/12.
 //
 
-struct Spacer {
-    let aligning: Aligning
+public struct Spacer {
+    public let aligning: Aligning
 
-    init(aligning: @escaping Aligning) { self.aligning = aligning }
+    public init(aligning: @escaping Aligning) { self.aligning = aligning }
 }
 
 extension Spacer: Spacing {
-    func spacing(_ input: String, for component: Component) -> String {
+    public func spacing(_ input: String, for component: Component) -> String {
         let align = aligning(component)
         switch align {
         case .raw:
@@ -41,7 +41,7 @@ extension Spacer: Spacing {
     }
 }
 
-extension Spacer {
+public extension Spacer {
     typealias Aligning = (_ component: Component) -> Align
 
     enum Align {
@@ -52,7 +52,7 @@ extension Spacer {
     }
 
     struct Truncate {
-        let max: Int
-        let truncate: Bool
+        public let max: Int
+        public let truncate: Bool
     }
 }
