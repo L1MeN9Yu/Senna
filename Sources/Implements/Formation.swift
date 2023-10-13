@@ -10,13 +10,15 @@ public struct Formation: Formable {
     public let levelStyle: LevelStyle
     public let dateFormatter: DateFormatter
     public let printer: Printable?
+    public let spacer: Spacing?
     public let separator: String?
 
-    public init(components: [Component], levelStyle: LevelStyle = .default, dateFormatter: DateFormatter = Self.dateFormatter, printer: Printable? = nil, separator: String? = " ") {
+    public init(components: [Component], levelStyle: LevelStyle = .default, dateFormatter: DateFormatter = Self.dateFormatter, printer: Printable? = nil, spacer: Spacing? = nil, separator: String? = " ") {
         self.components = components
         self.levelStyle = levelStyle
         self.dateFormatter = dateFormatter
         self.printer = printer
+        self.spacer = spacer
         self.separator = separator
     }
 
@@ -61,29 +63,45 @@ private extension Formation {
         function: @autoclosure () -> String,
         line: @autoclosure () -> UInt
     ) -> String {
+        func space(value: String) -> String {
+            if let spacer {
+                return spacer.spacing(value, for: component)
+            }
+            return value
+        }
+
         switch component {
         case .name:
-            return "<\(name())>"
+            let value = "<\(name())>"
+            return space(value: value)
         case .timestamp:
-            return dateFormatter.string(from: date())
+            let value = dateFormatter.string(from: date())
+            return space(value: value)
         case .level:
-            return level().output(of: levelStyle)
+            let value = level().output(of: levelStyle)
+            return space(value: value)
         case .message:
-            return "\(message())"
+            let value = "\(message())"
+            return space(value: value)
         case .metadata:
-            return "\(prettyMetadata().map { "\($0)" } ?? "")"
+            let value = "\(prettyMetadata().map { "\($0)" } ?? "")"
+            return space(value: value)
         case .source:
-            return "\(source())"
+            let value = "\(source())"
+            return space(value: value)
         case .file:
-            return "\(URL(fileURLWithPath: file()).lastPathComponent)"
+            let value = "\(file())"
+            return space(value: value)
         case .function:
-            return "\(function())"
+            let value = "\(function())"
+            return space(value: value)
         case .line:
-            return "\(line())"
+            let value = "\(line())"
+            return space(value: value)
         case let .text(value):
-            return value
+            return space(value: value)
         case let .group(components):
-            return components.map {
+            let value = components.map {
                 format(
                     name: name(),
                     component: $0,
@@ -98,6 +116,7 @@ private extension Formation {
                 )
             }
             .joined()
+            return space(value: value)
         }
     }
 
